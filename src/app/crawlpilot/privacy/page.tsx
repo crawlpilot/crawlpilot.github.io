@@ -99,8 +99,8 @@ export default function PrivacyPage() {
                         <p className="text-muted-foreground leading-7">
                             If you have any questions about this Privacy Policy, please contact us at:
                         </p>
-                        <a href="mailto:support@crawlpilot.com" className="text-primary hover:underline font-medium block mt-2">
-                            support@crawlpilot.com
+                        <a href="mailto:crawlpilot6365@crawlpilot.com" className="text-primary hover:underline font-medium block mt-2">
+                            crawlpilot6365@gmail.com
                         </a>
                     </section>
 
