@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
 import { Pricing } from "@/components/Pricing";
 import { Footer } from "@/components/Footer";
+import { CommunityTools } from "@/components/CommunityTools"; // [NEW]
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Features />
+        <CommunityTools />
         <Pricing />
       </main>
       <Footer />
