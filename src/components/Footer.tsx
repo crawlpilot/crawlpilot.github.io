@@ -31,7 +31,7 @@ export function Footer() {
                             The enterprise-grade data extraction infrastructure for developers.
                         </p>
                         <div className="flex gap-4">
-                            <Link href="https://github.com/rahulbisht/crawlpilot" className="hover:text-foreground transition-colors">
+                            <Link href="https://github.com/crawlpilot" className="hover:text-foreground transition-colors">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
                             </Link>
@@ -51,18 +51,14 @@ export function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li><Link href="#features" className="hover:text-primary transition-colors">Features</Link></li>
                             <li><Link href="#pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Integrations</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Changelog</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 className="font-semibold text-foreground mb-4">Resources</h3>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">API Reference</Link></li>
+                            <li><Link href="/crawlpilot/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
                             <li><Link href="#" className="hover:text-primary transition-colors">Community</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Blog</Link></li>
                         </ul>
                     </div>
 
@@ -70,9 +66,8 @@ export function Footer() {
                         <h3 className="font-semibold text-foreground mb-4">Company</h3>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="#" className="hover:text-primary transition-colors">About</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Legal</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Contact</Link></li>
+                            <li><Link href="/crawlpilot/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -80,8 +75,8 @@ export function Footer() {
                 <div className="border-t border-border/40 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
                     <p>&copy; {new Date().getFullYear()} CrawlPilot Inc. All rights reserved.</p>
                     <div className="flex gap-8">
-                        <Link href="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
+                        <Link href="/crawlpilot/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+                        <Link href="/crawlpilot/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>

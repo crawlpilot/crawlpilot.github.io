@@ -37,7 +37,7 @@ export default async function DocsPage() {
                         <div className="h-6 w-px bg-border hidden sm:block" />
                         <h1 className="font-semibold text-lg hidden sm:block">Documentation</h1>
                     </div>
-                    <Link href="https://github.com/rahulbisht/crawlPilot" target="_blank">
+                    <Link href="https://github.com/crawlPilot" target="_blank">
                         <Button variant="outline" size="sm" className="gap-2">
                             <Github className="w-4 h-4" />
                             View Source

@@ -39,13 +39,13 @@ export function Navbar() {
                         <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Features
                         </Link>
-                        <Link href="/docs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                        <Link href="/crawlpilot/docs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Docs
                         </Link>
                     </div>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <Link href="https://github.com/rahulbisht/crawlpilot" target="_blank">
+                        <Link href="https://github.com/crawlpilot" target="_blank">
                             <Button variant="ghost" size="icon">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>

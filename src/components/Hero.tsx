@@ -37,7 +37,7 @@ export function Hero() {
                             <Button size="lg" className="gap-2">
                                 Start Extracting <ArrowRight className="h-4 w-4" />
                             </Button>
-                            <Link href="/docs">
+                            <Link href="/crawlpilot/docs">
                                 <Button size="lg" variant="outline" className="gap-2">
                                     View Documentation <Terminal className="h-4 w-4" />
                                 </Button>
