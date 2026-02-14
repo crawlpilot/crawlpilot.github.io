@@ -22,20 +22,21 @@ export function Hero() {
                     >
                         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1 text-sm text-muted-foreground mb-6">
                             <span className="flex h-2 w-2 rounded-full bg-primary"></span>
-                            v1.0 is now live
+                            Open Source & Free Forever
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                            Turn your browser into a <br />
+                            Automate Browsing with <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">
-                                Powerful Extraction Engine
+                                AI-Powered Extraction
                             </span>
                         </h1>
                         <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-                            Extract structured data, emails, and images directly from your browser. Private, local, and free. No cloud dependencies.
+                            Crawl Pilot empowers the community to turn the web into structured data.
+                            Extract open information with enhanced tools, locally and privately.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 mb-10">
                             <Button size="lg" className="gap-2">
-                                Start Extracting <ArrowRight className="h-4 w-4" />
+                                Start Automating <ArrowRight className="h-4 w-4" />
                             </Button>
                             <Link href="/crawlpilot/docs">
                                 <Button size="lg" variant="outline" className="gap-2">
@@ -46,7 +47,7 @@ export function Hero() {
                         <div className="flex items-center gap-6 text-sm text-muted-foreground">
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="h-4 w-4 text-primary" />
-                                <span>Local Storage</span>
+                                <span>Community Driven</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="h-4 w-4 text-primary" />
@@ -54,7 +55,7 @@ export function Hero() {
                             </div>
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="h-4 w-4 text-primary" />
-                                <span>No Cloud Required</span>
+                                <span>Enhanced Tools</span>
                             </div>
                         </div>
                     </motion.div>

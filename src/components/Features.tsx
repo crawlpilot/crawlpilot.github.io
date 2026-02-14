@@ -6,26 +6,26 @@ import { cn } from "@/lib/utils";
 
 const features = [
     {
-        title: "Bulk Page Extraction",
-        description: "Define a schema visually and extract structured data from thousands of pages automatically.",
+        title: "Structure the Web",
+        description: "Turn messy pages into structured data. Define schemas instantly and let our AI handle the rest.",
         icon: Database,
         className: "md:col-span-2",
     },
     {
-        title: "Right-Click Unlocker",
-        description: "Re-enable context menus, copy, and paste on sites that block them.",
+        title: "Break Barriers",
+        description: "Access information freely. Our tools help you bypass restrictions like disabled right-click and copy protections.",
         icon: Zap,
         className: "md:col-span-1",
     },
     {
-        title: "Smart Data Detection",
-        description: "Automatically identify and extract emails, tables, and lists from any page.",
+        title: "Community Powered",
+        description: "Built for researchers, journalists, and developers who believe in open access to public information.",
         icon: Globe,
         className: "md:col-span-1",
     },
     {
-        title: "Privacy First",
-        description: "All data is stored locally in your browser using IndexedDB. No extracted data is sent to external servers.",
+        title: "Your Data, Your Rules",
+        description: "We believe in privacy by design. All execution happens locally in your browser. No hidden servers, no tracking.",
         icon: Lock,
         className: "md:col-span-2",
     },
@@ -37,10 +37,10 @@ export function Features() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                        Everything you <span className="text-primary">Need</span>
+                        Enhanced Tools for <span className="text-primary">Open Information</span>
                     </h2>
                     <p className="text-muted-foreground text-lg">
-                        Powerful browser utilities to help you gather data efficiently and effectively.
+                        We build powerful, privacy-focused utilities to help the community access and structure the open web.
                     </p>
                 </div>
 
