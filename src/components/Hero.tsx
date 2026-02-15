@@ -7,96 +7,114 @@ import { Terminal, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-primary/20 rounded-full blur-3xl opacity-20" />
-                <div className="absolute bottom-0 right-0 w-[800px] h-[400px] bg-indigo-500/10 rounded-full blur-3xl opacity-10" />
+        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-background">
+            <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]" />
             </div>
 
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        className="flex flex-col items-start text-left"
                     >
-                        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1 text-sm text-muted-foreground mb-6">
-                            <span className="flex h-2 w-2 rounded-full bg-primary"></span>
-                            Open Source & Free Forever
+                        <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm text-primary mb-6 ring-1 ring-inset ring-primary/20">
+                            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                            <span className="font-medium">v1.0 is Live</span>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                            Automate Browsing with <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">
-                                AI-Powered Extraction
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-foreground">
+                            Turn the Web into <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-blue-500 animate-gradient bg-300%">
+                                Structured Data
                             </span>
                         </h1>
-                        <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-                            Crawl Pilot empowers the community to turn the web into structured data.
-                            Extract open information with enhanced tools, locally and privately.
+                        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
+                            Crawl Pilot is the open-source browser extension that empowers you to scrape, extract, and automate web data entirely within your browser. Local, private, and powerful.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                            <Button size="lg" className="gap-2">
-                                Start Automating <ArrowRight className="h-4 w-4" />
+                        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                            <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/20 transition-all hover:scale-105">
+                                Add to Chrome <ArrowRight className="h-4 w-4" />
                             </Button>
-                            <Link href="/crawlpilot/docs">
-                                <Button size="lg" variant="outline" className="gap-2">
-                                    View Documentation <Terminal className="h-4 w-4" />
+                            <Link href="https://github.com/crawlpilot/crawlPilot" target="_blank">
+                                <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base backdrop-blur-sm hover:bg-white/5 transition-all hover:scale-105">
+                                    View on GitHub <Terminal className="h-4 w-4" />
                                 </Button>
                             </Link>
                         </div>
-                        <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-primary" />
-                                <span>Community Driven</span>
+
+                        <div className="mt-10 grid grid-cols-3 gap-6 w-full max-w-md border-t border-border pt-6">
+                            <div>
+                                <div className="text-2xl font-bold text-foreground">100%</div>
+                                <div className="text-sm text-muted-foreground">Open Source</div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-primary" />
-                                <span>Privacy First</span>
+                            <div>
+                                <div className="text-2xl font-bold text-foreground">Local</div>
+                                <div className="text-sm text-muted-foreground">Privacy First</div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-primary" />
-                                <span>Enhanced Tools</span>
+                            <div>
+                                <div className="text-2xl font-bold text-foreground">Free</div>
+                                <div className="text-sm text-muted-foreground">Forever</div>
                             </div>
                         </div>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="relative"
+                        initial={{ opacity: 0, scale: 0.8, rotateX: 10, rotateY: -10 }}
+                        animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                        className="relative hidden lg:block perspective-1000"
                     >
-                        <div className="relative rounded-xl border border-border bg-zinc-950 shadow-2xl overflow-hidden">
-                            <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-zinc-900/50">
+                        {/* Main Screenshot Container */}
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                            className="relative z-10 rounded-xl border border-white/10 bg-zinc-950/80 shadow-2xl backdrop-blur-sm overflow-hidden ring-1 ring-white/20 transform-gpu rotate-y-[-5deg] rotate-x-[5deg]"
+                            style={{ transformStyle: 'preserve-3d' }}
+                        >
+                            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/90">
                                 <div className="flex gap-1.5">
-                                    <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
-                                    <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
+                                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                                    <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
                                 </div>
-                                <div className="text-xs text-muted-foreground font-mono ml-2">manifest.json</div>
+                                <div className="mx-auto w-2/3 h-5 rounded-md bg-zinc-800/50 flex items-center justify-center text-[10px] text-zinc-500 font-mono">
+                                    crawlpilot://dashboard
+                                </div>
                             </div>
-                            <div className="p-4 overflow-x-auto">
-                                <pre className="text-sm font-mono leading-relaxed">
-                                    <code className="language-json">
-                                        <span className="text-purple-400">{"{"}</span>{'\n'}
-                                        {'  '}<span className="text-blue-400">"name"</span>: <span className="text-green-400">"Crawl Pilot"</span>,{'\n'}
-                                        {'  '}<span className="text-blue-400">"version"</span>: <span className="text-green-400">"1.0.0"</span>,{'\n'}
-                                        {'  '}<span className="text-blue-400">"permissions"</span>: <span className="text-purple-400">[</span>{'\n'}
-                                        {'    '}<span className="text-green-400">"activeTab"</span>,{'\n'}
-                                        {'    '}<span className="text-green-400">"storage"</span>,{'\n'}
-                                        {'    '}<span className="text-green-400">"downloads"</span>{'\n'}
-                                        {'  '}<span className="text-purple-400">]</span>,{'\n'}
-                                        {'  '}<span className="text-blue-400">"action"</span>: <span className="text-purple-400">{"{"}</span>{'\n'}
-                                        {'    '}<span className="text-blue-400">"default_title"</span>: <span className="text-green-400">"Crawl Pilot"</span>{'\n'}
-                                        {'  '}<span className="text-purple-400">{"}"}</span>{'\n'}
-                                        <span className="text-purple-400">{"}"}</span>
-                                    </code>
-                                </pre>
+                            <div className="relative aspect-video w-full bg-zinc-950">
+                                <img
+                                    src="/screenshots/screenshot1.png"
+                                    alt="Crawl Pilot Dashboard"
+                                    className="w-full h-full object-cover object-left-top"
+                                />
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/20 to-transparent pointer-events-none" />
                             </div>
-                        </div>
+                        </motion.div>
 
-                        {/* Ambient glow behind code block */}
-                        <div className="absolute -inset-4 -z-10 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-xl blur-xl" />
+                        {/* Decorative Background Elements */}
+                        <div className="absolute -inset-4 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur-2xl opacity-20 -z-10 animate-pulse" />
+                        <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/30 rounded-full blur-3xl -z-20" />
+                        <div className="absolute -top-10 -left-10 w-64 h-64 bg-purple-500/30 rounded-full blur-3xl -z-20" />
+
+                        {/* Floating Badge */}
+                        <motion.div
+                            animate={{ y: [0, 15, 0] }}
+                            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+                            className="absolute -right-8 top-1/2 -translate-y-1/2 z-20 bg-zinc-900/90 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
+                                    <CheckCircle2 className="h-6 w-6" />
+                                </div>
+                                <div>
+                                    <div className="text-sm font-semibold text-white">Extraction Complete</div>
+                                    <div className="text-xs text-zinc-400">1,240 records found</div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

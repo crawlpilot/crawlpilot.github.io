@@ -79,14 +79,7 @@ export function Navbar() {
                                 Features
                             </Link>
                             <Link
-                                href="#pricing"
-                                className="block text-sm font-medium text-muted-foreground hover:text-foreground"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Pricing
-                            </Link>
-                            <Link
-                                href="/docs"
+                                href="/crawlpilot/docs"
                                 className="block text-sm font-medium text-muted-foreground hover:text-foreground"
                                 onClick={() => setIsOpen(false)}
                             >
