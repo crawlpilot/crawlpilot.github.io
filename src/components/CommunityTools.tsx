@@ -47,9 +47,16 @@ export function CommunityTools() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <Button className="w-full gap-2 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <Button className="w-full gap-2 group-hover:bg-primary group-hover:text-white transition-colors mb-4">
                                     View in Chrome Store <ExternalLink className="w-4 h-4" />
                                 </Button>
+                            </Link>
+
+                            <Link
+                                href="/stealthgeo/privacy-policy"
+                                className="text-xs text-zinc-500 hover:text-primary transition-colors block text-center underline underline-offset-4"
+                            >
+                                Privacy Policy
                             </Link>
                         </div>
                     </div>

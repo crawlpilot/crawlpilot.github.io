@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.5,
         },
         {
+            url: `${baseUrl}/stealthgeo/privacy-policy`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
             url: `${baseUrl}/streamflix/privacy-policy`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
