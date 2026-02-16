@@ -28,7 +28,7 @@ export function Footer() {
                             <span>CrawlPilot</span>
                         </Link>
                         <p className="text-sm mb-6">
-                            The enterprise-grade data extraction infrastructure for developers.
+                            The privacy-first, open-source AI infrastructure for web data extraction.
                         </p>
                         <div className="flex gap-4">
                             <Link href="https://github.com/crawlpilot/crawlPilot" className="hover:text-foreground transition-colors">

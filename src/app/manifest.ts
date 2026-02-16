@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     return {
         name: 'CrawlPilot',
         short_name: 'CrawlPilot',
-        description: 'Enterprise Data Extraction tools',
+        description: 'AI-Powered Web Scraping & Data Extraction Infrastructure',
         start_url: '/',
         display: 'standalone',
         background_color: '#09090b',

@@ -15,18 +15,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://crawlpilot.github.io"),
   title: {
-    default: "CrawlPilot | Enterprise Data Extraction Infrastructure",
+    default: "CrawlPilot | AI-Powered Web Scraping & Data Extraction Infrastructure",
     template: "%s | CrawlPilot"
   },
-  description: "Reliable, high-performance web scraping infrastructure for developers and data teams. Master web automation with CrawlPilot.",
+  description: "The privacy-first, open-source infrastructure for AI-powered web scraping and data extraction. Turn any website into structured data instantly with CrawlPilot.",
   keywords: [
     "web scraping",
     "data extraction",
     "browser extension",
     "crawlpilot",
-    "stealthgeo",
-    "streamflix",
-    "iptv player",
+    "ai web scraping",
+    "local-first",
     "automation",
     "web crawling"
   ],
@@ -42,8 +41,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "CrawlPilot | Enterprise Data Extraction Infrastructure",
-    description: "Reliable, high-performance web scraping infrastructure for developers and data teams.",
+    title: "CrawlPilot | AI-Powered Web Scraping & Data Extraction Infrastructure",
+    description: "Turn the web into structured data with the privacy-first, open-source AI scraper.",
     url: "https://crawlpilot.github.io",
     siteName: "CrawlPilot",
     locale: "en_US",
@@ -51,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CrawlPilot | Enterprise Data Extraction Infrastructure",
-    description: "Reliable, high-performance web scraping infrastructure for developers and data teams.",
+    title: "CrawlPilot | AI-Powered Web Scraping & Data Extraction",
+    description: "The privacy-first infrastructure for AI-powered web extraction.",
     creator: "@crawlpilot",
   },
   verification: {
@@ -67,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
