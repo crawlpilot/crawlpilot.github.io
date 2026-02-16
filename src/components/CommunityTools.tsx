@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Globe, ShieldCheck } from "lucide-react";
+import { ExternalLink, Globe, ShieldCheck, Tv } from "lucide-react";
 import Link from "next/link";
 
 export function CommunityTools() {
@@ -50,6 +50,49 @@ export function CommunityTools() {
                                 <Button className="w-full gap-2 group-hover:bg-primary group-hover:text-white transition-colors">
                                     View in Chrome Store <ExternalLink className="w-4 h-4" />
                                 </Button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* StreamFlix IPTV Card */}
+                    <div className="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 p-8 transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+                        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+
+                        <div className="relative z-10">
+                            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                <Tv className="h-6 w-6" />
+                            </div>
+
+                            <h3 className="mb-3 text-2xl font-bold text-foreground">StreamFlix IPTV</h3>
+
+                            <p className="mb-6 text-muted-foreground leading-relaxed">
+                                Professional IPTV Player for your browser. Stream your favorite content with a premium, sleek interface. Local-first and privacy focused.
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 mb-8">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-zinc-900 px-2.5 py-0.5 text-xs font-medium text-zinc-400 border border-zinc-800">
+                                    <ShieldCheck className="w-3 h-3" /> Privacy Focused
+                                </span>
+                                <span className="inline-flex items-center gap-1 rounded-full bg-zinc-900 px-2.5 py-0.5 text-xs font-medium text-zinc-400 border border-zinc-800">
+                                    <Tv className="w-3 h-3" /> IPTV Player
+                                </span>
+                            </div>
+
+                            <Link
+                                href="https://chromewebstore.google.com/detail/streamflix-iptv/pnclbjdfopkdcffapdcfeflffgmdmcno?authuser=1&hl=en-GB"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Button className="w-full gap-2 group-hover:bg-primary group-hover:text-white transition-colors mb-4">
+                                    View in Chrome Store <ExternalLink className="w-4 h-4" />
+                                </Button>
+                            </Link>
+
+                            <Link
+                                href="/streamflix/privacy-policy"
+                                className="text-xs text-zinc-500 hover:text-primary transition-colors block text-center underline underline-offset-4"
+                            >
+                                Privacy Policy
                             </Link>
                         </div>
                     </div>
