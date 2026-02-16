@@ -7,26 +7,26 @@ import { Button } from "@/components/ui/button";
 
 const features = [
     {
-        title: "Structure the Web",
-        description: "Turn messy pages into structured data. Define schemas instantly and let our AI handle the rest.",
+        title: "AI-Powered Selectors",
+        description: "Intelligent selection engine that understands page structure. Define extraction rules once, scrape everywhere.",
         icon: Database,
         className: "md:col-span-2",
     },
     {
-        title: "Break Barriers",
-        description: "Access information freely. Our tools help you bypass restrictions like disabled right-click and copy protections.",
+        title: "Bypass Restrictions",
+        description: "Advanced tools to handle copy protection and right-click disabling on any website.",
         icon: Zap,
         className: "md:col-span-1",
     },
     {
-        title: "Community Powered",
-        description: "Built for researchers, journalists, and developers who believe in open access to public information.",
+        title: "Community Ecosystem",
+        description: "Access a suite of community-built extensions like StealthGeo and StreamFlix IPTV.",
         icon: Globe,
         className: "md:col-span-1",
     },
     {
-        title: "Your Data, Your Rules",
-        description: "We believe in privacy by design. All execution happens locally in your browser. No hidden servers, no tracking.",
+        title: "Local-First Architecture",
+        description: "All processing happens on your device. Your data never touches our servers—private by design.",
         icon: Lock,
         className: "md:col-span-2",
     },
@@ -95,7 +95,7 @@ export function Features() {
                                     {feature.description}
                                 </p>
                                 <ul className="space-y-3 mb-8">
-                                    {['No coding required', 'Exports to JSON/CSV', 'Runs locally in browser'].map((item, i) => (
+                                    {['AI-Powered Element Discovery', 'Local-First storage (IndexedDB)', 'Zero server-side dependencies'].map((item, i) => (
                                         <li key={i} className="flex items-center gap-2 text-sm text-zinc-400">
                                             <div className="h-1.5 w-1.5 rounded-full bg-primary" />
                                             {item}

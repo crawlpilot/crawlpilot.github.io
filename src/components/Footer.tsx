@@ -31,13 +31,9 @@ export function Footer() {
                             The enterprise-grade data extraction infrastructure for developers.
                         </p>
                         <div className="flex gap-4">
-                            <Link href="https://github.com/crawlpilot" className="hover:text-foreground transition-colors">
+                            <Link href="https://github.com/crawlpilot/crawlPilot" className="hover:text-foreground transition-colors">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
-                            </Link>
-                            <Link href="#" className="hover:text-foreground transition-colors">
-                                <Twitter className="h-5 w-5" />
-                                <span className="sr-only">Twitter</span>
                             </Link>
                             <Link href="https://www.linkedin.com/in/crawl-pilot-a862833b1/" className="hover:text-foreground transition-colors">
                                 <Linkedin className="h-5 w-5" />
@@ -50,7 +46,6 @@ export function Footer() {
                         <h3 className="font-semibold text-foreground mb-4">Product</h3>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="#features" className="hover:text-primary transition-colors">Features</Link></li>
-                            <li><Link href="#pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
                         </ul>
                     </div>
 
@@ -58,14 +53,13 @@ export function Footer() {
                         <h3 className="font-semibold text-foreground mb-4">Resources</h3>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/crawlpilot/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Community</Link></li>
+                            <li><Link href="https://github.com/crawlpilot/crawlPilot/discussions" className="hover:text-primary transition-colors">Community</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 className="font-semibold text-foreground mb-4">Company</h3>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="#" className="hover:text-primary transition-colors">About</Link></li>
                             <li><Link href="/crawlpilot/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
                             <li><Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
                         </ul>

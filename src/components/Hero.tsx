@@ -25,20 +25,22 @@ export function Hero() {
                             <span className="font-medium">v1.0 is Live</span>
                         </div>
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-foreground">
-                            Turn the Web into <br />
+                            AI-Powered Web Extraction, <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-blue-500 animate-gradient bg-300%">
-                                Structured Data
+                                Right in Your Browser
                             </span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                            Crawl Pilot is the open-source browser extension that empowers you to scrape, extract, and automate web data entirely within your browser. Local, private, and powerful.
+                            CrawlPilot is the privacy-first browser extension that turns any website into clean, structured data using local AI. No servers, no data leaks, just complete control.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/20 transition-all hover:scale-105">
-                                Add to Chrome <ArrowRight className="h-4 w-4" />
-                            </Button>
+                            <Link href="https://github.com/crawlpilot/crawlPilot/releases" target="_blank">
+                                <Button size="lg" className="w-full gap-2 h-12 px-8 text-base shadow-lg shadow-primary/20 transition-all hover:scale-105">
+                                    Download Extension <ArrowRight className="h-4 w-4" />
+                                </Button>
+                            </Link>
                             <Link href="https://github.com/crawlpilot/crawlPilot" target="_blank">
-                                <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base backdrop-blur-sm hover:bg-white/5 transition-all hover:scale-105">
+                                <Button size="lg" variant="outline" className="w-full gap-2 h-12 px-8 text-base backdrop-blur-sm hover:bg-white/5 transition-all hover:scale-105">
                                     View on GitHub <Terminal className="h-4 w-4" />
                                 </Button>
                             </Link>

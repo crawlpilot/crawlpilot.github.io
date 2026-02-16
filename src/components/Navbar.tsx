@@ -45,13 +45,15 @@ export function Navbar() {
                     </div>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <Link href="https://github.com/crawlpilot" target="_blank">
+                        <Link href="https://github.com/crawlpilot/crawlPilot" target="_blank">
                             <Button variant="ghost" size="icon">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
                             </Button>
                         </Link>
-                        <Button>Get Started</Button>
+                        <Link href="#features">
+                            <Button>Get Started</Button>
+                        </Link>
                     </div>
 
                     <div className="md:hidden">
