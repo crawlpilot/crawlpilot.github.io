@@ -13,8 +13,52 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CrawlPilot | Enterprise Data Extraction Infrastructure",
-  description: "Reliable, high-performance web scraping infrastructure for developers and data teams.",
+  metadataBase: new URL("https://crawlpilot.github.io"),
+  title: {
+    default: "CrawlPilot | Enterprise Data Extraction Infrastructure",
+    template: "%s | CrawlPilot"
+  },
+  description: "Reliable, high-performance web scraping infrastructure for developers and data teams. Master web automation with CrawlPilot.",
+  keywords: [
+    "web scraping",
+    "data extraction",
+    "browser extension",
+    "crawlpilot",
+    "stealthgeo",
+    "streamflix",
+    "iptv player",
+    "automation",
+    "web crawling"
+  ],
+  authors: [{ name: "CrawlPilot Team" }],
+  creator: "CrawlPilot",
+  publisher: "CrawlPilot",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "CrawlPilot | Enterprise Data Extraction Infrastructure",
+    description: "Reliable, high-performance web scraping infrastructure for developers and data teams.",
+    url: "https://crawlpilot.github.io",
+    siteName: "CrawlPilot",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CrawlPilot | Enterprise Data Extraction Infrastructure",
+    description: "Reliable, high-performance web scraping infrastructure for developers and data teams.",
+    creator: "@crawlpilot",
+  },
+  verification: {
+    google: "google9bed9ddf4af54f37", // From existing verification file in public
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
