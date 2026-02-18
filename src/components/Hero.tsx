@@ -34,7 +34,7 @@ export function Hero() {
                             CrawlPilot is the privacy-first browser extension that turns any website into clean, structured data using local AI. No servers, no data leaks, just complete control.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <Link href="https://github.com/crawlpilot/crawlPilot/releases" target="_blank">
+                            <Link href="https://chromewebstore.google.com/detail/Crawl%20Pilot/olkkbkkeikjphjoibfafnaiphdclffkd?hl=en-GB&authuser=1" target="_blank">
                                 <Button size="lg" className="w-full gap-2 h-12 px-8 text-base shadow-lg shadow-primary/20 transition-all hover:scale-105">
                                     Download Extension <ArrowRight className="h-4 w-4" />
                                 </Button>
