@@ -5,7 +5,7 @@ import Link from "next/link";
 
 async function getDocContent() {
     try {
-        const res = await fetch('https://raw.githubusercontent.com/rahulbisht/crawlPilot/main/README.md', {
+        const res = await fetch('https://raw.githubusercontent.com/crawlpilot/crawlPilot/main/README.md', {
             next: { revalidate: 3600 } // Cache for 1 hour
         });
 

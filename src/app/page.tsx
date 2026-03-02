@@ -3,7 +3,8 @@ import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
 import { Pricing } from "@/components/Pricing";
 import { Footer } from "@/components/Footer";
-import { CommunityTools } from "@/components/CommunityTools"; // [NEW]
+import { CommunityTools } from "@/components/CommunityTools";
+import { BlogPreview } from "@/components/BlogPreview";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <Features />
         <CommunityTools />
+        <BlogPreview />
         {/* <Pricing /> */}
       </main>
       <Footer />

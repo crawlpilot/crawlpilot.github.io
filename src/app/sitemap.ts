@@ -1,9 +1,19 @@
 import { MetadataRoute } from 'next'
+import { getPostSlugs } from '@/lib/blog-utils'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://crawlpilot.github.io'
+
+    // Get all blog slugs
+    const blogSlugs = getPostSlugs();
+    const blogPosts = blogSlugs.map((slug) => ({
+        url: `${baseUrl}/blog/${slug.replace(/\.md$/, '')}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }));
 
     return [
         {
@@ -11,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 1,
+        },
+        {
+            url: `${baseUrl}/blog`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.9,
         },
         {
             url: `${baseUrl}/crawlpilot/docs`,
@@ -24,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.5,
         },
+        // ... (rest of the static routes)
         {
             url: `${baseUrl}/stealthgeo/privacy-policy`,
             lastModified: new Date(),
@@ -48,5 +65,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.5,
         },
+        ...blogPosts,
     ]
 }

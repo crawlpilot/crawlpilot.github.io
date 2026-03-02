@@ -39,6 +39,9 @@ export function Navbar() {
                         <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Features
                         </Link>
+                        <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            Blog
+                        </Link>
                         <Link href="/crawlpilot/docs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Docs
                         </Link>
@@ -79,6 +82,13 @@ export function Navbar() {
                                 onClick={() => setIsOpen(false)}
                             >
                                 Features
+                            </Link>
+                            <Link
+                                href="/blog"
+                                className="block text-sm font-medium text-muted-foreground hover:text-foreground"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Blog
                             </Link>
                             <Link
                                 href="/crawlpilot/docs"
