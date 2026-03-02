@@ -4,7 +4,6 @@ date: "2024-03-03"
 description: "A step-by-step guide on using the Crawl Pilot Extension to extract data from Amazon's Bestsellers list without writing a single line of code."
 ---
 
-# How to Scrape Amazon Bestsellers with Crawl Pilot Extension
 
 Amazon's Bestsellers page is a goldmine for market researchers, e-commerce sellers, and data analysts. It provides real-time insights into what's trending across thousands of categories. However, Amazon is notorious for its anti-scraping measures and complex, ever-changing HTML structure.
 

@@ -4,19 +4,46 @@ import { ArrowLeft, Github } from "lucide-react";
 import Link from "next/link";
 
 async function getDocContent() {
+    const fallbackContent = `
+# CrawlPilot Documentation
+
+CrawlPilot is a privacy-first, AI-powered web scraping infrastructure. 
+
+## Features
+- **AI Extraction**: Turn any website into structured data.
+- **Local-First**: Your data stays in your browser.
+- **Easy to Use**: No coding required for the extension.
+
+## Getting Started
+To get started with CrawlPilot, follow these steps:
+1. Install the [Crawl Pilot Extension](https://github.com/crawlpilot/crawlPilot).
+2. Navigate to any website.
+3. Open the extension and start selecting data.
+
+## Documentation Unavailable
+We are having trouble fetching the latest documentation from GitHub. You can view the full documentation directly on our [GitHub Repository](https://github.com/crawlpilot/crawlPilot).
+`;
+
     try {
         const res = await fetch('https://raw.githubusercontent.com/crawlpilot/crawlPilot/main/README.md', {
-            next: { revalidate: 3600 } // Cache for 1 hour
+            next: { revalidate: 3600 }
         });
 
         if (!res.ok) {
-            throw new Error('Failed to fetch documentation');
+            // Try another common branch if main fails
+            const resMaster = await fetch('https://raw.githubusercontent.com/crawlpilot/crawlPilot/master/README.md', {
+                next: { revalidate: 3600 }
+            });
+            if (resMaster.ok) return resMaster.text();
+
+            console.warn("Docs fetch failed with status:", res.status);
+            return fallbackContent;
         }
 
         return res.text();
     } catch (error) {
         console.error("Error fetching docs:", error);
-        return "# Documentation Unavailable\n\nCould not load documentation from GitHub. Please try again later.";
+        return fallbackContent;
     }
 }
 
