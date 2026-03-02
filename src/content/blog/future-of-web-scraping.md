@@ -4,7 +4,6 @@ date: "2024-03-01"
 description: "Why the era of manually writing CSS selectors for web scraping is coming to an end, and how AI-native extraction is taking over."
 ---
 
-# The Future of Web Scraping: Moving Beyond Brittle Selectors
 
 For two decades, web scraping has been a game of cat and mouse. Developers would spend hours identifying the perfect CSS selector or XPath, only for the website to update its layout a week later, breaking the entire pipeline.
 

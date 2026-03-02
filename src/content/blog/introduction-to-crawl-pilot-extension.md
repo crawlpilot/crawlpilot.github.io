@@ -4,7 +4,6 @@ date: "2024-03-02"
 description: "Discover the easiest way to extract data from the web with the Crawl Pilot Extension. Seamlessly turn any website into structured data directly from your browser."
 ---
 
-# Introduction to Crawl Pilot Extension
 
 The web is a vast ocean of information, but extracting that information in a format you can actually use has always been a challenge. Whether you're a developer building a price comparison tool, a researcher gathering sentiment data, or a business analyst tracking competitors, you need a way to turn visual web pages into structured data.
 
