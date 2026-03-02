@@ -18,14 +18,14 @@ New AI-native scrapers are trained to look at a webpage the same way a human doe
 ### Why AI Changes Everything
 
 1.  **Resilience**: When a site changes its layout, the "meaning" usually stays the same. The price is still a price. AI can find it regardless of whether it's in a `<span>` or a `<div>`.
-2.  **Scale**: You no longer need to write a custom scraper for every single site. One AI model can handle thousands of different layouts.
-3.  **Low Code**: The barrier to entry is dropping. If you can describe the data you want in plain English, you can scrape it.
+2.  **Automated Attribute Unification**: Modern AI scrapers, like the CrawlPilot Extension, no longer require you to map "Price" to a specific selector. They understand the entity of an "Item Card" and automatically align attributes like title, price, and rank into structured columns.
+3.  **No-Code Scale**: One AI model can handle thousands of different layouts. If you can describe the data you want in plain English, you can scrape it without any technical overhead.
 
 ## The Role of CrawlPilot
 
 At CrawlPilot, we are building at the forefront of this AI-native transition. Our infrastructure is designed to handle the heavy lifting of semantic understanding while keeping your extraction logic local and private.
 
-By leveraging advanced LLMs for schema mapping and extraction, we're making it possible to treat the entire web like a single, structured database.
+By leveraging advanced LLMs for automated field discovery and attribute consolidation, we're making it possible to treat the entire web like a single, structured database.
 
 ## Conclusion
 

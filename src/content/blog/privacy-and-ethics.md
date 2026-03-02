@@ -14,7 +14,7 @@ Data extraction is a double-edged sword. It can empower research and innovation,
 At CrawlPilot, we believe that privacy should be a default feature, not an afterthought.
 
 ### 1. Local-First Processing
-By keeping data extraction logic and sensitive configurations on your local machine, we minimize the risk of data leaks and ensure that you maintain control over your data at all times.
+CrawlPilot is built on a "local-first" core. By keeping data extraction logic, scraping configurations, and individual extraction results on your local machine—using secure local storage like **IndexedDB**—we minimize the risk of data leaks. Because there are no server-side dependencies for your data scraping, you maintain 100% control over your data at all times.
 
 ### 2. Respecting Robots.txt
 Our tools are designed to honor the `robots.txt` protocol by default. Respecting the wishes of website owners is the first step toward ethical data gathering.
