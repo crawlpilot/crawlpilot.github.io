@@ -47,15 +47,21 @@ export function Navbar() {
                         </Link>
                     </div>
 
-                    <div className="hidden md:flex items-center gap-4">
+                    <div className="hidden md:flex items-center gap-3">
+                        <Link href="/login">
+                            <Button variant="ghost" className="hover:bg-white/5">Login</Button>
+                        </Link>
+                        <Link href="/signup">
+                            <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95">
+                                Sign Up
+                            </Button>
+                        </Link>
+                        <div className="h-4 w-[1px] bg-border/40 mx-2" />
                         <Link href="https://github.com/crawlpilot/crawlPilot" target="_blank">
                             <Button variant="ghost" size="icon">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
                             </Button>
-                        </Link>
-                        <Link href="#features">
-                            <Button>Get Started</Button>
                         </Link>
                     </div>
 
@@ -97,8 +103,13 @@ export function Navbar() {
                             >
                                 Docs
                             </Link>
-                            <div className="pt-4 flex items-center gap-4">
-                                <Button className="w-full">Get Started</Button>
+                            <div className="pt-4 flex flex-col gap-3">
+                                <Link href="/login" onClick={() => setIsOpen(false)}>
+                                    <Button variant="outline" className="w-full">Login</Button>
+                                </Link>
+                                <Link href="/signup" onClick={() => setIsOpen(false)}>
+                                    <Button className="w-full shadow-lg shadow-primary/20">Sign Up</Button>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>

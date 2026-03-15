@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import {
     createUserWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
     getIdToken
 } from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
@@ -22,19 +23,38 @@ export default function SignupPage() {
 
     const syncWithExtension = async (user: any) => {
         try {
+            // 1. Create/Update user profile in Firestore for analytics
+            const userRef = doc(db, "users", user.uid);
+            await setDoc(userRef, {
+                uid: user.uid,
+                email: user.email,
+                plan: "free", // Default plan
+                createdAt: serverTimestamp(),
+                lastLogin: serverTimestamp(),
+            }, { merge: true });
+
+            // 2. Sync with extension
             const token = await getIdToken(user);
             const extensionId = "obkajpmefemkleeggkfhnmpileijgecc";
             if (typeof window !== 'undefined' && (window as any).chrome && (window as any).chrome.runtime) {
                 (window as any).chrome.runtime.sendMessage(
                     extensionId,
-                    { type: "AUTH_SUCCESS", token },
+                    {
+                        type: "AUTH_SUCCESS",
+                        token,
+                        profile: {
+                            plan: "free",
+                            lastLogin: new Date().toISOString(),
+                            email: user.email
+                        }
+                    },
                     (response: any) => {
                         console.log("Extension response:", response);
                     }
                 );
             }
         } catch (extError) {
-            console.error("Failed to sync with extension:", extError);
+            console.error("Failed to sync/log user data:", extError);
         }
     };
 

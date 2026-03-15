@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import {
     signInWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
     getIdToken
 } from "firebase/auth";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
@@ -22,19 +23,38 @@ export default function LoginPage() {
 
     const syncWithExtension = async (user: any) => {
         try {
+            // 1. Update last login time in Firestore
+            const userRef = doc(db, "users", user.uid);
+            await setDoc(userRef, {
+                lastLogin: serverTimestamp(),
+            }, { merge: true });
+
+            // 2. Fetch latest user data for extension sync
+            const userSnap = await getDoc(userRef);
+            const userData = userSnap.data();
+
+            // 3. Sync with extension
             const token = await getIdToken(user);
             const extensionId = "obkajpmefemkleeggkfhnmpileijgecc";
             if (typeof window !== 'undefined' && (window as any).chrome && (window as any).chrome.runtime) {
                 (window as any).chrome.runtime.sendMessage(
                     extensionId,
-                    { type: "AUTH_SUCCESS", token },
+                    {
+                        type: "AUTH_SUCCESS",
+                        token,
+                        profile: {
+                            plan: userData?.plan || "free",
+                            lastLogin: userData?.lastLogin?.toDate?.()?.toISOString() || new Date().toISOString(),
+                            email: user.email
+                        }
+                    },
                     (response: any) => {
                         console.log("Extension response:", response);
                     }
                 );
             }
         } catch (extError) {
-            console.error("Failed to sync with extension:", extError);
+            console.error("Failed to sync/log user data:", extError);
         }
     };
 

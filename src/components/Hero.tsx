@@ -46,6 +46,21 @@ export function Hero() {
                             </Link>
                         </div>
 
+                        <div className="mt-6 flex flex-wrap gap-4 items-center">
+                            <span className="text-sm text-muted-foreground mr-2">Ready to start?</span>
+                            <Link href="/login">
+                                <Button variant="link" className="px-0 text-foreground hover:text-primary transition-colors">
+                                    Login
+                                </Button>
+                            </Link>
+                            <div className="h-4 w-[1px] bg-border/40" />
+                            <Link href="/signup">
+                                <Button variant="link" className="px-0 text-foreground hover:text-primary transition-colors">
+                                    Sign Up
+                                </Button>
+                            </Link>
+                        </div>
+
                         <div className="mt-10 grid grid-cols-3 gap-6 w-full max-w-md border-t border-border pt-6">
                             <div>
                                 <div className="text-2xl font-bold text-foreground">100%</div>
