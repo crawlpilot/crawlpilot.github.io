@@ -31,6 +31,7 @@ export async function createCheckout(options: CheckoutOptions) {
         variantId,
         hasApiKey: !!apiKey,
         apiKeyLength: apiKey?.length || 0,
+        apiKeyPrefix: apiKey ? apiKey.substring(0, 5) : 'NONE', // Should be "ls_at" or "sk_"
         envAppUrl: process.env.NEXT_PUBLIC_APP_URL
     });
 
