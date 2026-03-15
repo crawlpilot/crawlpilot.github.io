@@ -21,11 +21,30 @@ export interface CheckoutOptions {
 }
 
 export async function createCheckout(options: CheckoutOptions) {
-    console.log(`[LemonSqueezy] Creating checkout for Store: ${options.storeId}, Variant: ${options.variantId}`);
+    const apiKey = process.env.LEMON_SQUEEZY_API_KEY;
+    const storeId = String(options.storeId);
+    const variantId = String(options.variantId);
+
+    // Detailed logging for server-side debugging
+    console.log(`[LemonSqueezy] Checkout Attempt:`, {
+        storeId,
+        variantId,
+        hasApiKey: !!apiKey,
+        apiKeyLength: apiKey?.length || 0,
+        envAppUrl: process.env.NEXT_PUBLIC_APP_URL
+    });
+
+    if (!apiKey) {
+        throw new Error("Lemon Squeezy API Key (LEMON_SQUEEZY_API_KEY) is missing in environment variables.");
+    }
+
+    // Lemon Squeezy requires an absolute URL for redirects
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://crawlpilot.tech';
+    const redirectUrl = `${appUrl}/profile`;
 
     const { data, error } = await lsCreateCheckout(
-        String(options.storeId),
-        String(options.variantId),
+        storeId,
+        variantId,
         {
             checkoutData: {
                 email: options.userEmail,
@@ -35,8 +54,8 @@ export async function createCheckout(options: CheckoutOptions) {
                 },
             },
             productOptions: {
-                redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL || ''}/profile`,
-                enabledVariants: [Number(options.variantId)],
+                redirectUrl,
+                enabledVariants: [Number(variantId)],
             },
         }
     );
