@@ -167,11 +167,11 @@ export function Pricing() {
                                 size="lg"
                                 variant={plan.popular ? "default" : "outline"}
                                 onClick={() => handleUpgrade(plan)}
-                                disabled={loading === plan.name}
+                                disabled={loading === plan.id}
                                 className={`w-full h-14 rounded-2xl font-black uppercase tracking-widest text-xs gap-2 transition-all ${plan.popular ? "bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/20" : "glass-panel border-white/10"
                                     }`}
                             >
-                                {loading === plan.name ? (
+                                {loading === plan.id ? (
                                     <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                 ) : (
                                     <>

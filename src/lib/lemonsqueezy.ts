@@ -13,29 +13,36 @@ lemonSqueezySetup({
 });
 
 export interface CheckoutOptions {
-    storeId: string;
-    variantId: string;
+    storeId: string | number;
+    variantId: string | number;
     userEmail: string;
     userId: string;
     userName?: string;
 }
 
 export async function createCheckout(options: CheckoutOptions) {
-    const { data, error } = await lsCreateCheckout(options.storeId, options.variantId, {
-        checkoutData: {
-            email: options.userEmail,
-            name: options.userName,
-            custom: {
-                user_id: options.userId,
+    console.log(`[LemonSqueezy] Creating checkout for Store: ${options.storeId}, Variant: ${options.variantId}`);
+
+    const { data, error } = await lsCreateCheckout(
+        String(options.storeId),
+        String(options.variantId),
+        {
+            checkoutData: {
+                email: options.userEmail,
+                name: options.userName,
+                custom: {
+                    user_id: options.userId,
+                },
             },
-        },
-        productOptions: {
-            redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/profile`,
-            enabledVariants: [parseInt(options.variantId)],
-        },
-    });
+            productOptions: {
+                redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL || ''}/profile`,
+                enabledVariants: [Number(options.variantId)],
+            },
+        }
+    );
 
     if (error) {
+        console.error(`[LemonSqueezy] API Error Details:`, error);
         throw new Error(`Lemon Squeezy error: ${error.message}`);
     }
 
