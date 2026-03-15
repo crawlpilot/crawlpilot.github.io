@@ -32,7 +32,9 @@ export async function POST(req: NextRequest) {
             case "subscription_created":
             case "subscription_updated": {
                 const subscription = body.attributes;
+                const planName = getPlanName(subscription.variant_id);
                 await userRef.set({
+                    plan: planName, // Sync top-level plan for extension simplicity
                     subscription: {
                         id: body.id,
                         status: subscription.status,
@@ -42,7 +44,7 @@ export async function POST(req: NextRequest) {
                         renewsAt: subscription.renews_at,
                         updateUrl: subscription.urls.update_payment_method,
                         cancelUrl: subscription.urls.cancel_url,
-                        plan: getPlanName(subscription.variant_id),
+                        plan: planName,
                         updatedAt: new Date().toISOString(),
                     },
                 }, { merge: true });
