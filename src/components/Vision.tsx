@@ -35,7 +35,7 @@ export function Vision() {
                     </h2>
 
                     <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-relaxed max-w-3xl mx-auto mb-16">
-                        We are simplifying crawling, extraction, and automation through intelligent tools that turn the infinite web into accessible knowledge.
+                        We are building tools that make web data as accessible and structured as a local database, empowering everyone to automate their workflows.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">

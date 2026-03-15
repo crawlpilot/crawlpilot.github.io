@@ -9,12 +9,12 @@ import { Button } from "@/components/ui/button";
 export function Features() {
     const featureItems = [
         {
-            title: "Autonomous Intelligence",
-            description: "Harness the power of AI that thinks like a human. Simply point and click—our intelligent engine autonomously identifies patterns and mapping structures, enabling complex web crawls with zero code.",
+            title: "Smart Selector Engine",
+            description: "Powerful pattern recognition that maps data structures as you browse. Simply point and click—our engine identifies lists and fields automatically, enabling complex extractions with zero code.",
             image: "/screenshots/screenshot4.png",
             align: "right",
             icon: Zap,
-            stats: ["99.9% High-Fidelity", "Autonomous Discovery"]
+            stats: ["99.9% Extraction Rate", "Automatic Pattern Discovery"]
         },
         {
             title: "Trusted Data Pipelines",
@@ -50,10 +50,10 @@ export function Features() {
                     >
                         <h2 className="text-5xl md:text-7xl font-heading font-black tracking-tighter mb-8 uppercase leading-none">
                             High-Fidelity <br />
-                            <span className="text-primary">AI Intelligence</span>
+                            <span className="text-primary">Data Extraction</span>
                         </h2>
                         <p className="text-muted-foreground text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
-                            Transform the way you interact with web data. Crawl Pilot delivers regular, trusted intelligence by leveraging modern AI architecture directly in your browser.
+                            Transform the way you collect web data. Crawl Pilot delivers clean, structured intelligence by leveraging robust browser automation directly in your workflow.
                         </p>
                     </motion.div>
                 </div>

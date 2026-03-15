@@ -48,18 +48,18 @@ export function Hero() {
                             className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-black tracking-widest text-primary mb-8 backdrop-blur-md uppercase shadow-[0_0_30px_rgba(99,102,241,0.2)]"
                         >
                             <span className="flex h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_rgba(99,102,241,1)] animate-pulse"></span>
-                            A New Era of Web Intelligence
+                            Browser-Based Data Extraction
                         </motion.div>
 
                         <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[9.5rem] font-heading font-black tracking-tighter mb-8 leading-[0.8] text-foreground uppercase">
                             Trusted <br />
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-indigo-400 to-primary bg-[length:200%_auto] animate-gradient inline-block">
-                                AI Data
+                                Web Data
                             </span>
                         </h1>
 
                         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-xl leading-relaxed font-medium">
-                            Empower your business with <span className="text-foreground border-b-2 border-primary/30">high-fidelity web crawls</span>. Convert complex digital landscapes into clean, regular, and trusted intelligence with local AI.
+                            Turn any website into structured data with a <span className="text-foreground border-b-2 border-primary/30">point-and-click browser extension</span>. Clean, regular, and trusted intelligence for your business pipelines.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
