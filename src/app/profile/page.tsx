@@ -11,15 +11,43 @@ import {
     ArrowRight,
     CheckCircle2,
     Settings as SettingsIcon,
-    LogOut
+    LogOut,
+    CreditCard
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { cn } from "@/lib/utils";
 
 export default function ProfilePage() {
-    const { user, loading, logout } = useAuth();
+    const { user, loading: authLoading, logout } = useAuth();
+    const [subscription, setSubscription] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
 
-    if (loading) {
+    useEffect(() => {
+        async function fetchSubscription() {
+            if (user?.uid) {
+                try {
+                    const docRef = doc(db, "users", user.uid);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        setSubscription(docSnap.data().subscription);
+                    }
+                } catch (error) {
+                    console.error("Error fetching subscription:", error);
+                } finally {
+                    setLoading(false);
+                }
+            } else if (!authLoading) {
+                setLoading(false);
+            }
+        }
+        fetchSubscription();
+    }, [user, authLoading]);
+
+    if (authLoading || loading) {
         return (
             <div className="container mx-auto px-4 py-32 flex items-center justify-center">
                 <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
@@ -75,9 +103,15 @@ export default function ProfilePage() {
                             {user.email}
                         </p>
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-4">
-                            <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20 flex items-center gap-1.5 uppercase tracking-wider">
-                                <Zap className="h-3 w-3 fill-primary" />
-                                Free Plan
+                            <span className={cn(
+                                "px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 uppercase tracking-wider",
+                                subscription?.status === "active"
+                                    ? "bg-primary/10 text-primary border-primary/20"
+                                    : "bg-white/5 text-muted-foreground border-white/10"
+                            )}>
+                                <Zap className={cn("h-3 w-3", subscription?.status === "active" ? "fill-primary" : "")} />
+                                {subscription?.plan || "Free Plan"}
+                                {subscription?.status && subscription.status !== "active" && ` (${subscription.status})`}
                             </span>
                             <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                                 <Calendar className="h-3.5 w-3.5" />
@@ -136,65 +170,95 @@ export default function ProfilePage() {
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-sm font-medium">
                                         <span>Extraction Credits</span>
-                                        <span>24 / 100</span>
+                                        <span>{subscription?.status === "active" ? "Included" : "24 / 100"}</span>
                                     </div>
                                     <div className="h-2 w-full bg-border/50 rounded-full overflow-hidden">
-                                        <div className="h-full bg-primary w-[24%]" />
+                                        <div className={cn("h-full", subscription?.status === "active" ? "bg-primary w-full" : "bg-primary w-[24%]")} />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-sm font-medium">
                                         <span>API Calls</span>
-                                        <span>4,102 / 10,000</span>
+                                        <span>{subscription?.status === "active" ? "Unlimited" : "4,102 / 10,000"}</span>
                                     </div>
                                     <div className="h-2 w-full bg-border/50 rounded-full overflow-hidden">
-                                        <div className="h-full bg-purple-500 w-[41%]" />
+                                        <div className={cn("h-full", subscription?.status === "active" ? "bg-purple-500 w-full" : "bg-purple-500 w-[41%]")} />
                                     </div>
                                 </div>
-                                <p className="text-xs text-muted-foreground bg-white/5 p-3 rounded-lg border border-border/30">
-                                    Your credits will reset on {new Date(new Date().setMonth(new Date().getMonth() + 1)).toLocaleDateString()}.
-                                </p>
                             </div>
                         </section>
                     </div>
 
-                    {/* Subscription Upsell */}
+                    {/* Subscription Management */}
                     <div className="space-y-6">
-                        <div className="p-6 rounded-3xl bg-gradient-to-br from-primary via-purple-600 to-primary text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
-                            <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/10 blur-2xl group-hover:scale-150 transition-transform duration-700" />
+                        {subscription?.status === "active" ? (
+                            <div className="p-6 rounded-3xl glass-panel border-primary/30 space-y-6">
+                                <div className="flex items-center gap-3 text-primary">
+                                    <CreditCard className="h-6 w-6" />
+                                    <h3 className="text-xl font-bold">Active {subscription.plan}</h3>
+                                </div>
+                                <div className="space-y-2">
+                                    <p className="text-sm text-muted-foreground">
+                                        Your subscription is secure and sets to renew on:
+                                    </p>
+                                    <p className="font-bold">
+                                        {subscription.renewsAt ? new Date(subscription.renewsAt).toLocaleDateString() : "N/A"}
+                                    </p>
+                                </div>
+                                <div className="flex flex-col gap-3 pt-4">
+                                    {subscription.updateUrl && (
+                                        <Link href={subscription.updateUrl} target="_blank">
+                                            <Button className="w-full rounded-xl bg-white/5 hover:bg-white/10 border-white/10 uppercase tracking-widest text-xs font-black">
+                                                Update Payment
+                                            </Button>
+                                        </Link>
+                                    )}
+                                    {subscription.cancelUrl && (
+                                        <Link href={subscription.cancelUrl} target="_blank">
+                                            <Button variant="ghost" className="w-full text-xs text-muted-foreground hover:text-red-400">
+                                                Cancel Subscription
+                                            </Button>
+                                        </Link>
+                                    )}
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="p-6 rounded-3xl bg-gradient-to-br from-primary via-purple-600 to-primary text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
+                                <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/10 blur-2xl group-hover:scale-150 transition-transform duration-700" />
 
-                            <h3 className="text-2xl font-bold mb-2">Upgrade to Pro</h3>
-                            <p className="text-white/80 text-sm mb-6">Unlock powerful features and scale your data extraction.</p>
+                                <h3 className="text-2xl font-bold mb-2">Upgrade to Pro</h3>
+                                <p className="text-white/80 text-sm mb-6">Unlock powerful features and scale your data extraction.</p>
 
-                            <ul className="space-y-3 mb-8">
-                                {[
-                                    "Unlimited extractions",
-                                    "Premium residential proxies",
-                                    "Advanced anti-bot bypass",
-                                    "24/7 Priority support",
-                                    "Webhooks & API access"
-                                ].map((feature) => (
-                                    <li key={feature} className="flex items-center gap-2 text-sm font-medium">
-                                        <CheckCircle2 className="h-4 w-4 text-white" />
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
+                                <ul className="space-y-3 mb-8">
+                                    {[
+                                        "Unlimited extractions",
+                                        "Premium residential proxies",
+                                        "Advanced anti-bot bypass",
+                                        "24/7 Priority support",
+                                        "Webhooks & API access"
+                                    ].map((feature) => (
+                                        <li key={feature} className="flex items-center gap-2 text-sm font-medium">
+                                            <CheckCircle2 className="h-4 w-4 text-white" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
 
-                            <Link href="#pricing">
-                                <Button className="w-full bg-white text-primary hover:bg-white/90 font-bold py-6 rounded-2xl group/btn">
-                                    Become a Member
-                                    <ArrowRight className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                                </Button>
-                            </Link>
-                        </div>
+                                <Link href="/#pricing">
+                                    <Button className="w-full bg-white text-primary hover:bg-white/90 font-bold py-6 rounded-2xl group/btn">
+                                        Become a Member
+                                        <ArrowRight className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        )}
 
                         <div className="p-6 rounded-3xl bg-card border border-border/50 space-y-4">
-                            <h4 className="font-bold">Need custom limits?</h4>
+                            <h4 className="font-bold">Need help?</h4>
                             <p className="text-xs text-muted-foreground leading-relaxed">
-                                Our Enterprise plan offers custom throughput, dedicated support, and on-premise solutions.
+                                Our support team is available 24/7 to help you with integration or billing questions.
                             </p>
-                            <Button variant="link" className="text-primary p-0 h-auto text-sm font-bold">Contact Sales</Button>
+                            <Button variant="link" className="text-primary p-0 h-auto text-sm font-bold">Contact Support</Button>
                         </div>
                     </div>
                 </div>

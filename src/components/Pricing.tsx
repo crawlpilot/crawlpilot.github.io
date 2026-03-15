@@ -3,6 +3,9 @@
 import { Check, Zap, Shield, Crown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { getCheckoutUrl } from "@/app/actions/checkout";
 
 const plans = [
     {
@@ -52,6 +55,42 @@ const plans = [
 ];
 
 export function Pricing() {
+    const { user } = useAuth();
+    const [loading, setLoading] = useState<string | null>(null);
+
+    const handleUpgrade = async (plan: typeof plans[0]) => {
+        if (!user) {
+            window.location.href = "/login";
+            return;
+        }
+
+        if (plan.name === "Free" || plan.name === "Enterprise") return;
+
+        setLoading(plan.name);
+        try {
+            const variantId = plan.name === "Pro"
+                ? process.env.NEXT_PUBLIC_LEMON_SQUEEZY_PRO_VARIANT_ID
+                : "";
+
+            if (!variantId) throw new Error("Plan variant ID not configured");
+
+            const result = await getCheckoutUrl(
+                variantId,
+                user.uid,
+                user.email || "",
+                user.displayName || ""
+            );
+
+            if (result.error) throw new Error(result.error);
+            if (result.url) window.location.href = result.url;
+        } catch (error) {
+            console.error("Upgrade failed:", error);
+            alert("Failed to start checkout. Please try again or contact support.");
+        } finally {
+            setLoading(null);
+        }
+    };
+
     return (
         <section id="pricing" className="py-24 relative overflow-hidden bg-background">
             {/* Background Glow */}
@@ -113,11 +152,19 @@ export function Pricing() {
                             <Button
                                 size="lg"
                                 variant={plan.popular ? "default" : "outline"}
+                                onClick={() => handleUpgrade(plan)}
+                                disabled={loading === plan.name}
                                 className={`w-full h-14 rounded-2xl font-black uppercase tracking-widest text-xs gap-2 transition-all ${plan.popular ? "bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/20" : "glass-panel border-white/10"
                                     }`}
                             >
-                                {plan.cta}
-                                <ArrowRight className="h-4 w-4" />
+                                {loading === plan.name ? (
+                                    <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                ) : (
+                                    <>
+                                        {plan.cta}
+                                        <ArrowRight className="h-4 w-4" />
+                                    </>
+                                )}
                             </Button>
                         </motion.div>
                     ))}
