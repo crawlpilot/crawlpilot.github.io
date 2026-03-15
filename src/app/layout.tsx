@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     creator: "@crawlpilot",
   },
   verification: {
-    google: "google9bed9ddf4af54f37", // From existing verification file in public
+    google: "iKeGHxB9FRBHoe0ROh5IoLoxFENTwqD5LpV27Yj5J1s",
   },
   category: "technology",
 };
