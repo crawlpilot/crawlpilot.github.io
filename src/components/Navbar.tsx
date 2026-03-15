@@ -43,12 +43,12 @@ export function Navbar() {
                         <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Blog
                         </Link>
-                        {user && (
+                        {/* {user && (
                             <Link href="/dashboard" className="text-sm font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
                                 <LayoutDashboard className="h-4 w-4" />
                                 Dashboard
                             </Link>
-                        )}
+                        )} */}
                         <Link href="/crawlpilot/docs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Docs
                         </Link>
@@ -107,7 +107,7 @@ export function Navbar() {
                             >
                                 Blog
                             </Link>
-                            {user && (
+                            {/* {user && (
                                 <Link
                                     href="/dashboard"
                                     className="block text-sm font-medium text-primary hover:text-primary/80 transition-colors"
@@ -115,7 +115,7 @@ export function Navbar() {
                                 >
                                     Dashboard
                                 </Link>
-                            )}
+                            )} */}
                             <Link
                                 href="/crawlpilot/docs"
                                 className="block text-sm font-medium text-muted-foreground hover:text-foreground"

@@ -50,18 +50,34 @@ export function UserAvatar() {
                         className="absolute right-0 mt-2 w-56 rounded-xl border border-border bg-card/80 backdrop-blur-xl shadow-2xl z-[60] overflow-hidden"
                     >
                         <div className="p-3 border-b border-border/50">
-                            <p className="text-sm font-medium truncate">{user.email}</p>
+                            <p className="text-sm font-medium truncate">{user.displayName || user.email}</p>
                             <p className="text-xs text-muted-foreground capitalize">Free Plan</p>
                         </div>
 
                         <div className="p-2 space-y-1">
-                            <Link
+                            {/* <Link
                                 href="/dashboard"
                                 onClick={() => setIsOpen(false)}
                                 className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors"
                             >
                                 <LayoutDashboard className="h-4 w-4 text-primary" />
                                 Dashboard
+                            </Link> */}
+                            <Link
+                                href="/profile"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors group"
+                            >
+                                <User className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
+                                <span className="font-medium">My Profile</span>
+                            </Link>
+                            <Link
+                                href="/pricing"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors"
+                            >
+                                <ChevronDown className="h-4 w-4 text-primary rotate-[270deg]" />
+                                Upgrade Plan
                             </Link>
                             <Link
                                 href="/settings"
@@ -70,14 +86,6 @@ export function UserAvatar() {
                             >
                                 <Settings className="h-4 w-4" />
                                 Settings
-                            </Link>
-                            <Link
-                                href="/profile"
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors"
-                            >
-                                <User className="h-4 w-4" />
-                                Profile
                             </Link>
                         </div>
 
