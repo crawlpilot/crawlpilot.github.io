@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { verifyFirebaseIdToken } from '@/lib/auth-verify';
 
+export const runtime = 'edge';
+
 export async function POST(request: Request) {
+    console.log('🌐 [API] Auth Sync check-in (Edge Runtime)');
     try {
         const { idToken } = await request.json();
         const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
