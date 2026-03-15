@@ -25,15 +25,15 @@ const categories = [
         title: "🛒 E-commerce Product Data",
         description: "Crawl Pilot works across global marketplaces to deliver high-fidelity product intelligence.",
         items: [
-            { name: "Amazon", handle: "@Amazon", desc: "Extract product titles, prices, ratings, images, descriptions, variants and ASIN details.", color: "from-orange-500/10 to-transparent" },
-            { name: "Flipkart", handle: "@Flipkart", desc: "Scrape product listings, pricing data, ratings, reviews and specifications.", color: "from-blue-500/10 to-transparent" },
-            { name: "Walmart", handle: "@Walmart", desc: "Extract product catalogs, price changes, reviews and inventory data.", color: "from-blue-400/10 to-transparent" },
-            { name: "Alibaba", handle: "@Alibaba", desc: "Collect supplier listings, product catalogs, pricing ranges and manufacturer details.", color: "from-orange-600/10 to-transparent" },
-            { name: "Shopify", handle: "@Shopify", desc: "Extract products, variants, pricing, descriptions and store catalogs.", color: "from-emerald-500/10 to-transparent" },
-            { name: "eBay", handle: "@eBay", desc: "Scrape auction listings, seller data, pricing and product metadata.", color: "from-red-500/10 to-transparent" },
-            { name: "Etsy", handle: "@Etsy", desc: "Extract handmade product listings, pricing, reviews and seller profiles.", color: "from-orange-400/10 to-transparent" },
-            { name: "Home Depot", handle: "@Home Depot", desc: "Extract product details, pricing, ratings, availability and store listings.", color: "from-orange-700/10 to-transparent" },
-            { name: "Costco", handle: "@Costco", desc: "Scrape product catalogs, prices, bundle offers and product descriptions.", color: "from-red-600/10 to-transparent" }
+            { name: "Amazon", handle: "@Amazon", domain: "amazon.com", desc: "Extract product titles, prices, ratings, images, descriptions, variants and ASIN details.", color: "from-orange-500/10 to-transparent" },
+            { name: "Flipkart", handle: "@Flipkart", domain: "flipkart.com", desc: "Scrape product listings, pricing data, ratings, reviews and specifications.", color: "from-blue-500/10 to-transparent" },
+            { name: "Walmart", handle: "@Walmart", domain: "walmart.com", desc: "Extract product catalogs, price changes, reviews and inventory data.", color: "from-blue-400/10 to-transparent" },
+            { name: "Alibaba", handle: "@Alibaba", domain: "alibaba.com", desc: "Collect supplier listings, product catalogs, pricing ranges and manufacturer details.", color: "from-orange-600/10 to-transparent" },
+            { name: "Shopify", handle: "@Shopify", domain: "shopify.com", desc: "Extract products, variants, pricing, descriptions and store catalogs.", color: "from-emerald-500/10 to-transparent" },
+            { name: "eBay", handle: "@eBay", domain: "ebay.com", desc: "Scrape auction listings, seller data, pricing and product metadata.", color: "from-red-500/10 to-transparent" },
+            { name: "Etsy", handle: "@Etsy", domain: "etsy.com", desc: "Extract handmade product listings, pricing, reviews and seller profiles.", color: "from-orange-400/10 to-transparent" },
+            { name: "Home Depot", handle: "@Home Depot", domain: "homedepot.com", desc: "Extract product details, pricing, ratings, availability and store listings.", color: "from-orange-700/10 to-transparent" },
+            { name: "Costco", handle: "@Costco", domain: "costco.com", desc: "Scrape product catalogs, prices, bundle offers and product descriptions.", color: "from-red-600/10 to-transparent" }
         ]
     },
     {
@@ -43,8 +43,8 @@ const categories = [
         title: "🏠 Marketplace & Listing Data",
         description: "Turn real estate and listing sites into structured data streams for intelligence gathering.",
         items: [
-            { name: "Airbnb", handle: "@Airbnb", desc: "Extract listing titles, prices, locations, ratings, host information and availability.", color: "from-rose-500/10 to-transparent" },
-            { name: "Zillow", handle: "@Zillow", desc: "Scrape real estate listings, pricing trends, locations and property metadata.", color: "from-blue-600/10 to-transparent" }
+            { name: "Airbnb", handle: "@Airbnb", domain: "airbnb.com", desc: "Extract listing titles, prices, locations, ratings, host information and availability.", color: "from-rose-500/10 to-transparent" },
+            { name: "Zillow", handle: "@Zillow", domain: "zillow.com", desc: "Scrape real estate listings, pricing trends, locations and property metadata.", color: "from-blue-600/10 to-transparent" }
         ]
     },
     {
@@ -54,8 +54,8 @@ const categories = [
         title: "🌍 Reviews & Social Data",
         description: "Monitor sentiment and engagement across the world's most influential platforms.",
         items: [
-            { name: "Trustpilot", handle: "@Trustpilot", desc: "Extract reviews, ratings, reviewer names, countries and timestamps.", color: "from-emerald-600/10 to-transparent" },
-            { name: "Twitter / X", handle: "@X", desc: "Scrape tweets, followers, engagement metrics, retweets and replies.", color: "from-zinc-500/10 to-transparent" }
+            { name: "Trustpilot", handle: "@Trustpilot", domain: "trustpilot.com", desc: "Extract reviews, ratings, reviewer names, countries and timestamps.", color: "from-emerald-600/10 to-transparent" },
+            { name: "Twitter / X", handle: "@X", domain: "x.com", desc: "Scrape tweets, followers, engagement metrics, retweets and replies.", color: "from-zinc-500/10 to-transparent" }
         ]
     },
     {
@@ -65,10 +65,10 @@ const categories = [
         title: "📸 Social Media Content",
         description: "Extract rich media details and engagement data for qualitative research.",
         items: [
-            { name: "Instagram Images", handle: "@Instagram", desc: "Extract image URLs, captions, hashtags and engagement metrics.", color: "from-pink-500/10 to-transparent" },
-            { name: "Instagram Profile", handle: "@Instagram", desc: "Collect follower counts, bio information, profile links and post data.", color: "from-purple-500/10 to-transparent" },
-            { name: "YouTube Links", handle: "@YouTube", desc: "Extract video URLs, titles, descriptions and channel information.", color: "from-red-500/10 to-transparent" },
-            { name: "YouTube Text", handle: "@YouTube", desc: "Collect video descriptions, captions and comment text for analysis.", color: "from-red-700/10 to-transparent" }
+            { name: "Instagram Images", handle: "@Instagram", domain: "instagram.com", desc: "Extract image URLs, captions, hashtags and engagement metrics.", color: "from-pink-500/10 to-transparent" },
+            { name: "Instagram Profile", handle: "@Instagram", domain: "instagram.com", desc: "Collect follower counts, bio information, profile links and post data.", color: "from-purple-500/10 to-transparent" },
+            { name: "YouTube Links", handle: "@YouTube", domain: "youtube.com", desc: "Extract video URLs, titles, descriptions and channel information.", color: "from-red-500/10 to-transparent" },
+            { name: "YouTube Text", handle: "@YouTube", domain: "youtube.com", desc: "Collect video descriptions, captions and comment text for analysis.", color: "from-red-700/10 to-transparent" }
         ]
     },
     {
@@ -78,7 +78,7 @@ const categories = [
         title: "🗺 Local Business Leads",
         description: "Perfect for local lead generation, sales prospecting, and market research.",
         items: [
-            { name: "Google Maps", handle: "@Google Maps", desc: "Extract business names, phone numbers, websites, ratings and addresses.", color: "from-emerald-400/10 to-transparent" }
+            { name: "Google Maps", handle: "@Google Maps", domain: "google.com", desc: "Extract business names, phone numbers, websites, ratings and addresses.", color: "from-emerald-400/10 to-transparent" }
         ]
     },
     {
@@ -88,9 +88,9 @@ const categories = [
         title: "💼 Recruitment & Talent Intelligence",
         description: "Ideal for recruiters, talent acquisition teams, and B2B sales professionals.",
         items: [
-            { name: "Job Listings", handle: "@LinkedIn", desc: "Extract job titles, companies, locations and job descriptions.", color: "from-blue-700/10 to-transparent" },
-            { name: "Candidate Shortlisting", handle: "@LinkedIn", desc: "Collect candidate profiles for recruitment pipelines and hiring research.", color: "from-blue-800/10 to-transparent" },
-            { name: "LinkedIn LeadGen", handle: "@LinkedIn", desc: "Extract potential business leads including founders, executives, and decision makers.", color: "from-blue-900/10 to-transparent" }
+            { name: "Job Listings", handle: "@LinkedIn", domain: "linkedin.com", desc: "Extract job titles, companies, locations and job descriptions.", color: "from-blue-700/10 to-transparent" },
+            { name: "Candidate Shortlisting", handle: "@LinkedIn", domain: "linkedin.com", desc: "Collect candidate profiles for recruitment pipelines and hiring research.", color: "from-blue-800/10 to-transparent" },
+            { name: "LinkedIn LeadGen", handle: "@LinkedIn", domain: "linkedin.com", desc: "Extract potential business leads including founders, executives, and decision makers.", color: "from-blue-900/10 to-transparent" }
         ]
     }
 ];
@@ -177,8 +177,20 @@ export function UseCases() {
 
                                                 <div className="relative z-10">
                                                     <div className="flex items-center justify-between mb-6">
-                                                        <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xs uppercase tracking-tighter text-foreground group-hover:scale-110 transition-transform">
-                                                            {item.name.substring(0, 2)}
+                                                        <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden font-black text-xs uppercase tracking-tighter text-foreground group-hover:scale-110 transition-transform">
+                                                            {item.domain ? (
+                                                                <img
+                                                                    src={`https://logo.clearbit.com/${item.domain}`}
+                                                                    alt={item.name}
+                                                                    className="w-8 h-8 object-contain transition-all duration-500 rounded-md"
+                                                                    onError={(e) => {
+                                                                        (e.target as HTMLImageElement).style.display = 'none';
+                                                                        (e.target as HTMLImageElement).parentElement!.innerText = item.name.substring(0, 2);
+                                                                    }}
+                                                                />
+                                                            ) : (
+                                                                item.name.substring(0, 2)
+                                                            )}
                                                         </div>
                                                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary transition-opacity opacity-40 group-hover:opacity-100">{item.handle}</span>
                                                     </div>
