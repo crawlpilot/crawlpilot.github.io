@@ -22,20 +22,38 @@ export default function LoginPage() {
     const router = useRouter();
 
     const syncWithExtension = async (user: any) => {
+        console.log("🚀 Starting extension sync for user:", user.uid);
         try {
             // 1. Update last login time in Firestore
             const userRef = doc(db, "users", user.uid);
-            await setDoc(userRef, {
-                lastLogin: serverTimestamp(),
-            }, { merge: true });
+            console.log("📡 Updating Firestore user profile...");
+            try {
+                await setDoc(userRef, {
+                    lastLogin: serverTimestamp(),
+                }, { merge: true });
+                console.log("✅ Firestore updated successfully");
+            } catch (fsError) {
+                console.error("❌ Firestore update failed (Check Security Rules!):", fsError);
+                // Continue anyway to sync with extension at least
+            }
 
             // 2. Fetch latest user data for extension sync
+            console.log("🔍 Fetching latest user profile data...");
             const userSnap = await getDoc(userRef);
             const userData = userSnap.data();
+            console.log("📦 User data fetched:", userData);
 
             // 3. Sync with extension
+            console.log("🔑 Getting Firebase ID token...");
             const token = await getIdToken(user);
-            const extensionId = "obkajpmefemkleeggkfhnmpileijgecc";
+
+            // Allow override via query param or use hardcoded dev/prod ID
+            // Typical dev ID: obkajpmefemkleeggkfhnmpileijgecc
+            const searchParams = new URLSearchParams(window.location.search);
+            const extensionId = searchParams.get("extId") || "bmlfndenpmdigbkpgfgfbcoidagjaabm";
+
+            console.log(`📤 Sending message to extension [${extensionId}]...`);
+
             if (typeof window !== 'undefined' && (window as any).chrome && (window as any).chrome.runtime) {
                 (window as any).chrome.runtime.sendMessage(
                     extensionId,
@@ -49,12 +67,18 @@ export default function LoginPage() {
                         }
                     },
                     (response: any) => {
-                        console.log("Extension response:", response);
+                        if ((window as any).chrome.runtime.lastError) {
+                            console.error("❌ Extension Message Error (Check ID/Permissions):", (window as any).chrome.runtime.lastError);
+                        } else {
+                            console.log("✅ Extension sync response:", response);
+                        }
                     }
                 );
+            } else {
+                console.warn("⚠️ Chrome runtime not found - are you in a non-Chrome browser?");
             }
         } catch (extError) {
-            console.error("Failed to sync/log user data:", extError);
+            console.error("❌ General sync failure:", extError);
         }
     };
 

@@ -22,20 +22,35 @@ export default function SignupPage() {
     const router = useRouter();
 
     const syncWithExtension = async (user: any) => {
+        console.log("🚀 Starting extension sync for user:", user.uid);
         try {
             // 1. Create/Update user profile in Firestore for analytics
             const userRef = doc(db, "users", user.uid);
-            await setDoc(userRef, {
-                uid: user.uid,
-                email: user.email,
-                plan: "free", // Default plan
-                createdAt: serverTimestamp(),
-                lastLogin: serverTimestamp(),
-            }, { merge: true });
+            console.log("📡 Creating Firestore user profile...");
+            try {
+                await setDoc(userRef, {
+                    uid: user.uid,
+                    email: user.email,
+                    plan: "free", // Default plan
+                    createdAt: serverTimestamp(),
+                    lastLogin: serverTimestamp(),
+                }, { merge: true });
+                console.log("✅ Firestore created successfully");
+            } catch (fsError) {
+                console.error("❌ Firestore create failed (Check Security Rules!):", fsError);
+                // Continue anyway to sync with extension at least
+            }
 
             // 2. Sync with extension
+            console.log("🔑 Getting Firebase ID token...");
             const token = await getIdToken(user);
-            const extensionId = "obkajpmefemkleeggkfhnmpileijgecc";
+
+            // Allow override via query param
+            const searchParams = new URLSearchParams(window.location.search);
+            const extensionId = searchParams.get("extId") || "bmlfndenpmdigbkpgfgfbcoidagjaabm";
+
+            console.log(`📤 Sending message to extension [${extensionId}]...`);
+
             if (typeof window !== 'undefined' && (window as any).chrome && (window as any).chrome.runtime) {
                 (window as any).chrome.runtime.sendMessage(
                     extensionId,
@@ -49,12 +64,18 @@ export default function SignupPage() {
                         }
                     },
                     (response: any) => {
-                        console.log("Extension response:", response);
+                        if ((window as any).chrome.runtime.lastError) {
+                            console.error("❌ Extension Message Error (Check ID/Permissions):", (window as any).chrome.runtime.lastError);
+                        } else {
+                            console.log("✅ Extension sync response:", response);
+                        }
                     }
                 );
+            } else {
+                console.warn("⚠️ Chrome runtime not found");
             }
         } catch (extError) {
-            console.error("Failed to sync/log user data:", extError);
+            console.error("❌ General sync failure:", extError);
         }
     };
 
