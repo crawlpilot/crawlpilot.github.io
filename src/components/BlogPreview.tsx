@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 const POST_IMAGES: Record<string, string> = {
     "future-of-web-scraping": "/blog_scraping_future_1773568808294.png",
     "getting-started-with-crawlpilot": "/blog_getting_started_1773568823970.png",
-    "how-to-scrape-amazon-bestsellers": "/blog_amazon_scraping_1773568840954.png"
+    "how-to-scrape-amazon-bestsellers": "/blog_amazon_scraping_1773568840954.png",
+    "how-to-scrape-data-from-mobile-apps": "/blog_mobile_scraping_1773569506030.png"
 };
 
 export function BlogPreview() {

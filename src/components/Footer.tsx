@@ -3,74 +3,67 @@ import { Github, Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="border-t border-border/40 bg-zinc-950 py-12 text-muted-foreground">
+        <footer className="bg-background border-t border-white/5 py-20 text-muted-foreground relative overflow-hidden">
+            {/* Ambient Background Glow */}
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10" />
+
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-                    <div className="col-span-2 md:col-span-1">
-                        <Link href="/" className="flex items-center gap-2 font-bold text-xl text-foreground mb-4">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="h-5 w-5"
-                                >
-                                    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
-                                    <path d="M8.5 8.5v.01" />
-                                    <path d="M16 12v.01" />
-                                    <path d="M12 16v.01" />
-                                </svg>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                    <div className="col-span-1 md:col-span-1">
+                        <Link href="/" className="flex items-center gap-3 font-heading font-black text-2xl text-foreground mb-8 group uppercase tracking-tighter">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 p-2 transition-transform group-hover:scale-110 ring-1 ring-primary/20">
+                                <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain" />
                             </div>
-                            <span>CrawlPilot</span>
+                            <span>Crawl Pilot</span>
                         </Link>
-                        <p className="text-sm mb-6">
-                            The privacy-first, open-source AI infrastructure for web data extraction.
+                        <p className="text-md font-medium leading-relaxed mb-8 max-w-xs">
+                            The professional, open-source AI infrastructure for privacy-first web data extraction.
                         </p>
-                        <div className="flex gap-4">
-                            <Link href="https://github.com/crawlpilot/crawlPilot" className="hover:text-foreground transition-colors">
+                        <div className="flex gap-6">
+                            <Link href="https://github.com/crawlpilot/crawlPilot" className="p-3 rounded-xl bg-white/5 hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
                             </Link>
-                            <Link href="https://www.linkedin.com/in/crawl-pilot-a862833b1/" className="hover:text-foreground transition-colors">
+                            <Link href="https://www.linkedin.com/in/crawl-pilot-a862833b1/" className="p-3 rounded-xl bg-white/5 hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
                                 <Linkedin className="h-5 w-5" />
                                 <span className="sr-only">LinkedIn</span>
                             </Link>
                         </div>
                     </div>
 
-                    <div>
-                        <h3 className="font-semibold text-foreground mb-4">Product</h3>
-                        <ul className="space-y-3 text-sm">
-                            <li><Link href="#features" className="hover:text-primary transition-colors">Features</Link></li>
+                    <div className="md:ml-auto">
+                        <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Platform</h3>
+                        <ul className="space-y-4 text-sm font-bold">
+                            <li><Link href="#features" className="hover:text-primary transition-colors">Capabilities</Link></li>
+                            <li><Link href="#pricing" className="hover:text-primary transition-colors">Pricing Plans</Link></li>
+                            <li><Link href="/blog" className="hover:text-primary transition-colors">Internal Blog</Link></li>
                         </ul>
                     </div>
 
-                    <div>
-                        <h3 className="font-semibold text-foreground mb-4">Resources</h3>
-                        <ul className="space-y-3 text-sm">
+                    <div className="md:ml-auto">
+                        <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Resources</h3>
+                        <ul className="space-y-4 text-sm font-bold">
                             <li><Link href="/crawlpilot/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
-                            <li><Link href="https://github.com/crawlpilot/crawlPilot/discussions" className="hover:text-primary transition-colors">Community</Link></li>
+                            <li><Link href="/crawlpilot/support" className="hover:text-primary transition-colors">Technical Support</Link></li>
+                            <li><Link href="https://github.com/crawlpilot/crawlPilot/discussions" className="hover:text-primary transition-colors">Discussions</Link></li>
                         </ul>
                     </div>
 
-                    <div>
-                        <h3 className="font-semibold text-foreground mb-4">Company</h3>
-                        <ul className="space-y-3 text-sm">
+                    <div className="md:ml-auto">
+                        <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Legal</h3>
+                        <ul className="space-y-4 text-sm font-bold">
                             <li><Link href="/crawlpilot/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                            <li><Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
+                            <li><Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-border/40 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-                    <p>&copy; {new Date().getFullYear()} CrawlPilot Inc. All rights reserved.</p>
-                    <div className="flex gap-8">
-                        <Link href="/crawlpilot/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-                        <Link href="/crawlpilot/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-black uppercase tracking-widest opacity-60">
+                    <p>&copy; {new Date().getFullYear()} Crawl Pilot AI. Built for the future of data.</p>
+                    <div className="flex gap-10">
+                        <Link href="/crawlpilot/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+                        <Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms</Link>
+                        <Link href="/crawlpilot/docs" className="hover:text-primary transition-colors">Legal</Link>
                     </div>
                 </div>
             </div>

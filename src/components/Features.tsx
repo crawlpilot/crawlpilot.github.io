@@ -39,101 +39,113 @@ export function Features() {
             description: "Simply point and click to define what you want to extract. Our intelligent selector engine understands the structure of the page, handling pagination, infinite scrolling, and nested lists automatically.",
             image: "/screenshots/screenshot4.png",
             align: "right",
-            icon: Zap
+            icon: Zap,
+            stats: ["99.9% Accuracy", "No Coding Required"]
         },
         {
             title: "Structured Data Export",
             description: "Review your extracted data in a clean, spreadsheet-like interface before exporting. Filter, sort, and edit your data, then download it as JSON, CSV, or directly to your clipboard.",
             image: "/screenshots/screenshot2.png",
             align: "left",
-            icon: Database
+            icon: Database,
+            stats: ["Instant CSV/JSON", "Cloud Sync Ready"]
         },
         {
             title: "Advanced Configuration",
             description: "Go beyond simple scraping with powerful configuration options. Set up custom headers, cookies, and wait conditions. Simulate user interactions to bypass complex anti-bot protections.",
             image: "/screenshots/screenshot3.png",
             align: "right",
-            icon: Lock
+            icon: Lock,
+            stats: ["Proxy Support", "Stealth Engine"]
         }
     ];
 
     return (
-        <section id="features" className="py-24 bg-zinc-950 overflow-hidden">
+        <section id="features" className="py-24 relative overflow-hidden bg-background">
+            {/* Background Accents */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] -z-10" />
+
             <div className="container mx-auto px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <div className="text-center max-w-3xl mx-auto mb-32">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                            Powerful Tools for <span className="text-primary">Modern Scraping</span>
+                        <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tighter mb-8 uppercase">
+                            Enterprise <span className="text-primary">Capabilities</span>
                         </h2>
-                        <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-                            Crawl Pilot brings enterprise-grade web scraping capabilities directly to your browser. No coding required, just point, click, and extract.
+                        <p className="text-muted-foreground text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                            Crawl Pilot brings sophisticated web scraping infrastructure directly to your browser—zero server costs, zero complexity.
                         </p>
                     </motion.div>
                 </div>
 
-                <div className="space-y-32">
+                <div className="space-y-48">
                     {featureItems.map((feature, index) => (
-                        <div key={index} className={`flex flex-col ${feature.align === 'right' ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center`}>
+                        <div key={index} className={`flex flex-col ${feature.align === 'right' ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 lg:gap-32 items-center`}>
                             {/* Text Content */}
                             <motion.div
-                                className="flex-1"
-                                initial={{ opacity: 0, x: feature.align === 'right' ? -50 : 50 }}
+                                className="flex-1 text-left"
+                                initial={{ opacity: 0, x: feature.align === 'right' ? -40 : 40 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6 ring-1 ring-primary/20">
-                                    <feature.icon className="h-7 w-7" />
+                                <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-8 ring-1 ring-primary/30 shadow-[0_0_20px_rgba(99,102,241,0.1)]">
+                                    <feature.icon className="h-8 w-8" />
                                 </div>
-                                <h3 className="text-3xl font-bold mb-4 text-foreground">{feature.title}</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                                <h3 className="text-4xl md:text-5xl font-heading font-black mb-6 text-foreground tracking-tight leading-none uppercase">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-lg text-muted-foreground leading-relaxed mb-10 font-medium">
                                     {feature.description}
                                 </p>
-                                <ul className="space-y-3 mb-8">
-                                    {['AI-Powered Element Discovery', 'Local-First storage (IndexedDB)', 'Zero server-side dependencies'].map((item, i) => (
-                                        <li key={i} className="flex items-center gap-2 text-sm text-zinc-400">
-                                            <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                                            {item}
-                                        </li>
+
+                                <div className="grid grid-cols-2 gap-6 mb-10">
+                                    {feature.stats.map((stat, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="h-2 w-2 rounded-full bg-primary" />
+                                            <span className="text-sm font-black uppercase tracking-widest text-foreground/80">{stat}</span>
+                                        </div>
                                     ))}
-                                </ul>
-                                <Button variant="outline" className="gap-2 group">
-                                    Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </div>
+
+                                <Button variant="outline" className="h-14 px-8 rounded-2xl border-white/10 glass-panel font-black uppercase tracking-widest text-xs gap-3 hover:scale-105 transition-all">
+                                    Learn More <ArrowRight className="h-4 w-4" />
                                 </Button>
                             </motion.div>
 
-                            {/* Image Content */}
+                            {/* Image Content (Browser Mockup) */}
                             <motion.div
                                 className="flex-1 w-full"
-                                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                             >
                                 <div className="relative group">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                    <div className="relative rounded-2xl border border-white/10 bg-zinc-900 overflow-hidden shadow-2xl">
-                                        <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/90">
-                                            <div className="flex gap-1.5">
-                                                <div className="w-3 h-3 rounded-full bg-red-500/20" />
-                                                <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
-                                                <div className="w-3 h-3 rounded-full bg-green-500/20" />
-                                            </div>
-                                        </div>
-                                        <img
-                                            src={feature.image}
-                                            alt={feature.title}
-                                            className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]"
-                                        />
-                                    </div>
+                                    {/* Ambient Glow */}
+                                    <div className="absolute -inset-10 bg-primary/10 blur-[80px] rounded-full opacity-50 group-hover:opacity-80 transition-opacity" />
 
-                                    {/* Decorative elements */}
-                                    <div className={`absolute -z-10 top-1/2 ${feature.align === 'right' ? '-right-20' : '-left-20'} -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-20`} />
+                                    <div className="relative glass-panel rounded-2xl p-1 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
+                                        <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/5 rounded-t-2xl">
+                                            <div className="flex gap-1.5">
+                                                <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                                                <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                                                <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                                            </div>
+                                            <div className="mx-auto w-1/2 h-5 rounded-lg bg-black/40 border border-white/10" />
+                                        </div>
+                                        <div className="overflow-hidden rounded-b-2xl bg-zinc-950">
+                                            <img
+                                                src={feature.image}
+                                                alt={feature.title}
+                                                className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </motion.div>
                         </div>
