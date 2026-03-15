@@ -72,7 +72,11 @@ export function Pricing() {
                 ? process.env.NEXT_PUBLIC_LEMON_SQUEEZY_PRO_VARIANT_ID
                 : "";
 
-            if (!variantId) throw new Error("Plan variant ID not configured");
+            if (!variantId) {
+                const errorMsg = `Plan variant ID for "${plan.name}" is not configured. Please add NEXT_PUBLIC_LEMON_SQUEEZY_${plan.name.toUpperCase()}_VARIANT_ID to your environment variables.`;
+                console.error(errorMsg);
+                throw new Error(errorMsg);
+            }
 
             const result = await getCheckoutUrl(
                 variantId,
