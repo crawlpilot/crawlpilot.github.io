@@ -7,12 +7,14 @@ service cloud.firestore {
       // Allow users to read their own data
       allow read: if request.auth != null && request.auth.uid == userId;
       
-      // Allow users to update their own basic profile data 
-      // (The server-side Admin SDK used in our sync/webhooks bypasses these rules anyway)
-      allow update: if request.auth != null && request.auth.uid == userId;
+      // Allow creation during signup, but ONLY if the initial plan is 'free'
+      allow create: if request.auth != null && request.auth.uid == userId
+                    && request.resource.data.plan == 'free';
       
-      // Allow creation during signup if you are the owner
-      allow create: if request.auth != null && request.auth.uid == userId;
+      // Allow users to update their own metadata (email, lastLogin)
+      // but strictly block client-side updates to 'plan' or 'subscription' status
+      allow update: if request.auth != null && request.auth.uid == userId
+                    && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['plan', 'subscription']));
     }
   }
 }
