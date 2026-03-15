@@ -38,7 +38,10 @@ export function Navbar() {
 
                     <div className="hidden md:flex items-center gap-6">
                         <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                            Features
+                            Capabilities
+                        </Link>
+                        <Link href="#use-cases" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            Use Cases
                         </Link>
                         <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                             Blog

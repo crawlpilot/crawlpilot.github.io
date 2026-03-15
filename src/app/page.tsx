@@ -4,6 +4,8 @@ import { Pricing } from "@/components/Pricing";
 import { Footer } from "@/components/Footer";
 import { CommunityTools } from "@/components/CommunityTools";
 import { BlogPreview } from "@/components/BlogPreview";
+import { UseCases } from "@/components/UseCases";
+import { Vision } from "@/components/Vision";
 
 export default function Home() {
   return (
@@ -11,9 +13,11 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Features />
+        <UseCases />
+        <Pricing />
+        <Vision />
         <CommunityTools />
         <BlogPreview />
-        <Pricing />
       </main>
       <Footer />
     </div>
