@@ -8,12 +8,17 @@ const firebaseAdminConfig = {
 
 function getAdminApp() {
     if (!admin.apps.length) {
-        if (!firebaseAdminConfig.privateKey || !firebaseAdminConfig.clientEmail) {
-            console.warn("Firebase Admin credentials missing. This is expected during build if env vars are not set.");
-            // Return a dummy app or handle accordingly if needed, 
-            // but usually we just want to avoid the crash during build.
+        const missing = [];
+        if (!firebaseAdminConfig.projectId) missing.push("NEXT_PUBLIC_FIREBASE_PROJECT_ID");
+        if (!firebaseAdminConfig.clientEmail) missing.push("FIREBASE_CLIENT_EMAIL");
+        if (!firebaseAdminConfig.privateKey) missing.push("FIREBASE_PRIVATE_KEY");
+
+        if (missing.length > 0) {
+            console.warn(`⚠️ Firebase Admin missing vars: ${missing.join(", ")}. This is expected during build, but check Vercel env vars if this is a request.`);
             return null;
         }
+
+        console.log("✅ Initializing Firebase Admin with Project:", firebaseAdminConfig.projectId);
         return admin.initializeApp({
             credential: admin.credential.cert(firebaseAdminConfig as any),
         });

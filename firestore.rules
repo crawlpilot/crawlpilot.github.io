@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Match any document in the 'users' collection
+    match /users/{userId} {
+      // Allow users to read their own data
+      allow read: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow users to update their own basic profile data 
+      // (The server-side Admin SDK used in our sync/webhooks bypasses these rules anyway)
+      allow update: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow creation during signup if you are the owner
+      allow create: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

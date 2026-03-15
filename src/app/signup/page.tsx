@@ -22,35 +22,36 @@ export default function SignupPage() {
     const router = useRouter();
 
     const syncWithExtension = async (user: any) => {
-        console.log("🚀 Starting secure extension sync for user:", user.uid);
+        console.log("🚀 Starting secure client-side sync for user:", user.uid);
         try {
             // 1. Get Firebase ID token
-            console.log("🔑 Getting Firebase ID token...");
             const idToken = await getIdToken(user);
 
-            // 2. Call our secure API route (JWT Protected)
-            console.log("📡 Calling secure sync API...");
-            const response = await fetch('/api/auth/sync', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ idToken })
-            });
+            // 2. Direct Firestore Write (Crawl Pilot Native)
+            // This uses the user's OWN auth context and Security Rules
+            const userRef = doc(db, "users", user.uid);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Server sync failed');
-            }
+            await setDoc(userRef, {
+                uid: user.uid,
+                email: user.email,
+                lastLogin: serverTimestamp(),
+                updatedAt: serverTimestamp(),
+                plan: "free",
+            }, { merge: true });
 
-            const data = await response.json();
-            console.log("✅ Server sync successful:", data.profile);
+            console.log("✅ Firestore profile created");
 
-            // 3. Emit Bridge Message (Standard Pattern)
-            console.log("🌉 Emitting Bridge Message for Extension...");
+            // 3. Emit Bridge Message for the Extension
             window.postMessage({
                 source: "crawlpilot-auth",
                 type: "AUTH_SUCCESS",
                 token: idToken,
-                profile: data.profile
+                profile: {
+                    uid: user.uid,
+                    email: user.email,
+                    plan: "free",
+                    lastLogin: new Date().toISOString()
+                }
             }, "*");
 
             console.log("🏁 Auth sync signal sent.");

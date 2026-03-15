@@ -22,36 +22,41 @@ export default function LoginPage() {
     const router = useRouter();
 
     const syncWithExtension = async (user: any) => {
-        console.log("🚀 Starting secure extension sync for user:", user.uid);
+        console.log("🚀 Starting secure client-side sync for user:", user.uid);
         try {
-            // 1. Get Firebase ID token
-            console.log("🔑 Getting Firebase ID token...");
+            // 1. Get Firebase ID token for the extension
             const idToken = await getIdToken(user);
 
-            // 2. Call our secure API route (JWT Protected)
-            console.log("📡 Calling secure sync API...");
-            const response = await fetch('/api/auth/sync', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ idToken })
-            });
+            // 2. Direct Firestore Write (Crawl Pilot Native)
+            // This uses the user's OWN auth context and Security Rules
+            const userRef = doc(db, "users", user.uid);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Server sync failed');
-            }
+            // Fetch existing carefully to avoid overwriting subscription
+            const userSnap = await getDoc(userRef);
+            const userData = userSnap.data();
 
-            const data = await response.json();
-            console.log("✅ Server sync successful:", data.profile);
+            await setDoc(userRef, {
+                uid: user.uid,
+                email: user.email,
+                lastLogin: serverTimestamp(),
+                updatedAt: serverTimestamp(),
+                // Keep existing plan or default to free
+                plan: userData?.plan || "free",
+            }, { merge: true });
 
-            // 3. Emit Bridge Message (Standard Pattern)
-            // This will be picked up by the extension's content script
-            console.log("🌉 Emitting Bridge Message for Extension...");
+            console.log("✅ Firestore sync successful");
+
+            // 3. Emit Bridge Message for the Extension
             window.postMessage({
                 source: "crawlpilot-auth",
                 type: "AUTH_SUCCESS",
                 token: idToken,
-                profile: data.profile
+                profile: {
+                    uid: user.uid,
+                    email: user.email,
+                    plan: userData?.plan || "free",
+                    lastLogin: new Date().toISOString()
+                }
             }, "*");
 
             console.log("🏁 Auth sync signal sent.");
