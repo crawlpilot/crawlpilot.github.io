@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
             case "subscription_created":
             case "subscription_updated": {
                 const subscription = body.attributes;
-                await userRef.update({
+                await userRef.set({
                     subscription: {
                         id: body.id,
                         status: subscription.status,
@@ -45,15 +45,17 @@ export async function POST(req: NextRequest) {
                         plan: getPlanName(subscription.variant_id),
                         updatedAt: new Date().toISOString(),
                     },
-                });
+                }, { merge: true });
                 break;
             }
             case "subscription_cancelled":
             case "subscription_expired": {
-                await userRef.update({
-                    "subscription.status": "cancelled",
-                    "subscription.updatedAt": new Date().toISOString(),
-                });
+                await userRef.set({
+                    subscription: {
+                        status: "cancelled",
+                        updatedAt: new Date().toISOString(),
+                    }
+                }, { merge: true });
                 break;
             }
             default:
@@ -68,8 +70,7 @@ export async function POST(req: NextRequest) {
 }
 
 function getPlanName(variantId: string | number): string {
-    // You should map your Lemon Squeezy Variant IDs here
-    const PRO_VARIANT_ID = process.env.LEMON_SQUEEZY_PRO_VARIANT_ID;
-    if (String(variantId) === PRO_VARIANT_ID) return "Pro";
+    const PRO_ID = process.env.LEMON_SQUEEZY_PRO_VARIANT_ID;
+    if (String(variantId) === PRO_ID) return "Pro";
     return "Custom";
 }

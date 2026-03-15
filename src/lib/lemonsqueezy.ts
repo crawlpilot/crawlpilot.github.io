@@ -1,9 +1,16 @@
-/**
- * Lemon Squeezy Utility
- * Handles checkout creation and webhook verification
- */
+import {
+    lemonSqueezySetup,
+    createCheckout as lsCreateCheckout
+} from "@lemonsqueezy/lemonsqueezy.js";
+import crypto from "crypto";
 
-const LEMON_SQUEEZY_API_URL = "https://api.lemonsqueezy.com/v1";
+/**
+ * Initialize Lemon Squeezy SDK
+ */
+lemonSqueezySetup({
+    apiKey: process.env.LEMON_SQUEEZY_API_KEY,
+    onError: (error) => console.error("Lemon Squeezy SDK Error:", error),
+});
 
 export interface CheckoutOptions {
     storeId: string;
@@ -14,54 +21,31 @@ export interface CheckoutOptions {
 }
 
 export async function createCheckout(options: CheckoutOptions) {
-    const response = await fetch(`${LEMON_SQUEEZY_API_URL}/checkouts`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/vnd.api+json",
-            "Accept": "application/vnd.api+json",
-            "Authorization": `Bearer ${process.env.LEMON_SQUEEZY_API_KEY}`,
-        },
-        body: JSON.stringify({
-            data: {
-                type: "checkouts",
-                attributes: {
-                    checkout_data: {
-                        email: options.userEmail,
-                        name: options.userName,
-                        custom: {
-                            user_id: options.userId,
-                        },
-                    },
-                },
-                relationships: {
-                    store: {
-                        data: {
-                            type: "stores",
-                            id: options.storeId,
-                        },
-                    },
-                    variant: {
-                        data: {
-                            type: "variants",
-                            id: options.variantId,
-                        },
-                    },
-                },
+    const { data, error } = await lsCreateCheckout(options.storeId, options.variantId, {
+        checkoutData: {
+            email: options.userEmail,
+            name: options.userName,
+            custom: {
+                user_id: options.userId,
             },
-        }),
+        },
+        productOptions: {
+            redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/profile`,
+            enabledVariants: [parseInt(options.variantId)],
+        },
     });
 
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(`Lemon Squeezy error: ${JSON.stringify(error)}`);
+    if (error) {
+        throw new Error(`Lemon Squeezy error: ${error.message}`);
     }
 
-    const data = await response.json();
-    return data.data.attributes.url;
+    return data?.data.attributes.url;
 }
 
+/**
+ * Verify Lemon Squeezy Webhook Signature
+ */
 export function verifyWebhookSignature(payload: string, signature: string, secret: string): boolean {
-    const crypto = require("crypto");
     const hmac = crypto.createHmac("sha256", secret);
     const digest = Buffer.from(hmac.update(payload).digest("hex"), "utf8");
     const signatureBuffer = Buffer.from(signature, "utf8");
