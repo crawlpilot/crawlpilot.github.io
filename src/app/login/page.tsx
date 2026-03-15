@@ -22,33 +22,30 @@ export default function LoginPage() {
     const router = useRouter();
 
     const syncWithExtension = async (user: any) => {
-        console.log("🚀 Starting extension sync for user:", user.uid);
+        console.log("🚀 Starting secure extension sync for user:", user.uid);
         try {
-            // 1. Update last login time in Firestore
-            const userRef = doc(db, "users", user.uid);
-            console.log("📡 Updating Firestore user profile...");
-            try {
-                await setDoc(userRef, {
-                    lastLogin: serverTimestamp(),
-                }, { merge: true });
-                console.log("✅ Firestore updated successfully");
-            } catch (fsError) {
-                console.error("❌ Firestore update failed (Check Security Rules!):", fsError);
-                // Continue anyway to sync with extension at least
+            // 1. Get Firebase ID token
+            console.log("🔑 Getting Firebase ID token...");
+            const idToken = await getIdToken(user);
+
+            // 2. Call our secure API route (JWT Protected)
+            console.log("📡 Calling secure sync API...");
+            const response = await fetch('/api/auth/sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idToken })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Server sync failed');
             }
 
-            // 2. Fetch latest user data for extension sync
-            console.log("🔍 Fetching latest user profile data...");
-            const userSnap = await getDoc(userRef);
-            const userData = userSnap.data();
-            console.log("📦 User data fetched:", userData);
+            const data = await response.json();
+            console.log("✅ Server sync successful:", data.profile);
 
             // 3. Sync with extension
-            console.log("🔑 Getting Firebase ID token...");
-            const token = await getIdToken(user);
-
             // Allow override via query param or use hardcoded dev/prod ID
-            // Typical dev ID: obkajpmefemkleeggkfhnmpileijgecc
             const searchParams = new URLSearchParams(window.location.search);
             const extensionId = searchParams.get("extId") || "bmlfndenpmdigbkpgfgfbcoidagjaabm";
 
@@ -59,26 +56,23 @@ export default function LoginPage() {
                     extensionId,
                     {
                         type: "AUTH_SUCCESS",
-                        token,
-                        profile: {
-                            plan: userData?.plan || "free",
-                            lastLogin: userData?.lastLogin?.toDate?.()?.toISOString() || new Date().toISOString(),
-                            email: user.email
-                        }
+                        token: idToken,
+                        profile: data.profile
                     },
                     (response: any) => {
                         if ((window as any).chrome.runtime.lastError) {
-                            console.error("❌ Extension Message Error (Check ID/Permissions):", (window as any).chrome.runtime.lastError);
+                            console.error("❌ Extension Message Error:", (window as any).chrome.runtime.lastError);
                         } else {
                             console.log("✅ Extension sync response:", response);
                         }
                     }
                 );
             } else {
-                console.warn("⚠️ Chrome runtime not found - are you in a non-Chrome browser?");
+                console.warn("⚠️ Chrome runtime not found");
             }
-        } catch (extError) {
-            console.error("❌ General sync failure:", extError);
+        } catch (error: any) {
+            console.error("❌ Sync failure:", error);
+            // Optionally show a non-blocking toast/notice to user
         }
     };
 
