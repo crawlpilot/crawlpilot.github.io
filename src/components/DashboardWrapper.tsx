@@ -5,7 +5,7 @@ import { SidePanel } from "@/components/SidePanel";
 import { Navbar } from "@/components/Navbar";
 
 export function DashboardWrapper({ children }: { children: React.ReactNode }) {
-    const { user, isSidePanelOpen, setSidePanelOpen } = useAuth();
+    const { user, loading, isSidePanelOpen, setSidePanelOpen } = useAuth();
 
     return (
         <div className="min-h-screen bg-background flex flex-col">
@@ -16,8 +16,10 @@ export function DashboardWrapper({ children }: { children: React.ReactNode }) {
                 onClose={() => setSidePanelOpen(false)}
             />
 
-            <main className={`flex-1 transition-all duration-300 ${user && isSidePanelOpen ? "md:pl-72" : ""}`}>
-                {children}
+            <main className={`flex-1 transition-all duration-500 ease-in-out pt-16 ${user && isSidePanelOpen ? "md:pl-72" : ""}`}>
+                <div className={`transition-opacity duration-300 ${loading ? "opacity-50" : "opacity-100"}`}>
+                    {children}
+                </div>
             </main>
         </div>
     );

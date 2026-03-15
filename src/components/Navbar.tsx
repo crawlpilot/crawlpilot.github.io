@@ -28,27 +28,13 @@ export function Navbar() {
                                 <Menu className="h-5 w-5" />
                             </Button>
                         )}
+                        <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight group">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 p-1.5 transition-transform group-hover:scale-110">
+                                <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain" />
+                            </div>
+                            <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Crawl Pilot</span>
+                        </Link>
                     </div>
-                    <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="h-5 w-5"
-                            >
-                                <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
-                                <path d="M8.5 8.5v.01" />
-                                <path d="M16 12v.01" />
-                                <path d="M12 16v.01" />
-                            </svg>
-                        </div>
-                        <span>Crawl Pilot</span>
-                    </Link>
 
                     <div className="hidden md:flex items-center gap-6">
                         <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
@@ -87,13 +73,6 @@ export function Navbar() {
                                 )}
                             </>
                         )}
-                        <div className="h-4 w-[1px] bg-border/40 mx-2" />
-                        <Link href="https://github.com/crawlpilot/crawlPilot" target="_blank">
-                            <Button variant="ghost" size="icon">
-                                <Github className="h-5 w-5" />
-                                <span className="sr-only">GitHub</span>
-                            </Button>
-                        </Link>
                     </div>
 
                     <div className="md:hidden flex items-center gap-4">

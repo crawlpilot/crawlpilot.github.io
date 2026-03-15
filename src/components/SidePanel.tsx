@@ -54,8 +54,8 @@ export function SidePanel({ isOpen, onClose }: SidePanelProps) {
                     >
                         <div className="p-6 flex items-center justify-between border-b border-border/50">
                             <div className="flex items-center gap-2 font-bold text-lg tracking-tight">
-                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary">
-                                    <LayoutDashboard className="h-5 w-5" />
+                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 p-1.5 ring-1 ring-primary/20 shadow-lg shadow-primary/10">
+                                    <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain" />
                                 </div>
                                 <span>Dashboard</span>
                             </div>
@@ -76,8 +76,8 @@ export function SidePanel({ isOpen, onClose }: SidePanelProps) {
                                         href={item.href}
                                         onClick={() => onClose()}
                                         className={`flex items-center justify-between p-3 rounded-xl transition-all group ${isActive
-                                                ? "bg-primary text-white shadow-lg shadow-primary/20"
-                                                : "hover:bg-white/5 text-muted-foreground hover:text-foreground"
+                                            ? "bg-primary text-white shadow-lg shadow-primary/20"
+                                            : "hover:bg-white/5 text-muted-foreground hover:text-foreground"
                                             }`}
                                     >
                                         <div className="flex items-center gap-3">

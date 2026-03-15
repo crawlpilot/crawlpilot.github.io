@@ -61,6 +61,11 @@ export const metadata: Metadata = {
     google: "SNlsAt__hMmsgTdGRfogaFAlZPz6dHRU5Z3yC60RE_o",
   },
   category: "technology",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
