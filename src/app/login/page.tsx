@@ -23,57 +23,87 @@ export default function LoginPage() {
 
     const syncWithExtension = async (user: any) => {
         console.log("🚀 Starting secure extension sync for user:", user.uid);
-        try {
-            // 1. Get Firebase ID token
-            console.log("🔑 Getting Firebase ID token...");
-            const idToken = await getIdToken(user);
 
-            // 2. Call our secure API route (JWT Protected)
-            console.log("📡 Calling secure sync API...");
-            const response = await fetch('/api/auth/sync', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ idToken })
-            });
+        // This function will run as a "best effort" and won't block the UI navigation if it takes too long
+        const performSync = async () => {
+            try {
+                // 1. Get Firebase ID token
+                console.log("🔑 Getting Firebase ID token...");
+                const idToken = await getIdToken(user);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Server sync failed');
-            }
+                // 2. Call our secure API route (JWT Protected)
+                console.log("📡 Calling secure sync API...");
+                const response = await fetch('/api/auth/sync', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ idToken })
+                });
 
-            const data = await response.json();
-            console.log("✅ Server sync successful:", data.profile);
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Server sync failed');
+                }
 
-            // 3. Sync with extension
-            // Allow override via query param or use hardcoded dev/prod ID
-            const searchParams = new URLSearchParams(window.location.search);
-            const extensionId = searchParams.get("extId") || "bmlfndenpmdigbkpgfgfbcoidagjaabm";
+                const data = await response.json();
+                console.log("✅ Server sync successful:", data.profile);
 
-            console.log(`📤 Sending message to extension [${extensionId}]...`);
+                // 3. Sync with extension
+                const searchParams = new URLSearchParams(window.location.search);
+                const extensionId = searchParams.get("extId") || "bmlfndenpmdigbkpgfgfbcoidagjaabm";
 
-            if (typeof window !== 'undefined' && (window as any).chrome && (window as any).chrome.runtime) {
-                (window as any).chrome.runtime.sendMessage(
-                    extensionId,
-                    {
-                        type: "AUTH_SUCCESS",
-                        token: idToken,
-                        profile: data.profile
-                    },
-                    (response: any) => {
-                        if ((window as any).chrome.runtime.lastError) {
-                            console.error("❌ Extension Message Error:", (window as any).chrome.runtime.lastError);
-                        } else {
-                            console.log("✅ Extension sync response:", response);
+                if (typeof window !== 'undefined' && (window as any).chrome && (window as any).chrome.runtime) {
+                    console.log(`📤 Sending message to extension [${extensionId}]...`);
+
+                    // Use a promise with a timeout to prevent hanging the tab
+                    await new Promise((resolve) => {
+                        const timeout = setTimeout(() => {
+                            console.warn("⏳ Extension sync timed out");
+                            resolve(null);
+                        }, 5000);
+
+                        try {
+                            (window as any).chrome.runtime.sendMessage(
+                                extensionId,
+                                {
+                                    type: "AUTH_SUCCESS",
+                                    token: idToken,
+                                    profile: data.profile
+                                },
+                                (response: any) => {
+                                    clearTimeout(timeout);
+                                    if ((window as any).chrome.runtime.lastError) {
+                                        console.warn("⚠️ Extension Message Error:", (window as any).chrome.runtime.lastError.message);
+                                    } else {
+                                        console.log("✅ Extension sync response:", response);
+                                    }
+                                    resolve(response);
+                                }
+                            );
+                        } catch (e) {
+                            clearTimeout(timeout);
+                            console.error("❌ sendMessage failed directly:", e);
+                            resolve(null);
                         }
-                    }
-                );
-            } else {
-                console.warn("⚠️ Chrome runtime not found");
+                    });
+                } else {
+                    console.warn("⚠️ Chrome runtime not found - skipping extension sync");
+                }
+            } catch (err) {
+                console.error("❌ Background sync failure:", err);
             }
-        } catch (error: any) {
-            console.error("❌ Sync failure:", error);
-            // Optionally show a non-blocking toast/notice to user
-        }
+        };
+
+        // Trigger sync but don't strictly await it if it's the blocking part
+        // We give it a short head start then navigate
+        const syncPromise = performSync();
+
+        // We wait a maximum of 2 seconds for sync before we MUST navigate to avoid user frustration
+        await Promise.race([
+            syncPromise,
+            new Promise(resolve => setTimeout(resolve, 2000))
+        ]);
+
+        console.log("🏁 Continuing to dashboard...");
     };
 
     const handleEmailLogin = async (e: React.FormEvent) => {
