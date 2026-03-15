@@ -9,7 +9,8 @@ const POST_IMAGES: Record<string, string> = {
     "how-to-scrape-amazon-bestsellers": "/blog_amazon_scraping_1773568840954.png",
     "how-to-scrape-data-from-mobile-apps": "/blog_mobile_scraping_1773569506030.png",
     "introduction-to-crawl-pilot-extension": "/blog_intro_extension_1773569666545.png",
-    "privacy-and-ethics": "/blog_privacy_ethics_1773569682455.png"
+    "privacy-and-ethics": "/blog_privacy_ethics_1773569682455.png",
+    "scraping-amazon-with-puppeteer": "/blog_amazon_puppeteer.png"
 };
 
 export function BlogPreview() {

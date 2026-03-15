@@ -29,7 +29,7 @@ export function Vision() {
 
                     <h2 className="text-6xl md:text-8xl lg:text-[7rem] font-heading font-black tracking-tighter mb-12 uppercase leading-[0.85] text-foreground">
                         Web data <br />
-                        <span className="text-transparent bg-clip-text stellar-gradient bg-[length:200%_auto] inline-block py-2 animate-gradient">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-indigo-600 to-primary bg-[length:200%_auto] animate-gradient inline-block">
                             Available to Everyone
                         </span>
                     </h2>

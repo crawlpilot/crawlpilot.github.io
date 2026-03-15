@@ -75,9 +75,14 @@
 
 @layer utilities {
   .stellar-gradient {
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #3b82f6 100%);
-    background-size: 200% 200%;
+    @apply bg-gradient-to-r from-primary via-indigo-400 to-primary bg-[length:200%_auto];
     animation: gradient-shift 10s ease infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient-shift 8s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .glass-panel {

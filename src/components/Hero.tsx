@@ -53,7 +53,7 @@ export function Hero() {
 
                         <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[9.5rem] font-heading font-black tracking-tighter mb-8 leading-[0.8] text-foreground uppercase">
                             Trusted <br />
-                            <span className="text-transparent bg-clip-text stellar-gradient bg-[length:200%_auto] inline-block py-2 animate-gradient">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-indigo-400 to-primary bg-[length:200%_auto] animate-gradient inline-block">
                                 AI Data
                             </span>
                         </h1>
