@@ -226,8 +226,14 @@ export default function ProfilePage() {
                             <div className="p-6 rounded-3xl bg-gradient-to-br from-primary via-purple-600 to-primary text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
                                 <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/10 blur-2xl group-hover:scale-150 transition-transform duration-700" />
 
-                                <h3 className="text-2xl font-bold mb-2">Upgrade to Pro</h3>
-                                <p className="text-white/80 text-sm mb-6">Unlock powerful features and scale your data extraction.</p>
+                                <h3 className="text-2xl font-bold mb-2">
+                                    {subscription?.plan === "Basic" ? "Upgrade to Pro" :
+                                        subscription?.plan === "Pro" ? "Upgrade to Team" :
+                                            "Unlock Full Power"}
+                                </h3>
+                                <p className="text-white/80 text-sm mb-6">
+                                    {subscription?.plan ? "Take your data extraction to the next level." : "Unlock powerful features and scale your data extraction."}
+                                </p>
 
                                 <ul className="space-y-3 mb-8">
                                     {[
@@ -246,7 +252,7 @@ export default function ProfilePage() {
 
                                 <Link href="/#pricing">
                                     <Button className="w-full bg-white text-primary hover:bg-white/90 font-bold py-6 rounded-2xl group/btn">
-                                        Become a Member
+                                        {subscription?.plan ? "View Upgrade Options" : "Become a Member"}
                                         <ArrowRight className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                                     </Button>
                                 </Link>

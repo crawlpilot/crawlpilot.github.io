@@ -72,7 +72,9 @@ export async function POST(req: NextRequest) {
 }
 
 function getPlanName(variantId: string | number): string {
-    const PRO_ID = process.env.LEMON_SQUEEZY_PRO_VARIANT_ID;
-    if (String(variantId) === PRO_ID) return "Pro";
+    const vId = String(variantId);
+    if (vId === process.env.LEMON_SQUEEZY_BASIC_ID || vId === "1405620") return "Basic";
+    if (vId === process.env.LEMON_SQUEEZY_PRO_ID || vId === "1405790") return "Pro";
+    if (vId === process.env.LEMON_SQUEEZY_TEAM_ID || vId === "1405794") return "Team";
     return "Custom";
 }

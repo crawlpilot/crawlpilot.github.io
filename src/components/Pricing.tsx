@@ -9,46 +9,49 @@ import { getCheckoutUrl } from "@/app/actions/checkout";
 
 const plans = [
     {
-        name: "Free",
-        price: "$0",
+        id: "BASIC",
+        name: "Basic",
+        price: "$9",
         description: "Perfect for hobbyists and explorers.",
         features: [
-            "Local Extraction (Basic)",
-            "Unlimited Daily Runs",
-            "CSV Export",
+            "Local Extraction (Enhanced)",
+            "10,000 Extraction Credits",
+            "CSV/JSON Export",
             "Community Support",
         ],
-        cta: "Get Started",
+        cta: "Get Basic",
         icon: Zap,
         popular: false,
     },
     {
+        id: "PRO",
         name: "Pro",
         price: "$29",
         description: "For power users and professionals.",
         features: [
             "AI-Powered Selectors",
-            "Advanced JSON Export",
             "Auto-Pagination Support",
-            "100k API Extraction Credits",
+            "100,000 Extraction Credits",
             "Priority Email Support",
+            "Stealth Proxy Access",
         ],
-        cta: "Upgrade to Pro",
+        cta: "Get Pro",
         icon: Crown,
         popular: true,
     },
     {
-        name: "Enterprise",
-        price: "Custom",
-        description: "Scalable solutions for large teams.",
+        id: "TEAM",
+        name: "Team",
+        price: "$99",
+        description: "Scalable solutions for growing teams.",
         features: [
-            "Dedicated Support",
-            "Custom Integration",
+            "Shared Dashboard",
+            "Unlimited Extractions",
             "Infinite API Credits",
-            "Team Management",
+            "24/7 Dedicated Support",
             "SLA Guarantees",
         ],
-        cta: "Contact Sales",
+        cta: "Get Team",
         icon: Shield,
         popular: false,
     },
@@ -64,16 +67,23 @@ export function Pricing() {
             return;
         }
 
-        if (plan.name === "Free" || plan.name === "Enterprise") return;
-
-        setLoading(plan.name);
+        setLoading(plan.id);
         try {
-            const variantId = plan.name === "Pro"
-                ? process.env.NEXT_PUBLIC_LEMON_SQUEEZY_PRO_VARIANT_ID
-                : "";
+            let variantId = "";
+            switch (plan.id) {
+                case "BASIC":
+                    variantId = process.env.NEXT_PUBLIC_LEMON_SQUEEZY_BASIC_VARIANT_ID || "";
+                    break;
+                case "PRO":
+                    variantId = process.env.NEXT_PUBLIC_LEMON_SQUEEZY_PRO_VARIANT_ID || "";
+                    break;
+                case "TEAM":
+                    variantId = process.env.NEXT_PUBLIC_LEMON_SQUEEZY_TEAM_VARIANT_ID || "";
+                    break;
+            }
 
             if (!variantId) {
-                const errorMsg = `Plan variant ID for "${plan.name}" is not configured. Please add NEXT_PUBLIC_LEMON_SQUEEZY_${plan.name.toUpperCase()}_VARIANT_ID to your environment variables.`;
+                const errorMsg = `Plan variant ID for "${plan.name}" (${plan.id}) is not configured. Please add NEXT_PUBLIC_LEMON_SQUEEZY_${plan.id}_VARIANT_ID to your environment variables.`;
                 console.error(errorMsg);
                 throw new Error(errorMsg);
             }

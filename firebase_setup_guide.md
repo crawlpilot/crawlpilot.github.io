@@ -32,8 +32,25 @@ These variables are required for the server (`route.ts`) to manage users and syn
 > When pasting the `FIREBASE_PRIVATE_KEY` into Vercel or your `.env.local`, make sure it is wrapped in double quotes and includes all the literal `\n` characters:
 > `FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"`
 
-## 3. Deployment on Vercel
+## 3. Lemon Squeezy Payments
+These variables are required for handling checkouts and processing webhooks.
+
+1.  Go to your [Lemon Squeezy Dashboard](https://app.lemonsqueezy.com/).
+2.  **API Key**: Go to **Settings** -> **API** -> **API Keys** and generate a new key.
+    - Set to `LEMON_SQUEEZY_API_KEY`
+3.  **Store ID**: Look at your dashboard URL after `/stores/`. It's a number.
+    - Set to `LEMON_SQUEEZY_STORE_ID`
+4.  **Webhook Secret**: Go to **Settings** -> **Webhooks**.
+    - Create a new webhook pointing to `https://your-domain.vercel.app/api/webhooks/lemon-squeezy`.
+    - Select events: `subscription_created`, `subscription_updated`, etc.
+    - Create a "Signing Secret" and set it to `LEMON_SQUEEZY_WEBHOOK_SECRET`.
+5.  **Variant IDs**: Go to **Store** -> **Products**.
+    - Click on your product, then click on the **Variant** (e.g., "Pro Plan").
+    - The Variant ID is the number in the URL (or listed under the variant name).
+    - Set to `NEXT_PUBLIC_LEMON_SQUEEZY_PRO_VARIANT_ID`
+
+## 4. Deployment on Vercel
 1.  Go to your Project Settings on Vercel.
 2.  Go to **Environment Variables**.
-3.  Add each variable from your `.env.local`.
-4.  **Redeploy** your project for changes to take effect.
+3.  Add each variable from your `.env.local` (both Firebase and Lemon Squeezy).
+4.  **CRITICAL**: Redeploy your project for the client-side `NEXT_PUBLIC_` variables to take effect.
