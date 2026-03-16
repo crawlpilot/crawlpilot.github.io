@@ -102,7 +102,7 @@ export default function ProfilePage() {
                             <Mail className="h-4 w-4" />
                             {user.email}
                         </p>
-                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-4">
+                        {/* <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-4">
                             <span className={cn(
                                 "px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 uppercase tracking-wider",
                                 subscription?.status === "active"
@@ -113,6 +113,12 @@ export default function ProfilePage() {
                                 {subscription?.plan || "Free Plan"}
                                 {subscription?.status && subscription.status !== "active" && ` (${subscription.status})`}
                             </span>
+                            <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                                <Calendar className="h-3.5 w-3.5" />
+                                Member since {registrationDate}
+                            </span>
+                        </div> */}
+                        <div className="flex items-center justify-center md:justify-start gap-4 mt-4">
                             <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                                 <Calendar className="h-3.5 w-3.5" />
                                 Member since {registrationDate}
@@ -134,9 +140,9 @@ export default function ProfilePage() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Account Details */}
-                    <div className="md:col-span-2 space-y-8">
+                    <div className="space-y-8">
                         <section className="space-y-4">
                             <h2 className="text-xl font-bold flex items-center gap-2">
                                 <ShieldCheck className="h-5 w-5 text-primary" />
@@ -189,76 +195,7 @@ export default function ProfilePage() {
                         </section>
                     </div>
 
-                    {/* Subscription Management */}
                     <div className="space-y-6">
-                        {subscription?.status === "active" ? (
-                            <div className="p-6 rounded-3xl glass-panel border-primary/30 space-y-6">
-                                <div className="flex items-center gap-3 text-primary">
-                                    <CreditCard className="h-6 w-6" />
-                                    <h3 className="text-xl font-bold">Active {subscription.plan}</h3>
-                                </div>
-                                <div className="space-y-2">
-                                    <p className="text-sm text-muted-foreground">
-                                        Your subscription is secure and sets to renew on:
-                                    </p>
-                                    <p className="font-bold">
-                                        {subscription.renewsAt ? new Date(subscription.renewsAt).toLocaleDateString() : "N/A"}
-                                    </p>
-                                </div>
-                                <div className="flex flex-col gap-3 pt-4">
-                                    {subscription.updateUrl && (
-                                        <Link href={subscription.updateUrl} target="_blank">
-                                            <Button className="w-full rounded-xl bg-white/5 hover:bg-white/10 border-white/10 uppercase tracking-widest text-xs font-black">
-                                                Update Payment
-                                            </Button>
-                                        </Link>
-                                    )}
-                                    {subscription.cancelUrl && (
-                                        <Link href={subscription.cancelUrl} target="_blank">
-                                            <Button variant="ghost" className="w-full text-xs text-muted-foreground hover:text-red-400">
-                                                Cancel Subscription
-                                            </Button>
-                                        </Link>
-                                    )}
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="p-6 rounded-3xl bg-gradient-to-br from-primary via-purple-600 to-primary text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
-                                <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/10 blur-2xl group-hover:scale-150 transition-transform duration-700" />
-
-                                <h3 className="text-2xl font-bold mb-2">
-                                    {subscription?.plan === "Basic" ? "Upgrade to Pro" :
-                                        subscription?.plan === "Pro" ? "Upgrade to Team" :
-                                            "Unlock Full Power"}
-                                </h3>
-                                <p className="text-white/80 text-sm mb-6">
-                                    {subscription?.plan ? "Take your data extraction to the next level." : "Unlock powerful features and scale your data extraction."}
-                                </p>
-
-                                <ul className="space-y-3 mb-8">
-                                    {[
-                                        "Unlimited extractions",
-                                        "Premium residential proxies",
-                                        "Advanced anti-bot bypass",
-                                        "24/7 Priority support",
-                                        "Webhooks & API access"
-                                    ].map((feature) => (
-                                        <li key={feature} className="flex items-center gap-2 text-sm font-medium">
-                                            <CheckCircle2 className="h-4 w-4 text-white" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <Link href="/#pricing">
-                                    <Button className="w-full bg-white text-primary hover:bg-white/90 font-bold py-6 rounded-2xl group/btn">
-                                        {subscription?.plan ? "View Upgrade Options" : "Become a Member"}
-                                        <ArrowRight className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        )}
-
                         <div className="p-6 rounded-3xl bg-card border border-border/50 space-y-4">
                             <h4 className="font-bold">Need help?</h4>
                             <p className="text-xs text-muted-foreground leading-relaxed">

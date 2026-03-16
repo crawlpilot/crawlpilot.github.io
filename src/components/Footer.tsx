@@ -35,7 +35,7 @@ export function Footer() {
                         <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Platform</h3>
                         <ul className="space-y-4 text-sm font-bold">
                             <li><Link href="#features" className="hover:text-primary transition-colors">Capabilities</Link></li>
-                            <li><Link href="#pricing" className="hover:text-primary transition-colors">Pricing Plans</Link></li>
+                            {/* <li><Link href="#pricing" className="hover:text-primary transition-colors">Pricing Plans</Link></li> */}
                             <li><Link href="/blog" className="hover:text-primary transition-colors">Internal Blog</Link></li>
                         </ul>
                     </div>

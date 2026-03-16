@@ -90,7 +90,7 @@ export function SidePanel({ isOpen, onClose }: SidePanelProps) {
                             })}
                         </nav>
 
-                        <div className="p-4 border-t border-border/50">
+                        {/* <div className="p-4 border-t border-border/50">
                             <div className="p-4 rounded-xl bg-gradient-to-br from-primary/10 to-purple-600/10 border border-primary/20">
                                 <h4 className="text-sm font-semibold flex items-center gap-2">
                                     <Zap className="h-4 w-4 text-primary" />
@@ -101,7 +101,7 @@ export function SidePanel({ isOpen, onClose }: SidePanelProps) {
                                     Upgrade Now
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
                     </motion.div>
                 </>
             )}
