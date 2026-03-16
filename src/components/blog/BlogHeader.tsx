@@ -8,6 +8,19 @@ interface BlogHeaderProps {
 }
 
 export function BlogHeader({ post }: BlogHeaderProps) {
+    const handleShare = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: post.title,
+                text: post.description,
+                url: window.location.href,
+            }).catch(() => { });
+        } else {
+            navigator.clipboard.writeText(window.location.href);
+            // alert("Link copied to clipboard!");
+        }
+    };
+
     return (
         <header className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <div className="flex flex-wrap items-center justify-center gap-4">
@@ -38,7 +51,10 @@ export function BlogHeader({ post }: BlogHeaderProps) {
                         <Calendar className="h-3.5 w-3.5" />
                         <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                     </div>
-                    <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:opacity-80 transition-all">
+                    <button
+                        onClick={handleShare}
+                        className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:opacity-80 transition-all"
+                    >
                         <Share2 className="h-3.5 w-3.5" /> Share
                     </button>
                 </div>

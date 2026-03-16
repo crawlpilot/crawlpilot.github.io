@@ -5,9 +5,9 @@ description: "Analyzing Cloudflare's strategic shift from bot protection to craw
 category: "Industry"
 image: "/blog/cloudflare-web-scraping-era.png"
 author:
-  name: "Pilot Research Group"
-  role: "Intelligence Analysts"
-  avatar: "https://i.pravatar.cc/150?u=pilot"
+  name: "CrawlPilot"
+  role: "Intelligence Labs"
+  avatar: "/icon.png"
 ---
 
 For years, web scraping and bot protection have existed in a constant arms race. On one side, developers build crawlers to extract data. On the other, platforms deploy defenses to stop them.
