@@ -1,131 +1,101 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Database, Zap, ArrowRight, ShieldCheck } from "lucide-react";
+import { Database, Zap, ArrowRight, ShieldCheck, Cpu, Globe, Rocket } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+const features = [
+    {
+        title: "AI Selector Gen",
+        description: "Autonomous CSS and XPath generation that learns from site structures to ensure zero-break extractions.",
+        icon: <Cpu className="h-6 w-6" />,
+        className: "md:col-span-2 md:row-span-2",
+        image: "/screenshots/screenshot4.png",
+    },
+    {
+        title: "Smart Crawling",
+        description: "Next-gen headless browsing that mimics human behavior to bypass rate limits naturally.",
+        icon: <Zap className="h-6 w-6" />,
+        className: "md:col-span-1 md:row-span-1",
+    },
+    {
+        title: "Auto-Pagination",
+        description: "Detects infinite scroll and list patterns without any manual configuration.",
+        icon: <Rocket className="h-6 w-6" />,
+        className: "md:col-span-1 md:row-span-1",
+    },
+    {
+        title: "Global Stealth",
+        description: "Built-in proxy shielding and device fingerprint rotation for 100% anonymity.",
+        icon: <ShieldCheck className="h-6 w-6" />,
+        className: "md:col-span-1 md:row-span-2",
+        image: "/screenshots/screenshot3.png",
+    },
+    {
+        title: "Data Sync",
+        description: "Push structured intelligence directly to Webhooks, Google Sheets, or your own API.",
+        icon: <Database className="h-6 w-6" />,
+        className: "md:col-span-2 md:row-span-1",
+    },
+];
 
 export function Features() {
-    const featureItems = [
-        {
-            title: "Smart Selector Engine",
-            description: "Powerful pattern recognition that maps data structures as you browse. Simply point and click—our engine identifies lists and fields automatically, enabling complex extractions with zero code.",
-            image: "/screenshots/screenshot4.png",
-            align: "right",
-            icon: Zap,
-            stats: ["99.9% Extraction Rate", "Automatic Pattern Discovery"]
-        },
-        {
-            title: "Trusted Data Pipelines",
-            description: "Scale your extraction with confidence. Review, filter, and validate high-fidelity data in real-time. Export clean, structured intelligence directly to your stack via JSON, CSV, or global API sync.",
-            image: "/screenshots/screenshot2.png",
-            align: "left",
-            icon: Database,
-            stats: ["Trusted Output", "API-Driven Workflows"]
-        },
-        {
-            title: "Fortified Extraction",
-            description: "Bypass any digital boundary with advanced terminal-grade protocols. Built-in proxy shielding and stealth engines ensure regular, reliable data flow even from the most protected web environments.",
-            image: "/screenshots/screenshot3.png",
-            align: "right",
-            icon: ShieldCheck,
-            stats: ["Proxy Fortification", "Stealth Protocol"]
-        }
-    ];
-
     return (
-        <section id="features" className="py-32 relative overflow-hidden bg-background">
-            {/* Background Accents */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] -z-10" />
-
+        <section id="features" className="py-32 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-40">
+                <div className="text-center max-w-3xl mx-auto mb-20">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-5xl md:text-7xl font-heading font-black tracking-tighter mb-8 uppercase leading-none">
-                            High-Fidelity <br />
-                            <span className="text-primary">Data Extraction</span>
+                        <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tight mb-6 uppercase">
+                            Autonomous <span className="text-primary italic">Intelligence</span>
                         </h2>
-                        <p className="text-muted-foreground text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
-                            Transform the way you collect web data. Crawl Pilot delivers clean, structured intelligence by leveraging robust browser automation directly in your workflow.
+                        <p className="text-muted-foreground text-lg font-medium">
+                            Crawl Pilot isn't just a scraper. It's an AI-driven data engine that handles the complexity of the modern web for you.
                         </p>
                     </motion.div>
                 </div>
 
-                <div className="space-y-64">
-                    {featureItems.map((feature, index) => (
-                        <div key={index} className={`flex flex-col ${feature.align === 'right' ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 lg:gap-32 items-center`}>
-                            {/* Text Content */}
-                            <motion.div
-                                className="flex-1 text-left"
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                                <div className="inline-flex h-20 w-20 items-center justify-center rounded-[2rem] bg-primary/10 text-primary mb-10 ring-1 ring-primary/20 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
-                                    <feature.icon className="h-10 w-10" />
-                                </div>
-                                <h3 className="text-5xl md:text-6xl font-heading font-black mb-8 text-foreground tracking-tight leading-[0.9] uppercase">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-xl text-muted-foreground leading-relaxed mb-12 font-medium">
-                                    {feature.description}
-                                </p>
-
-                                <div className="grid grid-cols-2 gap-8 mb-12">
-                                    {feature.stats.map((stat, i) => (
-                                        <div key={i} className="flex items-center gap-4 group">
-                                            <div className="h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_rgba(99,102,241,1)] group-hover:scale-150 transition-transform" />
-                                            <span className="text-xs font-black uppercase tracking-[0.2em] text-foreground/80">{stat}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <Button variant="outline" className="h-16 px-10 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs gap-4 hover:scale-105 transition-all hover:bg-white/5">
-                                    See the Vision <ArrowRight className="h-4 w-4" />
-                                </Button>
-                            </motion.div>
-
-                            {/* Image Content (Advanced Mockup) */}
-                            <motion.div
-                                className="flex-1 w-full"
-                                initial={{ opacity: 0, y: 50, rotateY: feature.align === 'right' ? 10 : -10 }}
-                                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                                style={{ perspective: "1000px" }}
-                            >
-                                <div className="relative group">
-                                    {/* Ambient Glow */}
-                                    <div className="absolute -inset-16 bg-primary/10 blur-[100px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity" />
-
-                                    <div className="relative glass-panel rounded-3xl p-1.5 shadow-2xl transition-all duration-1000 group-hover:shadow-primary/10 group-hover:-translate-y-4">
-                                        <div className="flex items-center gap-2.5 px-6 py-4 border-b border-white/5 bg-white/5 rounded-t-[1.4rem]">
-                                            <div className="flex gap-2">
-                                                <div className="w-3.5 h-3.5 rounded-full bg-white/10" />
-                                                <div className="w-3.5 h-3.5 rounded-full bg-white/10" />
-                                                <div className="w-3.5 h-3.5 rounded-full bg-white/10" />
-                                            </div>
-                                            <div className="mx-auto w-3/5 h-7 rounded-xl bg-black/40 border border-white/5" />
-                                        </div>
-                                        <div className="overflow-hidden rounded-b-[1.4rem] bg-zinc-950">
-                                            <img
-                                                src={feature.image}
-                                                alt={feature.title}
-                                                className="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
-                                            />
-                                        </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6 auto-rows-[240px]">
+                    {features.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className={cn(
+                                "group relative overflow-hidden rounded-[2.5rem] glass-card p-8 flex flex-col justify-between",
+                                feature.className
+                            )}
+                        >
+                            <div className="relative z-10 flex flex-col h-full">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                        {feature.icon}
                                     </div>
+                                    <ArrowRight className="h-5 w-5 text-white/20 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                                 </div>
-                            </motion.div>
-                        </div>
+                                <div>
+                                    <h3 className="text-2xl font-heading font-black mb-3 uppercase tracking-tight">{feature.title}</h3>
+                                    <p className="text-muted-foreground text-sm font-medium leading-relaxed max-w-[280px]">
+                                        {feature.description}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {feature.image && (
+                                <div className="absolute bottom-0 right-0 w-3/4 h-1/2 opacity-20 group-hover:opacity-40 transition-opacity duration-500 transform translate-y-4 translate-x-4">
+                                    <img src={feature.image} alt={feature.title} className="w-full h-full object-cover rounded-tl-3xl border-l border-t border-white/10" />
+                                </div>
+                            )}
+
+                            {/* Hover Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </motion.div>
                     ))}
                 </div>
             </div>

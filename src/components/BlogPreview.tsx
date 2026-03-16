@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog-utils";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight, Clock } from "lucide-react";
+import { BlogPost } from "@/lib/blog-utils";
 
 // Map posts to generated images
 const POST_IMAGES: Record<string, string> = {
@@ -13,83 +17,79 @@ const POST_IMAGES: Record<string, string> = {
     "scraping-amazon-with-puppeteer": "/blog_amazon_puppeteer.png"
 };
 
-export function BlogPreview() {
-    const posts = getAllPosts().slice(0, 3);
+interface BlogPreviewProps {
+    posts: BlogPost[];
+}
 
-    if (posts.length === 0) return null;
+export function BlogPreview({ posts }: BlogPreviewProps) {
+    if (!posts || posts.length === 0) return null;
 
     return (
-        <section id="blog-preview" className="py-24 border-t border-white/5 relative bg-background">
+        <section id="blog-preview" className="py-24 relative">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="flex flex-col items-center text-center mb-16 px-4">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tighter mb-6 uppercase">
-                        Internal <span className="text-primary">Insights</span>
+                <div className="flex flex-col items-center text-center mb-20 text-balance">
+                    <h2 className="text-4xl md:text-5xl font-heading font-black tracking-tighter mb-6 uppercase">
+                        Technical <span className="text-primary italic">Insights</span>
                     </h2>
-                    <p className="max-w-[800px] text-muted-foreground md:text-xl font-medium leading-relaxed">
-                        Stay updated with the latest in AI-powered web scraping, data extraction strategies, and technical guides.
+                    <p className="max-w-2xl text-muted-foreground text-lg font-medium leading-relaxed">
+                        Master the art of data extraction with guides from the Pilot team.
                     </p>
                 </div>
 
-                <div className="grid gap-10 md:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-3">
                     {posts.map((post, i) => (
-                        <article
+                        <motion.article
                             key={post.slug}
-                            className="group flex flex-col glass-panel rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 relative"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="group flex flex-col glass-card rounded-[2.5rem] overflow-hidden hover:border-primary/40 transition-all"
                         >
                             <div className="aspect-[16/10] overflow-hidden relative">
                                 <img
                                     src={POST_IMAGES[post.slug] || "/placeholder-blog.png"}
                                     alt={post.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-90 group-hover:brightness-100"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
-                                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-[10px] font-black uppercase tracking-widest text-primary">
-                                    Technical Guide
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                <div className="absolute bottom-4 left-4 flex gap-2">
+                                    <div className="px-2 py-1 rounded-md bg-primary/20 backdrop-blur-md border border-primary/30 text-[8px] font-black uppercase tracking-widest text-primary">
+                                        Intelligence
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="flex flex-col flex-1 p-8 space-y-4">
-                                <div className="flex items-center gap-3 text-xs font-bold text-muted-foreground/60 uppercase tracking-widest">
-                                    <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}</time>
-                                    <span className="h-1 w-1 rounded-full bg-primary/40" />
+                            <div className="flex flex-col flex-1 p-8">
+                                <div className="flex items-center gap-2 mb-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
+                                    <Clock className="h-3 w-3" />
                                     <span>{post.readingTime}</span>
                                 </div>
 
-                                <h3 className="text-2xl font-heading font-bold mb-2 tracking-tight leading-tight group-hover:text-primary transition-colors">
+                                <h3 className="text-xl font-heading font-black mb-4 uppercase tracking-tight leading-tight group-hover:text-primary transition-colors">
                                     <Link href={`/blog/${post.slug}`}>
-                                        <span className="absolute inset-0 z-10" />
                                         {post.title}
                                     </Link>
                                 </h3>
 
-                                <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed font-medium">
+                                <p className="text-sm text-muted-foreground line-clamp-3 mb-8 font-medium">
                                     {post.description}
                                 </p>
 
-                                <div className="pt-4 mt-auto flex items-center gap-2 text-primary font-black text-xs uppercase tracking-wider group-hover:gap-4 transition-all">
-                                    Explore Deeply
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="h-4 w-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
+                                <div className="mt-auto">
+                                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:gap-4 transition-all">
+                                        Read Analysis <ArrowRight className="h-3 w-3" />
+                                    </Link>
                                 </div>
                             </div>
-                        </article>
+                        </motion.article>
                     ))}
                 </div>
 
                 <div className="mt-16 text-center">
                     <Link href="/blog">
-                        <Button variant="outline" className="h-14 px-12 glass-panel border-white/20 rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all">
-                            Browse All Insights
+                        <Button variant="outline" className="h-14 px-10 glass-panel border-white/5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-white/5 transition-all">
+                            View Research Library
                         </Button>
                     </Link>
                 </div>

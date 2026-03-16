@@ -10,48 +10,48 @@ import { getCheckoutUrl } from "@/app/actions/checkout";
 const plans = [
     {
         id: "BASIC",
-        name: "Basic",
+        name: "Developer",
         price: "$9",
-        description: "Perfect for hobbyists and explorers.",
+        description: "Perfect for secondary projects and side-hustles.",
         features: [
-            "Local Extraction (Enhanced)",
             "10,000 Extraction Credits",
             "CSV/JSON Export",
             "Community Support",
+            "Local Run Execution",
         ],
-        cta: "Get Basic",
+        cta: "Fast Track",
         icon: Zap,
         popular: false,
     },
     {
         id: "PRO",
-        name: "Pro",
+        name: "Power User",
         price: "$29",
-        description: "For power users and professionals.",
+        description: "For professionals needing scaling intelligence.",
         features: [
             "AI-Powered Selectors",
             "Auto-Pagination Support",
             "100,000 Extraction Credits",
-            "Priority Email Support",
+            "Priority Support",
             "Stealth Proxy Access",
         ],
-        cta: "Get Pro",
+        cta: "Fast Track",
         icon: Crown,
         popular: true,
     },
     {
         id: "TEAM",
-        name: "Team",
+        name: "Enterprise",
         price: "$99",
-        description: "Scalable solutions for growing teams.",
+        description: "Scalable solutions for high-frequency teams.",
         features: [
-            "Shared Dashboard",
+            "Shared Team Workspace",
             "Unlimited Extractions",
-            "Infinite API Credits",
-            "24/7 Dedicated Support",
-            "SLA Guarantees",
+            "Custom API Limits",
+            "Dedicated Engineer Support",
+            "SLA Reliability",
         ],
-        cta: "Get Team",
+        cta: "Contact Sales",
         icon: Shield,
         popular: false,
     },
@@ -83,44 +83,35 @@ export function Pricing() {
             }
 
             if (!variantId) {
-                const errorMsg = `Plan variant ID for "${plan.name}" (${plan.id}) is not configured. Please add NEXT_PUBLIC_LEMON_SQUEEZY_${plan.id}_VARIANT_ID to your environment variables.`;
+                const errorMsg = `Plan variant ID for "${plan.name}" (${plan.id}) is not configured.`;
                 console.error(errorMsg);
                 throw new Error(errorMsg);
             }
 
-            const result = await getCheckoutUrl(
-                variantId,
-                user.uid,
-                user.email || "",
-                user.displayName || ""
-            );
-
+            const result = await getCheckoutUrl(variantId, user.uid, user.email || "", user.displayName || "");
             if (result.error) throw new Error(result.error);
             if (result.url) window.location.href = result.url;
         } catch (error) {
             console.error("Upgrade failed:", error);
-            alert("Failed to start checkout. Please try again or contact support.");
+            alert("Checkout failed. Please try again.");
         } finally {
             setLoading(null);
         }
     };
 
     return (
-        <section id="pricing" className="py-24 relative overflow-hidden bg-background">
-            {/* Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -z-10" />
-
+        <section id="pricing" className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="text-4xl md:text-5xl font-heading font-black tracking-tighter mb-6 uppercase">
-                        Choose Your <span className="text-primary">Plan</span>
+                <div className="text-center max-w-2xl mx-auto mb-20">
+                    <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tight mb-6 uppercase">
+                        Transparent <span className="text-primary italic">Pricing</span>
                     </h2>
-                    <p className="text-muted-foreground text-lg md:text-xl font-medium leading-relaxed">
-                        Scale your data extraction from small scripts to enterprise-grade pipelines with simple, transparent pricing.
+                    <p className="text-muted-foreground text-lg font-medium">
+                        Powerful data shouldn't break the bank. Choose the plan that fits your scale.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={plan.name}
@@ -128,26 +119,22 @@ export function Pricing() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className={`relative group flex flex-col p-8 rounded-3xl transition-all duration-500 hover:-translate-y-2 ${plan.popular
-                                ? "glass-panel border-primary/50 shadow-[0_0_40px_rgba(99,102,241,0.2)]"
-                                : "glass-panel border-white/5"
-                                }`}
+                            className={`relative group flex flex-col p-8 rounded-[2.5rem] glass-card ${plan.popular ? "border-primary/40 shadow-2xl shadow-primary/10" : "border-white/5"}`}
                         >
                             {plan.popular && (
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 stellar-gradient rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-primary/30">
-                                    Most Popular
+                                <div className="absolute top-0 right-10 translate-y-[-50%] px-4 py-1.5 stellar-gradient rounded-full text-[10px] font-black uppercase tracking-widest">
+                                    Recommended
                                 </div>
                             )}
 
                             <div className="mb-8">
-                                <div className={`h-12 w-12 rounded-2xl flex items-center justify-center mb-6 ring-1 ${plan.popular ? "bg-primary/20 text-primary ring-primary/30" : "bg-white/5 text-zinc-400 ring-white/10"
-                                    }`}>
+                                <div className={`h-12 w-12 rounded-2xl flex items-center justify-center mb-6 ring-1 ${plan.popular ? "bg-primary/10 text-primary ring-primary/20" : "bg-white/5 text-zinc-400 ring-white/10"}`}>
                                     <plan.icon className="h-6 w-6" />
                                 </div>
-                                <h3 className="text-2xl font-heading font-bold mb-2">{plan.name}</h3>
+                                <h3 className="text-2xl font-heading font-black mb-1 uppercase tracking-tight">{plan.name}</h3>
                                 <div className="flex items-baseline gap-1 mb-4">
-                                    <span className="text-4xl font-black">{plan.price}</span>
-                                    {plan.price !== "Custom" && <span className="text-muted-foreground text-sm">/month</span>}
+                                    <span className="text-5xl font-black">{plan.price}</span>
+                                    <span className="text-muted-foreground text-xs font-black uppercase tracking-widest opacity-40">/mo</span>
                                 </div>
                                 <p className="text-sm text-muted-foreground font-medium leading-relaxed">
                                     {plan.description}
@@ -158,18 +145,16 @@ export function Pricing() {
                                 {plan.features.map((feature) => (
                                     <li key={feature} className="flex items-start gap-3 text-sm font-medium text-zinc-400">
                                         <Check className="h-5 w-5 text-primary shrink-0" />
-                                        <span>{feature}</span>
+                                        <span className="uppercase text-[10px] font-black tracking-widest">{feature}</span>
                                     </li>
                                 ))}
                             </ul>
 
                             <Button
                                 size="lg"
-                                variant={plan.popular ? "default" : "outline"}
                                 onClick={() => handleUpgrade(plan)}
                                 disabled={loading === plan.id}
-                                className={`w-full h-14 rounded-2xl font-black uppercase tracking-widest text-xs gap-2 transition-all ${plan.popular ? "bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/20" : "glass-panel border-white/10"
-                                    }`}
+                                className={`w-full h-14 rounded-2xl font-black uppercase tracking-widest text-[10px] gap-2 transition-all ${plan.popular ? "bg-primary hover:bg-primary/90" : "bg-white/5 border border-white/10 hover:bg-white/10"}`}
                             >
                                 {loading === plan.id ? (
                                     <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

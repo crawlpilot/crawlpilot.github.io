@@ -1,72 +1,91 @@
+"use client";
+
 import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin, Youtube, Globe } from "lucide-react";
+
+const footerLinks = [
+    {
+        title: "Intelligence",
+        links: [
+            { name: "Features", href: "/#features" },
+            { name: "How it works", href: "/#how-it-works" },
+            { name: "Solutions", href: "/#solutions" },
+            { name: "Pricing", href: "/#pricing" },
+        ]
+    },
+    {
+        title: "Resources",
+        links: [
+            { name: "Knowledge Library", href: "/resources" },
+            { name: "Pilot Research", href: "/blog" },
+            { name: "Documentation", href: "https://github.com/crawlpilot" },
+            { name: "Community Support", href: "/crawlpilot/support" },
+        ]
+    },
+    {
+        title: "Protocol",
+        links: [
+            { name: "Terms of Service", href: "/crawlpilot/terms" },
+            { name: "Privacy Policy", href: "/crawlpilot/privacy" },
+            { name: "Compliance", href: "/blog/privacy-and-ethics" },
+            { name: "Security", href: "#" },
+        ]
+    }
+];
 
 export function Footer() {
     return (
-        <footer className="bg-background border-t border-white/5 py-20 text-muted-foreground relative overflow-hidden">
-            {/* Ambient Background Glow */}
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10" />
-
+        <footer className="border-t border-white/5 pt-24 pb-12 relative overflow-hidden bg-background">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-                    <div className="col-span-1 md:col-span-1">
-                        <Link href="/" className="flex items-center gap-3 font-heading font-black text-2xl text-foreground mb-8 group uppercase tracking-tighter">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 p-2 transition-transform group-hover:scale-110 ring-1 ring-primary/20">
-                                <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+                    <div className="space-y-8 col-span-1 md:col-span-1 lg:col-span-1">
+                        <Link href="/" className="flex items-center gap-3 font-bold text-xl tracking-tight group">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-indigo-600 p-2 shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
+                                <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain brightness-0 invert" />
                             </div>
-                            <span>Crawl Pilot</span>
+                            <span className="font-heading font-black uppercase tracking-tight">Crawl Pilot</span>
                         </Link>
-                        <p className="text-md font-medium leading-relaxed mb-8 max-w-xs">
-                            The professional, open-source AI infrastructure for privacy-first web data extraction.
+                        <p className="text-zinc-400 text-sm font-medium leading-relaxed max-w-sm uppercase text-[10px] tracking-widest opacity-60">
+                            The autonomous data extraction engine for elite intelligence operations. Zero code. Infinite scale.
                         </p>
-                        <div className="flex gap-6">
-                            <Link href="https://github.com/crawlpilot/crawlPilot" className="p-3 rounded-xl bg-white/5 hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
-                                <Github className="h-5 w-5" />
-                                <span className="sr-only">GitHub</span>
-                            </Link>
-                            <Link href="https://www.linkedin.com/in/crawl-pilot-a862833b1/" className="p-3 rounded-xl bg-white/5 hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
-                                <Linkedin className="h-5 w-5" />
-                                <span className="sr-only">LinkedIn</span>
-                            </Link>
+                        <div className="flex gap-4">
+                            {[Twitter, Github, Linkedin, Youtube].map((Icon, i) => (
+                                <a key={i} href="#" className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center text-zinc-400 hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
+                                    <Icon className="h-4 w-4" />
+                                </a>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="md:ml-auto">
-                        <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Platform</h3>
-                        <ul className="space-y-4 text-sm font-bold">
-                            <li><Link href="#features" className="hover:text-primary transition-colors">Capabilities</Link></li>
-                            {/* <li><Link href="#pricing" className="hover:text-primary transition-colors">Pricing Plans</Link></li> */}
-                            <li><Link href="/blog" className="hover:text-primary transition-colors">Internal Blog</Link></li>
-                        </ul>
-                    </div>
-
-                    <div className="md:ml-auto">
-                        <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Resources</h3>
-                        <ul className="space-y-4 text-sm font-bold">
-                            <li><Link href="/crawlpilot/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
-                            <li><Link href="/crawlpilot/support" className="hover:text-primary transition-colors">Technical Support</Link></li>
-                            <li><Link href="https://github.com/crawlpilot/crawlPilot/discussions" className="hover:text-primary transition-colors">Discussions</Link></li>
-                        </ul>
-                    </div>
-
-                    <div className="md:ml-auto">
-                        <h3 className="font-heading font-black text-xs uppercase tracking-[0.2em] text-foreground/50 mb-8">Legal</h3>
-                        <ul className="space-y-4 text-sm font-bold">
-                            <li><Link href="/crawlpilot/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                            <li><Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-                        </ul>
-                    </div>
+                    {footerLinks.map((group) => (
+                        <div key={group.title} className="space-y-6">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">{group.title}</h4>
+                            <ul className="space-y-4">
+                                {group.links.map((link) => (
+                                    <li key={link.name}>
+                                        <Link href={link.href} className="text-zinc-400 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest">
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
                 </div>
 
-                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-black uppercase tracking-widest opacity-60">
-                    <p>&copy; {new Date().getFullYear()} Crawl Pilot AI. Built for the future of data.</p>
-                    <div className="flex gap-10">
-                        <Link href="/crawlpilot/privacy" className="hover:text-primary transition-colors">Privacy</Link>
-                        <Link href="/crawlpilot/terms" className="hover:text-primary transition-colors">Terms</Link>
-                        <Link href="/crawlpilot/docs" className="hover:text-primary transition-colors">Legal</Link>
+                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                        &copy; {new Date().getFullYear()} Crawl Pilot Intelligence Group. All rights reserved.
+                    </p>
+                    <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                            <Globe className="h-3 w-3" /> System Status: <span className="text-primary italic">Optimal</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-primary/5 blur-[120px] rounded-full -z-10" />
         </footer>
     );
 }

@@ -4,6 +4,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, Clock, Share2 } from "lucide-react";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -21,27 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     try {
         const post = getPostBySlug(slug);
         return {
-            title: post.title,
+            title: `${post.title} | CrawlPilot`,
             description: post.description,
             alternates: {
                 canonical: `/blog/${slug}`,
             },
-            openGraph: {
-                title: post.title,
-                description: post.description,
-                type: "article",
-                publishedTime: post.date,
-                url: `https://crawlpilot.github.io/blog/${slug}`,
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: post.title,
-                description: post.description,
-            },
         };
     } catch (e) {
         return {
-            title: "Post Not Found | CrawlPilot",
+            title: "Research Not Found",
         };
     }
 }
@@ -59,38 +49,52 @@ export default async function BlogPostPage({ params }: Props) {
     return (
         <div className="min-h-screen bg-background flex flex-col">
             <Navbar />
-            <main className="flex-1 pt-24 pb-16">
+            <main className="flex-1 pt-32 pb-24">
                 <article className="container mx-auto px-4 md:px-6 max-w-3xl">
-                    <header className="mb-8">
-                        <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
-                            <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                            <span>•</span>
-                            <span>{post.readingTime}</span>
+                    <Link href="/blog" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors mb-12 group">
+                        <ArrowLeft className="h-3 w-3 group-hover:-translate-x-1 transition-transform" /> Back to Research Library
+                    </Link>
+
+                    <header className="mb-16">
+                        <div className="flex items-center gap-4 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
+                            <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+                            <span className="h-1 w-1 rounded-full bg-primary/40" />
+                            <div className="flex items-center gap-1.5">
+                                <Clock className="h-3 w-3" />
+                                <span>{post.readingTime}</span>
+                            </div>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
+                        <h1 className="text-4xl md:text-6xl font-heading font-black tracking-tight mb-10 uppercase leading-[0.95]">
                             {post.title}
                         </h1>
-                        <p className="text-xl text-muted-foreground italic border-l-4 border-primary pl-4 py-2 mb-8">
+                        <p className="text-xl text-muted-foreground font-medium leading-relaxed italic border-l-4 border-primary/20 pl-6">
                             {post.description}
                         </p>
                     </header>
 
-                    <div className="prose prose-invert prose-blue max-w-none">
+                    <div className="prose prose-invert prose-zinc max-w-none 
+                        prose-headings:font-heading prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-foreground
+                        prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:font-medium text-lg
+                        prose-strong:text-foreground prose-strong:font-black
+                        prose-code:text-primary prose-code:bg-primary/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                        prose-pre:bg-zinc-900/50 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-2xl">
                         <MarkdownRenderer content={post.content} />
                     </div>
 
-                    <hr className="my-12 border-border" />
-
-                    <div className="flex items-center justify-between">
+                    <div className="mt-20 pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-8">
                         <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                            <div className="h-12 w-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-black text-xs uppercase">
                                 CP
                             </div>
                             <div>
-                                <p className="font-medium">CrawlPilot Team</p>
-                                <p className="text-sm text-muted-foreground">The privacy-first infrastructure for AI scraping.</p>
+                                <p className="text-sm font-black uppercase tracking-tight">CrawlPilot Intelligence</p>
+                                <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest opacity-60">Internal Research Unit</p>
                             </div>
                         </div>
+
+                        <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
+                            <Share2 className="h-3 w-3" /> Share Intelligence
+                        </button>
                     </div>
                 </article>
             </main>

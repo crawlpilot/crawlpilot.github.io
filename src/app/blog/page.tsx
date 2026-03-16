@@ -3,10 +3,11 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getAllPosts } from "@/lib/blog-utils";
 import { Metadata } from "next";
+import { Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Blog | CrawlPilot",
-    description: "Latest updates, tutorials, and insights from the CrawlPilot team. Learn more about AI-powered web scraping and data extraction.",
+    title: "Research Library | CrawlPilot",
+    description: "Technical analysis, guides, and industrial insights into the future of web intelligence.",
     alternates: {
         canonical: "/blog",
     },
@@ -18,56 +19,51 @@ export default async function BlogPage() {
     return (
         <div className="min-h-screen bg-background flex flex-col">
             <Navbar />
-            <main className="flex-1 pt-24 pb-16">
-                <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-                    <header className="mb-12">
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                            CrawlPilot Blog
+            <main className="flex-1 pt-32 pb-24">
+                <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+                    <header className="mb-20 text-balance text-center">
+                        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                            The Documentation Hub
+                        </div>
+                        <h1 className="text-5xl md:text-7xl font-heading font-black tracking-tighter mb-8 uppercase leading-[0.9]">
+                            Pilot <span className="text-primary italic">Research</span>
                         </h1>
-                        <p className="text-xl text-muted-foreground">
-                            Insights, tutorials, and news about the future of web scraping.
+                        <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+                            Technical analysis and strategic deep-dives into autonomous web intelligence.
                         </p>
                     </header>
 
-                    <div className="grid gap-12">
+                    <div className="grid gap-6">
                         {posts.map((post) => (
-                            <article key={post.slug} className="group relative flex flex-col items-start">
-                                <div className="flex items-center gap-3 mb-3 text-sm text-muted-foreground">
-                                    <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                                    <span>•</span>
-                                    <span>{post.readingTime}</span>
-                                </div>
-                                <h2 className="text-2xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors">
-                                    <Link href={`/blog/${post.slug}`}>
-                                        <span className="absolute -inset-y-2.5 -inset-x-4 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/50 rounded-2xl" />
-                                        <span className="relative z-10">{post.title}</span>
+                            <article key={post.slug} className="group relative glass-card p-10 rounded-[2.5rem] border-white/5 hover:border-primary/40 transition-all flex flex-col md:flex-row gap-8 items-start">
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-4 mb-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
+                                        <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+                                        <span className="h-1 w-1 rounded-full bg-primary/40" />
+                                        <div className="flex items-center gap-1.5">
+                                            <Clock className="h-3 w-3" />
+                                            <span>{post.readingTime}</span>
+                                        </div>
+                                    </div>
+                                    <h2 className="text-3xl font-heading font-black mb-4 tracking-tight uppercase leading-none group-hover:text-primary transition-colors">
+                                        <Link href={`/blog/${post.slug}`}>
+                                            {post.title}
+                                        </Link>
+                                    </h2>
+                                    <p className="text-muted-foreground font-medium leading-relaxed mb-6 line-clamp-2">
+                                        {post.description}
+                                    </p>
+                                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:gap-4 transition-all">
+                                        Open Full Research <ArrowRight className="h-3 w-3" />
                                     </Link>
-                                </h2>
-                                <p className="relative z-10 text-muted-foreground mb-4 line-clamp-3">
-                                    {post.description}
-                                </p>
-                                <div className="relative z-10 flex items-center text-primary font-medium text-sm">
-                                    Read more
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
                                 </div>
                             </article>
                         ))}
                     </div>
 
                     {posts.length === 0 && (
-                        <div className="text-center py-20">
-                            <p className="text-muted-foreground">Stay tuned! Our first blog post is coming soon.</p>
+                        <div className="text-center py-32 rounded-[2.5rem] bg-white/[0.02] border border-dashed border-white/10">
+                            <p className="text-muted-foreground font-medium italic">Our internal library is synchronized soon.</p>
                         </div>
                     )}
                 </div>

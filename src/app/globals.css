@@ -4,29 +4,29 @@
 
 :root {
   /* Premium Dark Palette - Deep Indigo-Black */
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #030712;
+  --foreground: #f9fafb;
 
-  /* Primary - Electric Indigo to Blue */
+  /* Primary - Vibrant Indigo/Violet */
   --primary: #6366f1;
   --primary-foreground: #ffffff;
 
-  /* Secondary - Deep Slate */
-  --secondary: #1e293b;
-  --secondary-foreground: #f1f5f9;
+  /* Secondary - Sleek Slate/Blue-Grey */
+  --secondary: #111827;
+  --secondary-foreground: #f3f4f6;
 
-  /* Muted */
-  --muted: #64748b;
-  --muted-foreground: #94a3b8;
+  /* Muted - For less emphasis */
+  --muted: #4b5563;
+  --muted-foreground: #9ca3af;
 
-  /* Accent */
-  --accent: #1e293b;
-  --accent-foreground: #f8fafc;
+  /* Accent - High contrast highlight */
+  --accent: #818cf8;
+  --accent-foreground: #ffffff;
 
-  /* Border */
-  --border: #334155;
-  --input: #334155;
-  --ring: #818cf8;
+  /* Border - Subtle glass borders */
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: #6366f1;
 
   --radius: 0.75rem;
 }
@@ -87,6 +87,32 @@
 
   .glass-panel {
     @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .glass-card {
+    @apply bg-secondary/40 backdrop-blur-md border border-white/5 hover:border-white/20 transition-all duration-300;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white to-white/40 bg-clip-text text-transparent;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
   }
 
   @keyframes gradient-shift {
