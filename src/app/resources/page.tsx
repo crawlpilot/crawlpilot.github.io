@@ -18,7 +18,7 @@ const resourceGroups = [
     {
         title: "Developer Tools",
         items: [
-            { title: "Chrome Extension", icon: Globe, desc: "The point-and-click extraction engine.", link: "https://chromewebstore.google.com" },
+            { title: "Chrome Extension", icon: Globe, desc: "The point-and-click extraction engine.", link: "https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" },
             { title: "Developer SDK", icon: Terminal, desc: "Native integration for Node.js and Python.", link: "https://github.com/crawlpilot" },
             { title: "Stealth Protocols", icon: ShieldCheck, desc: "Documentation on our anti-blocking tech.", link: "#" },
         ]
@@ -115,9 +115,11 @@ export default function ResourcesPage() {
                             <p className="text-white/80 font-medium text-lg max-w-2xl mx-auto mb-10">
                                 Join 5,000+ developers building the future of web intelligence with Crawl Pilot.
                             </p>
-                            <Button size="lg" className="h-16 px-12 rounded-2xl bg-white text-primary hover:bg-zinc-100 font-black uppercase tracking-widest text-[10px] shadow-2xl">
-                                Install Extension Now
-                            </Button>
+                            <Link href="https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" target="_blank">
+                                <Button size="lg" className="h-16 px-12 rounded-2xl bg-white text-primary hover:bg-zinc-100 font-black uppercase tracking-widest text-[10px] shadow-2xl">
+                                    Install Extension Now
+                                </Button>
+                            </Link>
                         </div>
                         {/* Textures */}
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />

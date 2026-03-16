@@ -5,7 +5,12 @@ import { Footer } from "@/components/Footer";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Clock, Share2 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { BlogHeader } from "@/components/blog/BlogHeader";
+import { Button } from "@/components/ui/button";
+
+import { ReadingProgressBar } from "@/components/blog/ReadingProgressBar";
+import { TableOfContents } from "@/components/blog/TableOfContents";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -23,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     try {
         const post = getPostBySlug(slug);
         return {
-            title: `${post.title} | CrawlPilot`,
+            title: `${post.title} | CrawlPilot Intelligence`,
             description: post.description,
             alternates: {
                 canonical: `/blog/${slug}`,
@@ -48,56 +53,53 @@ export default async function BlogPostPage({ params }: Props) {
 
     return (
         <div className="min-h-screen bg-background flex flex-col">
+            <ReadingProgressBar />
             <Navbar />
-            <main className="flex-1 pt-32 pb-24">
-                <article className="container mx-auto px-4 md:px-6 max-w-3xl">
-                    <Link href="/blog" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors mb-12 group">
-                        <ArrowLeft className="h-3 w-3 group-hover:-translate-x-1 transition-transform" /> Back to Research Library
-                    </Link>
 
-                    <header className="mb-16">
-                        <div className="flex items-center gap-4 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
-                            <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
-                            <span className="h-1 w-1 rounded-full bg-primary/40" />
-                            <div className="flex items-center gap-1.5">
-                                <Clock className="h-3 w-3" />
-                                <span>{post.readingTime}</span>
-                            </div>
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-heading font-black tracking-tight mb-10 uppercase leading-[0.95]">
-                            {post.title}
-                        </h1>
-                        <p className="text-xl text-muted-foreground font-medium leading-relaxed italic border-l-4 border-primary/20 pl-6">
-                            {post.description}
-                        </p>
-                    </header>
-
-                    <div className="prose prose-invert prose-zinc max-w-none 
-                        prose-headings:font-heading prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-foreground
-                        prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:font-medium text-lg
-                        prose-strong:text-foreground prose-strong:font-black
-                        prose-code:text-primary prose-code:bg-primary/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-                        prose-pre:bg-zinc-900/50 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-2xl">
-                        <MarkdownRenderer content={post.content} />
+            <main className="flex-1 pt-32 pb-32">
+                <article className="container mx-auto px-4 md:px-6">
+                    {/* Hero Header */}
+                    <div className="max-w-4xl mx-auto mb-20 text-center">
+                        <BlogHeader post={post} />
                     </div>
 
-                    <div className="mt-20 pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-8">
-                        <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-black text-xs uppercase">
-                                CP
+                    {/* Layout with Sidebar */}
+                    <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+                        <div className="flex-1 max-w-3xl mx-auto">
+                            <div className="prose-container mb-24">
+                                <MarkdownRenderer content={post.content} />
                             </div>
-                            <div>
-                                <p className="text-sm font-black uppercase tracking-tight">CrawlPilot Intelligence</p>
-                                <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest opacity-60">Internal Research Unit</p>
+
+                            {/* End of Article CTA */}
+                            <div className="glass-card p-12 rounded-[3rem] border-primary/10 relative overflow-hidden text-center">
+                                <div className="relative z-10">
+                                    <h3 className="text-3xl font-heading font-black uppercase mb-6">Scale Your Intelligence</h3>
+                                    <p className="text-muted-foreground font-medium mb-10 max-w-lg mx-auto">
+                                        Join 5,000+ developers automating their data pipelines with Crawl Pilot. Zero code, infinite scale.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                                        <Link href="https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" target="_blank">
+                                            <Button size="lg" className="rounded-2xl px-10 h-16 bg-primary font-black uppercase tracking-widest text-xs">
+                                                Install Extension
+                                            </Button>
+                                        </Link>
+                                        <Link href="/blog" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary">
+                                            Browse More Research
+                                        </Link>
+                                    </div>
+                                </div>
+                                <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/10 blur-[80px] rounded-full" />
                             </div>
                         </div>
 
-                        <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
-                            <Share2 className="h-3 w-3" /> Share Intelligence
-                        </button>
+                        {/* Sticky Table of Contents (Right) */}
+                        <div className="lg:w-64 flex-shrink-0">
+                            <TableOfContents />
+                        </div>
                     </div>
                 </article>
             </main>
+
             <Footer />
         </div>
     );

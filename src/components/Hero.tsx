@@ -60,9 +60,11 @@ export function Hero() {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                     >
-                        <Button size="lg" className="h-16 px-10 rounded-2xl bg-primary font-black uppercase tracking-widest text-xs gap-3 hover:scale-105 transition-all shadow-xl shadow-primary/20">
-                            Install Chrome Extension <ArrowRight className="h-4 w-4" />
-                        </Button>
+                        <Link href="https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" target="_blank">
+                            <Button size="lg" className="h-16 px-10 rounded-2xl bg-primary font-black uppercase tracking-widest text-xs gap-3 hover:scale-105 transition-all shadow-xl shadow-primary/20">
+                                Install Chrome Extension <ArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
                         <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs gap-3 hover:bg-white/5 flex items-center">
                             Watch Analysis <PlayCircle className="h-4 w-4 ml-1" />
                         </Button>

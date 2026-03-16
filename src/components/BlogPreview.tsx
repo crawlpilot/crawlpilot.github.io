@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
-import { BlogPost } from "@/lib/blog-utils";
+import type { BlogPost } from "@/types/blog";
 
 // Map posts to generated images
 const POST_IMAGES: Record<string, string> = {
@@ -87,11 +87,18 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
                 </div>
 
                 <div className="mt-16 text-center">
-                    <Link href="/blog">
-                        <Button variant="outline" className="h-14 px-10 glass-panel border-white/5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-white/5 transition-all">
-                            View Research Library
-                        </Button>
-                    </Link>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <Link href="https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" target="_blank">
+                            <Button size="lg" className="h-16 px-10 rounded-2xl bg-white text-primary hover:bg-zinc-100 font-black uppercase tracking-widest text-xs">
+                                Install Extension
+                            </Button>
+                        </Link>
+                        <Link href="/blog">
+                            <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl border-white/20 hover:bg-white/10 text-white font-black uppercase tracking-widest text-xs">
+                                Browse The Library
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

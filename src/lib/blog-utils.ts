@@ -1,17 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { BlogPost } from "@/types/blog";
 
 const postsDirectory = path.join(process.cwd(), 'src/content/blog');
-
-export interface BlogPost {
-    slug: string;
-    title: string;
-    date: string;
-    description: string;
-    content: string;
-    readingTime: string;
-}
 
 export function getPostSlugs() {
     if (!fs.existsSync(postsDirectory)) return [];
@@ -37,6 +29,12 @@ export function getPostBySlug(slug: string): BlogPost {
         description: data.description,
         content,
         readingTime,
+        author: data.author || {
+            name: "CrawlPilot HQ",
+            role: "Intelligence Unit",
+            avatar: "/icon.png"
+        },
+        category: data.category || "Research",
     };
 }
 
