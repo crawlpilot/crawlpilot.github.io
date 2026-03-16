@@ -29,12 +29,9 @@ export function getPostBySlug(slug: string): BlogPost {
         description: data.description,
         content,
         readingTime,
-        author: data.author || {
-            name: "CrawlPilot HQ",
-            role: "Intelligence Unit",
-            avatar: "/icon.png"
-        },
-        category: data.category || "Research",
+        author: data.author || { name: 'Pilot Intelligence', role: 'Research Analyst', avatar: '/icon.png' },
+        category: data.category || 'Research',
+        image: data.image || null,
     };
 }
 

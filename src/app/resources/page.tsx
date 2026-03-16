@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import Link from "next/link";
 import { FileText, PlayCircle, BookOpen, Terminal, Download, Globe, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

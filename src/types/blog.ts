@@ -11,4 +11,5 @@ export interface BlogPost {
         avatar?: string;
     };
     category?: string;
+    image?: string;
 }

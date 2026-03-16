@@ -59,9 +59,24 @@ export default async function BlogPostPage({ params }: Props) {
             <main className="flex-1 pt-32 pb-32">
                 <article className="container mx-auto px-4 md:px-6">
                     {/* Hero Header */}
-                    <div className="max-w-4xl mx-auto mb-20 text-center">
+                    <div className="max-w-4xl mx-auto mb-16 text-center">
                         <BlogHeader post={post} />
                     </div>
+
+                    {post.image && (
+                        <div className="max-w-5xl mx-auto mb-20 relative group">
+                            <div className="relative aspect-[21/9] rounded-[3rem] overflow-hidden glass-panel p-2 shadow-2xl border-white/10">
+                                <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    className="w-full h-full object-cover rounded-[2.5rem] opacity-90 group-hover:opacity-100 transition-opacity"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+                            </div>
+                            {/* Decorative glow */}
+                            <div className="absolute -inset-4 bg-primary/20 blur-[60px] -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        </div>
+                    )}
 
                     {/* Layout with Sidebar */}
                     <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
