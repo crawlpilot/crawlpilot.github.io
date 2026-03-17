@@ -120,8 +120,8 @@ export function Hero() {
                                     <Database className="h-5 w-5" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-[10px] font-black text-primary uppercase tracking-widest">Active Sync</div>
-                                    <div className="text-sm font-black uppercase">PostgreSQL</div>
+                                    <div className="text-[10px] font-black text-primary uppercase tracking-widest">Scraper Engine</div>
+                                    <div className="text-sm font-black uppercase">Attribute Extraction</div>
                                 </div>
                             </div>
                         </div>
@@ -132,8 +132,8 @@ export function Hero() {
                                     <ShieldCheck className="h-5 w-5" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Stealth Engine</div>
-                                    <div className="text-sm font-black uppercase">Verified</div>
+                                    <div className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Stealth Protocol</div>
+                                    <div className="text-sm font-black uppercase">Undetectable</div>
                                 </div>
                             </div>
                         </div>

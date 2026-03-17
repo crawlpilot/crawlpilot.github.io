@@ -151,10 +151,17 @@ export default function EcommerceSolution() {
                                     </div>
                                 </div>
                                 <div className="relative">
-                                    <div className="aspect-video rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden">
-                                        <div className="text-center space-y-4 px-8">
-                                            <MousePointer2 className="h-12 w-12 text-primary mx-auto animate-bounce" />
-                                            <p className="text-sm font-black uppercase tracking-widest opacity-40">Interactive Data Selection</p>
+                                    <div className="relative aspect-video rounded-2xl bg-black/40 border border-white/10 overflow-hidden group">
+                                        <img
+                                            src="/walmart-demo.gif"
+                                            alt="Ecommerce Extraction Demo"
+                                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                            loading="lazy"
+                                        />
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <div className="px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
+                                                Live Demo
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
