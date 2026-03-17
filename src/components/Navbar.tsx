@@ -17,8 +17,8 @@ export function Navbar() {
         {
             name: "Product",
             dropdown: [
-                { name: "Features", href: "#features", icon: <Sparkles className="h-4 w-4" /> },
-                { name: "How it works", href: "#how-it-works", icon: <Rocket className="h-4 w-4" /> },
+                { name: "Features", href: "/#features", icon: <Sparkles className="h-4 w-4" /> },
+                { name: "How it works", href: "/#how-it-works", icon: <Rocket className="h-4 w-4" /> },
                 { name: "Changelog", href: "/changelog", icon: <Terminal className="h-4 w-4" /> },
             ]
         },
@@ -38,7 +38,7 @@ export function Navbar() {
                 { name: "Docs", href: "https://github.com/crawlpilot" },
             ]
         },
-        { name: "Pricing", href: "#pricing" },
+        { name: "Pricing", href: "/#pricing" },
     ];
 
     return (
