@@ -33,7 +33,7 @@ const plans = [
             "Auto-Pagination Support",
             "100,000 Extraction Credits",
             "Priority Support",
-            "Stealth Proxy Access",
+            "Advanced AI Selectors",
         ],
         cta: "Fast Track",
         icon: Crown,

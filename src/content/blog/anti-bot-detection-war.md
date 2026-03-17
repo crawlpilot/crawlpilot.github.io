@@ -120,4 +120,4 @@ Tools like **PerimeterX** are not simply blocking scripts; they are analyzing di
 
 ---
 
-**Ready to bypass the noise and get the data you need?** [Learn how Crawl Pilot handles bot detection](https://crawlpilot.tech).
+**Ready to get the data you need?** [Learn how Crawl Pilot handles web extraction](https://crawlpilot.tech).

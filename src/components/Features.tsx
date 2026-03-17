@@ -14,8 +14,8 @@ const features = [
         image: "/screenshots/screenshot4.png",
     },
     {
-        title: "Smart Crawling",
-        description: "Next-gen headless browsing that mimics human behavior to bypass rate limits naturally.",
+        title: "Smart Navigation",
+        description: "Adaptive browsing that mimics human behavior to navigate complex websites naturally.",
         icon: <Zap className="h-6 w-6" />,
         className: "md:col-span-1 md:row-span-1",
     },
@@ -26,8 +26,8 @@ const features = [
         className: "md:col-span-1 md:row-span-1",
     },
     {
-        title: "Global Stealth",
-        description: "Built-in proxy shielding and device fingerprint rotation for 100% anonymity.",
+        title: "Local Execution",
+        description: "Runs completely in your browser. No external servers or proxies required.",
         icon: <ShieldCheck className="h-6 w-6" />,
         className: "md:col-span-1 md:row-span-2",
         image: "/screenshots/screenshot3.png",

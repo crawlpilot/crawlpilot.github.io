@@ -49,7 +49,7 @@ export default function StealthGeoPrivacyPage() {
                         <div className="grid gap-4 md:grid-cols-2">
                             <div className="p-4 rounded-lg bg-zinc-900 border border-zinc-800">
                                 <h3 className="font-mono text-sm font-bold text-primary mb-2">debugger</h3>
-                                <p className="text-sm text-muted-foreground">Used for advanced location spoofing via the Chrome DevTools Protocol to ensure spoofing is undetectable.</p>
+                                <p className="text-sm text-muted-foreground">Used for advanced location spoofing via the Chrome DevTools Protocol to ensure spoofing is reliable.</p>
                             </div>
                             <div className="p-4 rounded-lg bg-zinc-900 border border-zinc-800">
                                 <h3 className="font-mono text-sm font-bold text-primary mb-2">geolocation</h3>

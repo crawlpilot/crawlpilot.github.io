@@ -13,8 +13,8 @@ export function ProblemSolution() {
         },
         {
             problem: "Strict Rate Limits",
-            solution: "Smart Stealth Protocols",
-            desc: "Bypass blocks with human-like browser behavior and automated proxy rotation."
+            solution: "Human-Like Navigation",
+            desc: "Avoid detection with human-like browser behavior and automated interaction patterns."
         },
         {
             problem: "Complex Auth Walls",
@@ -83,7 +83,7 @@ export function ProblemSolution() {
                             <div className="relative w-full h-full glass-panel rounded-[2rem] p-12 flex flex-col items-center justify-center text-center">
                                 <Zap className="h-20 w-20 text-primary mb-8 animate-pulse" />
                                 <h3 className="text-3xl font-heading font-black mb-4 uppercase tracking-tighter">99.9% Reliable</h3>
-                                <p className="text-muted-foreground font-medium">Our stealth engine ensures 24/7 data flow without manual intervention.</p>
+                                <p className="text-muted-foreground font-medium">Our browser engine ensures 24/7 data flow without manual intervention.</p>
 
                                 <div className="mt-10 grid grid-cols-2 gap-4 w-full">
                                     <div className="p-4 rounded-xl bg-white/5 border border-white/5">

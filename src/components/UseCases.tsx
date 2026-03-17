@@ -22,40 +22,39 @@ const categories = [
         id: "ecommerce",
         name: "E-commerce",
         icon: ShoppingCart,
-        title: "🛒 E-commerce Data",
-        description: "Scale your price monitoring and competitor research with automated intelligence.",
+        title: "🛒 E-commerce Extraction",
+        description: "Extract product titles, prices, images, and links from marketplaces.",
         items: [
-            { name: "Amazon", domain: "amazon.com", desc: "Prices, ratings, and stock status." },
-            { name: "Flipkart", domain: "flipkart.com", desc: "Listings and review sentiment." },
-            { name: "Shopify", domain: "shopify.com", desc: "Catalog extraction for dropshipping." },
+            { name: "Amazon", domain: "amazon.com", desc: "Monitor competitor pricing and stock levels instantly." },
+            { name: "Walmart", domain: "walmart.com", desc: "Extract full product catalogs with all attributes." },
+            { name: "Flipkart", domain: "flipkart.com", desc: "Track rankings and review sentiment across categories." },
         ]
     },
     {
         id: "leads",
         name: "Lead Gen",
         icon: MapPin,
-        title: "🗺 Local Lead Gen",
-        description: "Build high-convserion prospect lists from directories and business maps.",
+        title: "🗺 Lead Generation",
+        description: "Extract business directories, contact information, and listings.",
         items: [
-            { name: "Google Maps", domain: "google.com", desc: "Biz names, phone, and addresses." },
-            { name: "Yelp", domain: "yelp.com", desc: "Reviewer data and business details." },
-            { name: "LinkedIn", domain: "linkedin.com", desc: "Decision maker profiles." },
+            { name: "Yellow Pages", domain: "yellowpages.com", desc: "Build prospect lists from local business directories." },
+            { name: "Yelp", domain: "yelp.com", desc: "Extract business details, phone numbers, and ratings." },
+            { name: "Google Maps", domain: "google.com", desc: "Capture local business data and coordinates at scale." },
         ]
     },
     {
-        id: "social",
-        name: "Social Intelligence",
-        icon: Share2,
-        title: "🌍 Market Research",
-        description: "Capture trends and sentiment before they peak.",
+        id: "realestate",
+        name: "Real Estate",
+        icon: Globe,
+        title: "🏠 Real Estate Data",
+        description: "Extract property listings, pricing, and location data.",
         items: [
-            { name: "Twitter / X", domain: "x.com", desc: "Trending topics and profile data." },
-            { name: "Instagram", domain: "instagram.com", desc: "Engagement and media captions." },
-            { name: "Trustpilot", domain: "trustpilot.com", desc: "Customer reviews and feedback." },
+            { name: "Zillow", domain: "zillow.com", desc: "Monitor property values and market trends in real-time." },
+            { name: "Redfin", domain: "redfin.com", desc: "Extract listing details, history, and property features." },
+            { name: "Realtor", domain: "realtor.com", desc: "Gather comprehensive housing data across any zip code." },
         ]
     }
 ];
-
 export function UseCases() {
     const [activeTab, setActiveTab] = useState(categories[0].id);
 
@@ -128,7 +127,7 @@ export function UseCases() {
                     <div className="relative z-10">
                         <h3 className="text-3xl md:text-5xl font-heading font-black mb-6 uppercase">Ready to Extract?</h3>
                         <p className="text-muted-foreground text-lg font-medium mb-10 max-w-xl mx-auto">
-                            Join 5,000+ developers turning the web into structured intelligence.
+                            Used by developers and growth teams to turn the web into structured intelligence.
                         </p>
                         <Button size="lg" className="rounded-full px-12 h-16 bg-primary font-black uppercase tracking-widest text-xs hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
                             Get Started Now <ArrowRight className="h-4 w-4 ml-2" />

@@ -41,8 +41,8 @@ export function Hero() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-6xl md:text-8xl lg:text-9xl font-heading font-black tracking-tight mb-8 leading-[0.9] uppercase"
                     >
-                        Turn the Web into <br />
-                        <span className="text-gradient">Your Database.</span>
+                        Extract structured data <br />
+                        <span className="text-gradient">in seconds.</span>
                     </motion.h1>
 
                     <motion.p
@@ -51,7 +51,7 @@ export function Hero() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-muted-foreground text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mb-12"
                     >
-                        Crawl Pilot is the autonomous browser engine that turns dynamic websites into structured JSON pipelines instantly.
+                        Click elements on a page and instantly export clean structured data. No coding required. Runs locally in your browser.
                     </motion.p>
 
                     <motion.div
@@ -62,11 +62,11 @@ export function Hero() {
                     >
                         <Link href="https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" target="_blank">
                             <Button size="lg" className="h-16 px-10 rounded-2xl bg-primary font-black uppercase tracking-widest text-xs gap-3 hover:scale-105 transition-all shadow-xl shadow-primary/20">
-                                Install Chrome Extension <ArrowRight className="h-4 w-4" />
+                                Add to Chrome <ArrowRight className="h-4 w-4" />
                             </Button>
                         </Link>
                         <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs gap-3 hover:bg-white/5 flex items-center">
-                            Watch Analysis <PlayCircle className="h-4 w-4 ml-1" />
+                            Watch Demo <PlayCircle className="h-4 w-4 ml-1" />
                         </Button>
                     </motion.div>
 
@@ -84,7 +84,7 @@ export function Hero() {
                             ))}
                         </div>
                         <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-                            Trusted by <span className="text-primary italic">5,000+ Intelligence Specialists</span>
+                            Used by <span className="text-primary italic">developers and growth teams</span>
                         </p>
                     </motion.div>
 
@@ -132,8 +132,8 @@ export function Hero() {
                                     <ShieldCheck className="h-5 w-5" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Stealth Protocol</div>
-                                    <div className="text-sm font-black uppercase">Undetectable</div>
+                                    <div className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Local Mode</div>
+                                    <div className="text-sm font-black uppercase">Private & Secure</div>
                                 </div>
                             </div>
                         </div>

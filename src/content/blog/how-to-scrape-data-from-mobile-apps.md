@@ -108,7 +108,7 @@ Used to inspect API calls:
 
 Mobile apps implement multiple defenses that make scraping difficult.
 
-*   **SSL Pinning**: Many apps prevent traffic interception by validating certificates. Engineers must bypass SSL pinning to inspect requests.
+*   **SSL Pinning**: Many apps prevent traffic interception by validating certificates. Engineers must coordinate certificate validation to inspect requests.
 *   **Authentication Tokens**: Apps often use dynamic tokens and device identifiers that expire quickly. Scrapers must replicate these mechanisms.
 *   **Anti-bot Detection**: Platforms monitor behavior patterns, device fingerprints, and traffic anomalies to block automation.
 *   **Frequent App Updates**: A single update can break scraping pipelines if endpoints or request formats change.
