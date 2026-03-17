@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Clock, Calendar, Share2 } from "lucide-react";
 import { CategoryPill } from "@/components/blog/CategoryPill";
