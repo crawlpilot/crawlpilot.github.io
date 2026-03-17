@@ -72,10 +72,10 @@ export default function RoadmapPage() {
                                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-widest mb-4"
                             >
                                 <Calendar className="h-3 w-3" />
-                                2026 Protocol Timeline
+                                Crawl Pilot Timeline
                             </motion.div>
                             <h1 className="text-6xl md:text-8xl font-heading font-black leading-[0.9] uppercase tracking-tighter">
-                                Protocol <span className="text-gradient">Roadmap</span>
+                                Product <span className="text-gradient">Roadmap</span>
                             </h1>
                             <p className="text-xl text-muted-foreground font-medium leading-relaxed max-w-2xl mx-auto">
                                 The strategic evolution of Crawl Pilot. Our mission to turn the web into a machine-readable database, one breakthrough at a time.
@@ -94,8 +94,8 @@ export default function RoadmapPage() {
                                 >
                                     {/* Status Badge */}
                                     <div className={`absolute top-8 right-8 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${feature.status === 'Deployed'
-                                            ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
-                                            : 'bg-primary/10 border-primary/20 text-primary animate-pulse'
+                                        ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                                        : 'bg-primary/10 border-primary/20 text-primary animate-pulse'
                                         }`}>
                                         {feature.status}
                                     </div>
