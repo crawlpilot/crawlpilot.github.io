@@ -30,6 +30,15 @@ const footerLinks = [
             { name: "Compliance", href: "/blog/privacy-and-ethics" },
             { name: "Security", href: "#" },
         ]
+    },
+    {
+        title: "Nodes",
+        links: [
+            { name: "Main Engine", href: "/" },
+            { name: "Intelligence Lab", href: "/blog" },
+            { name: "Resource Archive", href: "/resources" },
+            { name: "Extension Hub", href: "https://chromewebstore.google.com/detail/crawl-pilot/olkkbkkeikjphjoibfafnaiphdclffkd?authuser=1&hl=en-GB" },
+        ]
     }
 ];
 
@@ -37,8 +46,8 @@ export function Footer() {
     return (
         <footer className="border-t border-white/5 pt-24 pb-12 relative overflow-hidden bg-background">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
-                    <div className="space-y-8 col-span-1 md:col-span-1 lg:col-span-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-16 mb-24">
+                    <div className="space-y-8 col-span-1 sm:col-span-2 lg:col-span-1">
                         <Link href="/" className="flex items-center gap-3 font-bold text-xl tracking-tight group">
                             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-indigo-600 p-2 shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
                                 <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain brightness-0 invert" />

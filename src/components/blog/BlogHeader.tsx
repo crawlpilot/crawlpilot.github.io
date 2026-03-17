@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Clock, Calendar, Share2 } from "lucide-react";
 import { CategoryPill } from "@/components/blog/CategoryPill";
 import { BlogPost } from "@/types/blog";
@@ -24,7 +25,14 @@ export function BlogHeader({ post }: BlogHeaderProps) {
     };
 
     return (
-        <header className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <header className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 text-center">
+            <div className="mb-4">
+                <Link href="/blog" className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2">
+                    <span className="h-px w-8 bg-white/10" />
+                    Back to Laboratory
+                    <span className="h-px w-8 bg-white/10" />
+                </Link>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <CategoryPill category={post.category || "Research"} />
                 <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">

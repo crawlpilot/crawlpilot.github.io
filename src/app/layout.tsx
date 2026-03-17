@@ -16,7 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://crawlpilot.github.io"),
+  metadataBase: new URL("https://crawlpilot.tech"),
   title: {
     default: "CrawlPilot | AI-Powered Web Scraping & Data Extraction Infrastructure",
     template: "%s | CrawlPilot"
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CrawlPilot | AI-Powered Web Scraping & Data Extraction Infrastructure",
     description: "Turn the web into structured data with the privacy-first, open-source AI scraper.",
-    url: "https://crawlpilot.github.io",
+    url: "https://crawlpilot.tech",
     siteName: "CrawlPilot",
     locale: "en_US",
     type: "website",

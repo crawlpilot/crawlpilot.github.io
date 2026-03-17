@@ -4,7 +4,7 @@ import { getPostSlugs } from '@/lib/blog-utils'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://crawlpilot.github.io'
+    const baseUrl = 'https://crawlpilot.tech'
 
     // Get all blog slugs
     const blogSlugs = getPostSlugs();

@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
                             </div>
 
                             {/* End of Article CTA */}
-                            <div className="glass-card p-12 rounded-[3rem] border-primary/10 relative overflow-hidden text-center">
+                            <div className="glass-card p-12 rounded-[3rem] border-primary/10 relative overflow-hidden text-center mb-16">
                                 <div className="relative z-10">
                                     <h3 className="text-3xl font-heading font-black uppercase mb-6">Scale Your Intelligence</h3>
                                     <p className="text-muted-foreground font-medium mb-10 max-w-lg mx-auto">
@@ -104,6 +104,33 @@ export default async function BlogPostPage({ params }: Props) {
                                     </div>
                                 </div>
                                 <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/10 blur-[80px] rounded-full" />
+                            </div>
+
+                            {/* Related Posts */}
+                            <div className="pt-16 border-t border-white/5">
+                                <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-12">Related Research</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    {getPostSlugs().filter(s => s.replace(/\.md$/, '') !== slug).slice(0, 2).map(s => {
+                                        const relatedPost = getPostBySlug(s);
+                                        return (
+                                            <Link key={s} href={`/blog/${relatedPost.slug}`} className="group relative">
+                                                <div className="glass-card p-6 rounded-[2rem] border-white/5 group-hover:border-primary/20 transition-all">
+                                                    <div className="flex gap-6 items-center">
+                                                        {relatedPost.image && (
+                                                            <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 border border-white/5">
+                                                                <img src={relatedPost.image} alt={relatedPost.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                                            </div>
+                                                        )}
+                                                        <div className="flex-1 min-w-0">
+                                                            <h5 className="font-heading font-black uppercase text-sm mb-2 group-hover:text-primary transition-colors line-clamp-1">{relatedPost.title}</h5>
+                                                            <p className="text-muted-foreground text-[10px] line-clamp-2 uppercase tracking-widest opacity-60 font-bold">{relatedPost.description}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
 

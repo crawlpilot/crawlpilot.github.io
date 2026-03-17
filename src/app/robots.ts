@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://crawlpilot.github.io/sitemap.xml',
+        sitemap: 'https://crawlpilot.tech/sitemap.xml',
     }
 }
