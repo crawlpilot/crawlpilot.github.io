@@ -2,6 +2,7 @@
 title: "The Future of Web Scraping: Moving Beyond Brittle Selectors"
 date: "2024-03-01"
 description: "Why the era of manually writing CSS selectors for web scraping is coming to an end, and how AI-native extraction is taking over."
+image: "/blog_scraping_future_1773568808294.png"
 ---
 
 

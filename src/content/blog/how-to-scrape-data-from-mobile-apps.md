@@ -1,7 +1,8 @@
 ---
-title: "How to Scrape Data from Mobile Apps (A Practical Engineering Guide)"
-date: "2026-03-15"
-description: "Explore how mobile app scraping works, the tools engineers use, and why intercepting internal API communication is critical for modern data platforms."
+title: "Modern Web Scraping: How to Extract Data from Mobile-Optimized Sites"
+date: "2024-03-10"
+description: "Techniques for handling responsive layouts and mobile-specific data patterns during extraction."
+image: "/blog_mobile_scraping_1773569506030.png"
 ---
 
 Most companies rely on web scraping to collect competitor data, product prices, and market signals. But there’s a problem: many platforms today are mobile-first.

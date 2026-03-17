@@ -14,7 +14,9 @@ const POST_IMAGES: Record<string, string> = {
     "how-to-scrape-data-from-mobile-apps": "/blog_mobile_scraping_1773569506030.png",
     "introduction-to-crawl-pilot-extension": "/blog_intro_extension_1773569666545.png",
     "privacy-and-ethics": "/blog_privacy_ethics_1773569682455.png",
-    "scraping-amazon-with-puppeteer": "/blog_amazon_puppeteer.png"
+    "scraping-amazon-with-puppeteer": "/blog_amazon_puppeteer.png",
+    "cloudflare-web-scraping-era": "/blog/cloudflare-web-scraping-era.png",
+    "mcp-puppeteer-guide": "/blog/mcp-puppeteer-guide.png"
 };
 
 interface BlogPreviewProps {
@@ -48,7 +50,7 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
                         >
                             <div className="aspect-[16/10] overflow-hidden relative">
                                 <img
-                                    src={POST_IMAGES[post.slug] || "/placeholder-blog.png"}
+                                    src={post.image || POST_IMAGES[post.slug] || "/placeholder-blog.png"}
                                     alt={post.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />

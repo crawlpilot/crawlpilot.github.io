@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with CrawlPilot: The Local-First AI Web Scraper"
-date: "2024-03-02"
-description: "Learn how to set up CrawlPilot and start extracting structured data from any website using AI, all while keeping your data private and local."
+title: "Getting Started with Crawl Pilot: Your First 5 Minutes"
+date: "2024-03-05"
+description: "A step-by-step guide to installing the extension and running your first extraction job."
+image: "/blog_getting_started_1773568823970.png"
 ---
 
 

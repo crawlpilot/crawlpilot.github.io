@@ -49,6 +49,12 @@ export function BlogList({ allPosts }: BlogListProps) {
                     <Link href={`/blog/${featuredPost.slug}`} className="group relative block">
                         <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-blue-500/30 rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                         <div className="relative glass-card p-10 md:p-16 rounded-[3rem] border-white/10 overflow-hidden flex flex-col lg:flex-row gap-12 items-center">
+                            {featuredPost.image && (
+                                <div className="lg:w-1/2 w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/5 relative group-hover:border-primary/20 transition-colors">
+                                    <img src={featuredPost.image} alt={featuredPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                                </div>
+                            )}
                             <div className="flex-1 space-y-8">
                                 <div className="flex items-center gap-4">
                                     <CategoryPill category={featuredPost.category || "Research"} />
@@ -118,28 +124,36 @@ export function BlogList({ allPosts }: BlogListProps) {
                             transition={{ delay: index * 0.05 }}
                             className="group h-full"
                         >
-                            <Link href={`/blog/${post.slug}`} className="flex flex-col h-full glass-card p-8 rounded-[2.5rem] border-white/5 hover:border-primary/40 hover:translate-y-[-8px] transition-all duration-500">
-                                <div className="mb-6 flex items-center justify-between">
-                                    <CategoryPill category={post.category || "Research"} />
-                                    <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
-                                        <Clock className="h-3 w-3" />
-                                        <span>{post.readingTime}</span>
+                            <Link href={`/blog/${post.slug}`} className="flex flex-col h-full glass-card p-4 rounded-[2.5rem] border-white/5 hover:border-primary/40 hover:translate-y-[-8px] transition-all duration-500 overflow-hidden group">
+                                {post.image && (
+                                    <div className="aspect-[16/10] w-full rounded-[2rem] overflow-hidden mb-6 relative">
+                                        <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                                     </div>
-                                </div>
-                                <h3 className="text-2xl font-heading font-black mb-4 uppercase tracking-tight leading-none group-hover:text-primary transition-colors flex-1">
-                                    {post.title}
-                                </h3>
-                                <p className="text-sm text-muted-foreground font-medium leading-relaxed mb-8 line-clamp-3">
-                                    {post.description}
-                                </p>
-                                <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-8 w-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
-                                            <img src={post.author?.avatar || "/icon.png"} alt={post.author?.name} className="h-full w-full object-cover" />
+                                )}
+                                <div className="px-4 pb-4 flex flex-col flex-1">
+                                    <div className="mb-6 flex items-center justify-between">
+                                        <CategoryPill category={post.category || "Research"} />
+                                        <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
+                                            <Clock className="h-3 w-3" />
+                                            <span>{post.readingTime}</span>
                                         </div>
-                                        <span className="text-[10px] font-black uppercase tracking-widest opacity-60">{post.author?.name}</span>
                                     </div>
-                                    <ArrowRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
+                                    <h3 className="text-2xl font-heading font-black mb-4 uppercase tracking-tight leading-tight group-hover:text-primary transition-colors flex-1">
+                                        {post.title}
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground font-medium leading-relaxed mb-8 line-clamp-3">
+                                        {post.description}
+                                    </p>
+                                    <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-8 w-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+                                                <img src={post.author?.avatar || "/icon.png"} alt={post.author?.name} className="h-full w-full object-cover" />
+                                            </div>
+                                            <span className="text-[10px] font-black uppercase tracking-widest opacity-60">{post.author?.name}</span>
+                                        </div>
+                                        <ArrowRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
+                                    </div>
                                 </div>
                             </Link>
                         </motion.article>

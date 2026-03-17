@@ -1,7 +1,8 @@
 ---
-title: "Privacy and Ethics in the Age of AI Web Scraping"
-date: "2024-02-28"
-description: "How to balance the need for web data with the responsibility of protecting privacy and respecting digital boundaries."
+title: "Privacy and Ethics in Web Scraping: A Developer's Guide"
+date: "2024-03-15"
+description: "Navigating the legal and ethical landscape of data collection in 2024."
+image: "/blog_privacy_ethics_1773569682455.png"
 ---
 
 

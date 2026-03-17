@@ -1,7 +1,8 @@
 ---
-title: "Scraping Amazon with Node.js and Puppeteer: A Technical Guide"
-date: "2026-03-15"
-description: "Master the art of extracting high-fidelity Amazon product data using Puppeteer and Node.js. Learn the traditional engineering approach and how to overcome sophisticated anti-bot defenses."
+title: "Advanced Scenarios: Scraping Dynamic Content with Puppeteer Integration"
+date: "2024-03-18"
+description: "How to leverage Crawl Pilot alongside Puppeteer for complex, multi-step automation flows."
+image: "/blog_amazon_puppeteer.png"
 ---
 
 Amazon is the world's largest data playground for e-commerce. Whether you're monitoring competitor pricing, tracking inventory, or performing deep market research, the ability to extract clean, structured data from Amazon at scale is a critical engineering skill.

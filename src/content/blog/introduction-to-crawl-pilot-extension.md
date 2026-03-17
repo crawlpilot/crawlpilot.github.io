@@ -1,7 +1,8 @@
 ---
-title: "Introduction to Crawl Pilot Extension"
-date: "2024-03-02"
-description: "Discover the easiest way to extract data from the web with the Crawl Pilot Extension. Seamlessly turn any website into structured data directly from your browser."
+title: "Introduction to Crawl Pilot: The Future of Browser-Based Data Extraction"
+date: "2024-03-12"
+description: "A deep dive into why we built Crawl Pilot and how it solves the most common scraping challenges."
+image: "/blog_intro_extension_1773569666545.png"
 ---
 
 

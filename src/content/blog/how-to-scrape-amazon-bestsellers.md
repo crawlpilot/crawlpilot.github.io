@@ -1,7 +1,8 @@
 ---
-title: "How to Scrape Amazon Bestsellers with Crawl Pilot Extension"
-date: "2024-03-03"
-description: "A step-by-step guide on using the Crawl Pilot Extension to extract data from Amazon's Bestsellers list without writing a single line of code."
+title: "How to Scrape Amazon Bestsellers with Crawl Pilot"
+date: "2024-03-08"
+description: "Learn how to extract product data, prices, and ratings from Amazon bestseller lists in seconds."
+image: "/blog_amazon_scraping_1773568840954.png"
 ---
 
 
