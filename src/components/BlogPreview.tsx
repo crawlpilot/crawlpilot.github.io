@@ -16,7 +16,11 @@ const POST_IMAGES: Record<string, string> = {
     "privacy-and-ethics": "/blog_privacy_ethics_1773569682455.png",
     "scraping-amazon-with-puppeteer": "/blog_amazon_puppeteer.png",
     "cloudflare-web-scraping-era": "/blog/cloudflare-web-scraping-era.png",
-    "mcp-puppeteer-guide": "/blog/mcp-puppeteer-guide.png"
+    "mcp-puppeteer-guide": "/blog/mcp-puppeteer-guide.png",
+    'anti-bot-detection-war': '/blog/anti-bot-detection-war.png',
+    'how-amazon-detects-scrapers': '/blog/amazon-anti-bot-detection.png',
+    'web-scraping-proxy-industry': '/blog/scraping-proxy-industry.png',
+    'ai-agents-replace-scrapers': '/blog/ai-agents-vs-scrapers.png'
 };
 
 interface BlogPreviewProps {
