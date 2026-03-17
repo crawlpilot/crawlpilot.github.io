@@ -9,8 +9,16 @@ const footerLinks = [
         links: [
             { name: "Features", href: "/#features" },
             { name: "How it works", href: "/#how-it-works" },
-            { name: "Solutions", href: "/#solutions" },
             { name: "Pricing", href: "/#pricing" },
+            { name: "Manifesto", href: "/blog/manifesto" },
+        ]
+    },
+    {
+        title: "Solutions",
+        links: [
+            { name: "E-commerce", href: "/solutions/ecommerce" },
+            { name: "Lead Generation", href: "/solutions/lead-gen" },
+            { name: "Real Estate", href: "/solutions/real-estate" },
         ]
     },
     {
