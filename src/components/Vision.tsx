@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -29,12 +30,16 @@ export function Vision() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button size="lg" className="h-16 px-12 rounded-2xl bg-primary text-white font-black uppercase tracking-widest text-xs transition-all hover:scale-105 shadow-xl shadow-primary/20">
-                            Join the Movement <ArrowRight className="h-4 w-4 ml-2" />
-                        </Button>
-                        <Button variant="outline" size="lg" className="h-16 px-12 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs">
-                            Technical Manifesto
-                        </Button>
+                        <Link href="https://www.reddit.com/r/crawlpilot6365/" target="_blank" rel="noopener noreferrer">
+                            <Button size="lg" className="h-16 px-12 rounded-2xl bg-primary text-white font-black uppercase tracking-widest text-xs transition-all hover:scale-105 shadow-xl shadow-primary/20 w-full sm:w-auto">
+                                Join the Movement <ArrowRight className="h-4 w-4 ml-2" />
+                            </Button>
+                        </Link>
+                        <Link href="/blog/manifesto">
+                            <Button variant="outline" size="lg" className="h-16 px-12 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs w-full sm:w-auto">
+                                Technical Manifesto
+                            </Button>
+                        </Link>
                     </div>
                 </motion.div>
             </div>

@@ -20,7 +20,8 @@ const POST_IMAGES: Record<string, string> = {
     'anti-bot-detection-war': '/blog/anti-bot-detection-war.png',
     'how-amazon-detects-scrapers': '/blog/amazon-anti-bot-detection.png',
     'web-scraping-proxy-industry': '/blog/scraping-proxy-industry.png',
-    'ai-agents-replace-scrapers': '/blog/ai-agents-vs-scrapers.png'
+    'ai-agents-replace-scrapers': '/blog/ai-agents-vs-scrapers.png',
+    'manifesto': '/blog/manifesto.png'
 };
 
 interface BlogPreviewProps {
