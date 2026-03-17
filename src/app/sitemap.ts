@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${baseUrl}/roadmap`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.6,
+        },
+        {
             url: `${baseUrl}/crawlpilot/docs`,
             lastModified: new Date(),
             changeFrequency: 'weekly',

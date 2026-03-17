@@ -19,7 +19,7 @@ export function Navbar() {
             dropdown: [
                 { name: "Features", href: "/#features", icon: <Sparkles className="h-4 w-4" /> },
                 { name: "How it works", href: "/#how-it-works", icon: <Rocket className="h-4 w-4" /> },
-                { name: "Changelog", href: "/changelog", icon: <Terminal className="h-4 w-4" /> },
+                { name: "Roadmap", href: "/roadmap", icon: <Terminal className="h-4 w-4" /> },
             ]
         },
         {
