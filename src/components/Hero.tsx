@@ -106,9 +106,10 @@ export function Hero() {
                                 <div className="mx-auto w-3/5 h-6 rounded-lg bg-black/40 border border-white/5" />
                             </div>
                             <img
-                                src="/screenshots/screenshot1.png"
-                                alt="Dashboard"
-                                className="w-full h-auto object-cover rounded-b-[1.8rem] opacity-90 group-hover:opacity-100 transition-opacity"
+                                src="/walmart-demo.gif"
+                                alt="Walmart Data Extraction Demo"
+                                className="w-full h-auto object-cover rounded-b-[1.8rem] opacity-90 group-hover:opacity-100 transition-opacity shadow-2xl"
+                                loading="lazy"
                             />
                         </div>
 
