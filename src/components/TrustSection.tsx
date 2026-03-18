@@ -48,7 +48,7 @@ export function TrustSection() {
                                 <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                                     <Users className="h-5 w-5" />
                                 </div>
-                                <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">Multi-user Teams Supported</div>
+                                <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">100+ Active Teams</div>
                             </div>
                         </div>
                     </div>

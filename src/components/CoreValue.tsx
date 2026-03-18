@@ -32,10 +32,11 @@ export function CoreValue() {
                     className="max-w-3xl mx-auto mb-20"
                 >
                     <h2 className="text-4xl md:text-5xl font-heading font-black tracking-tight mb-6 uppercase">
-                        Completely <span className="text-primary italic">Serverless</span>
+                        Runs completely <br />
+                        <span className="text-primary italic">in your browser.</span>
                     </h2>
                     <p className="text-muted-foreground text-lg font-medium">
-                        A local-first architecture designed for speed, privacy, and simplicity.
+                        A local-first architecture designed for speed, privacy, and simplicity. No servers, no complex proxies, and no data leaks.
                     </p>
                 </motion.div>
 

@@ -42,7 +42,7 @@ export function Hero() {
                         className="text-6xl md:text-8xl lg:text-9xl font-heading font-black tracking-tight mb-8 leading-[0.9] uppercase"
                     >
                         Extract structured data <br />
-                        <span className="text-gradient">in seconds.</span>
+                        <span className="text-gradient">from any website.</span>
                     </motion.h1>
 
                     <motion.p
@@ -65,9 +65,11 @@ export function Hero() {
                                 Add to Chrome <ArrowRight className="h-4 w-4" />
                             </Button>
                         </Link>
-                        <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs gap-3 hover:bg-white/5 flex items-center">
-                            Watch Demo <PlayCircle className="h-4 w-4 ml-1" />
-                        </Button>
+                        <Link href="#demo">
+                            <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl border-white/5 glass-panel font-black uppercase tracking-widest text-xs gap-3 hover:bg-white/5 flex items-center w-full sm:w-auto">
+                                Watch Demo <PlayCircle className="h-4 w-4 ml-1" />
+                            </Button>
+                        </Link>
                     </motion.div>
 
                     <motion.div

@@ -38,8 +38,8 @@ const categories = [
         description: "Extract business directories, contact information, and listings.",
         items: [
             { name: "Yellow Pages", domain: "yellowpages.com", desc: "Build prospect lists from local business directories." },
-            { name: "Yelp", domain: "yelp.com", desc: "Extract business details, phone numbers, and ratings." },
-            { name: "Google Maps", domain: "google.com", desc: "Capture local business data and coordinates at scale." },
+            { name: "Business Directories", domain: "clutch.co", desc: "Extract company details, phone numbers, and ratings." },
+            { name: "LinkedIn Results", domain: "linkedin.com", desc: "Collect structured data from search results for outreach." },
         ]
     },
     {

@@ -1,7 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { DemoSection } from "@/components/DemoSection";
 import { HowItWorks } from "@/components/HowItWorks";
-import { ProblemSolution } from "@/components/ProblemSolution";
 import { Features } from "@/components/Features";
 import { UseCases } from "@/components/UseCases";
 import { TrustSection } from "@/components/TrustSection";
@@ -23,7 +22,6 @@ export default function Home() {
         <Hero />
         <DemoSection />
         <HowItWorks />
-        <ProblemSolution />
         <Features />
         <UseCases />
         <TrustSection />

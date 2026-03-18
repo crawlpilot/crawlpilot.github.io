@@ -18,8 +18,8 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL("https://crawlpilot.tech"),
   title: {
-    default: "CrawlPilot | AI-Powered Web Scraping & Data Extraction Infrastructure",
-    template: "%s | CrawlPilot"
+    default: "Crawl Pilot | The Content Web Scraper",
+    template: "%s | Crawl Pilot"
   },
   description: "The privacy-first, open-source infrastructure for AI-powered web scraping and data extraction. Turn any website into structured data instantly with CrawlPilot.",
   keywords: [
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CrawlPilot | AI-Powered Web Scraping & Data Extraction",
+    title: "Crawl Pilot | Content Intelligence & Web Scraping",
     description: "The privacy-first infrastructure for AI-powered web extraction.",
     creator: "@crawlpilot",
   },

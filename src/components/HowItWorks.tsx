@@ -11,13 +11,13 @@ const steps = [
     },
     {
         icon: LayoutTemplate,
-        title: "Select Elements",
-        description: "Click on the data you want to collect. Our AI instantly detects repeating structures like lists and tables."
+        title: "Click elements",
+        description: "Select the data you want to collect. Our AI instantly detects repeating structures like lists and tables."
     },
     {
         icon: Download,
-        title: "Export Instantly",
-        description: "Download your structured data as CSV or JSON, or sync it directly to your favorite tools."
+        title: "Export instantly",
+        description: "Download your structured data as CSV or JSON instantly, directly from your browser."
     }
 ];
 
