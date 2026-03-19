@@ -52,23 +52,23 @@ export default function PrivacyPage() {
                 { name: "activeTab", desc: "Allows accessing content of the current tab when you explicitly trigger a feature." },
                 { name: "storage", desc: "Required to save your extraction schemas and scraped results locally." },
                 { name: "downloads", desc: "Required solely to export your extracted data as files to your computer." },
-                { name: "scripting", desc: "Necessary to inject extraction scripts into the page to collect data." }
+                { name: "scripting", desc: "Necessary to inject extraction scripts into the page to identify and collect data." }
             ]
         },
         {
             id: "rights",
             title: "Your Rights",
             icon: CheckCircle2,
-            content: "You have full control over your data. You can view all stored data via the extension's dashboard and delete it by uninstalling the extension or clearing your browser's extension data."
+            content: "You have full control over your data. You can view all stored data via the extension's dashboard and delete it by uninstalling the extension or clearing your browser's local storage/extension data."
         }
     ];
 
     return (
-        <div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
+        <div className="min-h-screen bg-background flex flex-col relative overflow-hidden text-foreground">
             <Navbar />
             <div className="hero-glow" />
             
-            <main className="flex-1 container mx-auto px-4 py-24 max-w-6xl relative z-10">
+            <main className="flex-1 container mx-auto px-4 py-24 max-w-6xl relative z-10 font-sans">
                 {/* Header Section */}
                 <div className="mb-24 text-center">
                     <motion.div
@@ -123,8 +123,8 @@ export default function PrivacyPage() {
                         </nav>
                         
                         <div className="mt-12 p-6 rounded-3xl glass-card">
-                            <h4 className="text-sm font-black uppercase tracking-widest mb-4">Security First</h4>
-                            <p className="text-xs text-muted-foreground leading-relaxed mb-6">
+                            <h4 className="text-sm font-black uppercase tracking-widest mb-4 font-heading">Security First</h4>
+                            <p className="text-xs text-muted-foreground leading-relaxed mb-6 font-medium">
                                 We prioritize local storage and zero-knowledge architecture in everything we build.
                             </p>
                             <a href="mailto:crawlpilot6365@gmail.com" className="inline-flex items-center gap-2 text-primary font-black text-[10px] uppercase tracking-widest">
@@ -154,15 +154,15 @@ export default function PrivacyPage() {
                                             {section.title}
                                         </h2>
                                         <div className="prose prose-invert prose-p:text-muted-foreground prose-p:leading-relaxed max-w-none">
-                                            <p className="text-lg font-medium text-muted-foreground/90">
+                                            <p className="text-lg font-medium text-muted-foreground/90 font-sans">
                                                 {section.content}
                                             </p>
                                             
                                             {section.items && !section.isSpecial && (
                                                 <ul className="mt-8 space-y-4 list-none p-0">
                                                     {(section.items as string[]).map((item, i) => (
-                                                        <li key={i} className="flex items-start gap-4 text-muted-foreground">
-                                                            <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                                                        <li key={i} className="flex items-start gap-4 text-muted-foreground font-medium text-sm">
+                                                            <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 shrink-0" />
                                                             {item}
                                                         </li>
                                                     ))}
@@ -172,9 +172,9 @@ export default function PrivacyPage() {
                                             {section.isSpecial && section.items && (
                                                 <div className="grid gap-4 mt-8">
                                                     {(section.items as any[]).map((item, i) => (
-                                                        <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-all">
-                                                            <div className="font-black text-[10px] uppercase tracking-widest text-primary mb-2">{item.label}</div>
-                                                            <div className="text-sm text-muted-foreground">{item.desc}</div>
+                                                        <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-all font-sans">
+                                                            <div className="font-black text-[10px] uppercase tracking-widest text-primary mb-2 font-heading">{item.label}</div>
+                                                            <div className="text-sm text-muted-foreground font-medium">{item.desc}</div>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -183,9 +183,9 @@ export default function PrivacyPage() {
                                             {section.isGrid && section.permissions && (
                                                 <div className="grid md:grid-cols-2 gap-4 mt-8">
                                                     {section.permissions.map((perm, i) => (
-                                                        <div key={i} className="p-6 rounded-2xl bg-zinc-900/50 border border-white/5">
-                                                            <div className="font-mono text-xs font-bold text-primary mb-2">{perm.name}</div>
-                                                            <div className="text-xs text-muted-foreground leading-relaxed">{perm.desc}</div>
+                                                        <div key={i} className="p-6 rounded-2xl bg-zinc-900/50 border border-white/5 font-sans">
+                                                            <div className="font-mono text-xs font-bold text-primary mb-2 tracking-tighter">{perm.name}</div>
+                                                            <div className="text-xs text-muted-foreground leading-relaxed font-medium">{perm.desc}</div>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -201,11 +201,11 @@ export default function PrivacyPage() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-12 rounded-[2.5rem] bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center"
+                            className="p-12 rounded-[2.5rem] bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center font-sans"
                         >
                             <Mail className="h-12 w-12 text-primary mx-auto mb-6" />
                             <h2 className="text-3xl font-heading font-black mb-4 uppercase">Have Questions?</h2>
-                            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+                            <p className="text-muted-foreground mb-8 max-w-md mx-auto font-medium text-lg">
                                 Our security team is ready to address any concerns you have about your data privacy.
                             </p>
                             <a 
