@@ -6,14 +6,14 @@ import { Star, Chrome, Users } from "lucide-react";
 export function TrustSection() {
     const testimonials = [
         {
-            text: "Crawl Pilot saved us weeks of manual selector maintenance. It just works.",
-            author: "Lead Developer",
-            company: "Growth Corp"
+            text: "Finally, a scraper that doesn't require a computer science degree. I just clicked the prices, hit export, and had my spreadsheet in seconds. It's shockingly simple.",
+            author: "Alex Rivera",
+            company: "E-commerce Specialist"
         },
         {
-            text: "The fastest way to get clean data from directories. Extremely reliable.",
-            author: "Marketing Ops",
-            company: "Indie Studio"
+            text: "I've tried every chrome extension out there for lead gen, but this is the only one that actually handles dynamic content without breaking. Clean data, every single time.",
+            author: "Sarah Chen",
+            company: "Growth Lead @ Indie Studio"
         }
     ];
 
