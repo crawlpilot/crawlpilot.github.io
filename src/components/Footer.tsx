@@ -58,7 +58,7 @@ export function Footer() {
                     <div className="space-y-8 col-span-1 sm:col-span-2 lg:col-span-1">
                         <Link href="/" className="flex items-center gap-3 font-bold text-xl tracking-tight group">
                             <div className="flex h-10 w-10 items-center justify-center transition-transform group-hover:scale-110">
-                                <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain brightness-0 invert" />
+                                <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain" />
                             </div>
                             <span className="font-heading font-black uppercase tracking-tight">Crawl Pilot</span>
                         </Link>
