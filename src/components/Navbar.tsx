@@ -11,7 +11,7 @@ import { UserAvatar } from "@/components/UserAvatar";
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { user, loading, isSidePanelOpen, setSidePanelOpen } = useAuth();
+    const { user, loading } = useAuth();
 
     const navLinks: {
         name: string;
@@ -48,16 +48,6 @@ export function Navbar() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex h-20 items-center justify-between">
                     <div className="flex items-center gap-4">
-                        {user && (
-                            <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => setSidePanelOpen(!isSidePanelOpen)}
-                                className="hidden md:flex text-primary hover:bg-primary/10"
-                            >
-                                <Menu className="h-5 w-5" />
-                            </Button>
-                        )}
                         <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight group">
                             <div className="flex h-9 w-9 items-center justify-center transition-transform group-hover:scale-110">
                                 <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain" />
