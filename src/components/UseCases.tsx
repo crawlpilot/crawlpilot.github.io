@@ -51,7 +51,7 @@ const categories = [
         description: "Extract property listings, pricing, and location data.",
         items: [
             { name: "Zillow", domain: "zillow.com", iconPath: "/icons/Zillow.jpeg", desc: "Export property listings, prices, and home features with a single click." },
-            { name: "Redfin", domain: "redfin.com", iconPath: "/icons/_ (1).jpeg", desc: "Extract housing data and community details from search result pages." },
+            { name: "Redfin", domain: "redfin.com", iconPath: "/icons/redfin.jpeg", desc: "Extract housing data and community details from search result pages." },
             { name: "Realtor", domain: "realtor.com", iconPath: "/icons/Realtor.jpeg", desc: "Convert real estate listings into structured data for market analysis." },
         ]
     },
