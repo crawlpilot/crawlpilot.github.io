@@ -38,8 +38,9 @@ const categories = [
         description: "Extract business directories, contact information, and listings.",
         items: [
             { name: "Google Maps", domain: "maps.google.com", iconPath: "/icons/Google_Maps.jpeg", desc: "Build prospect lists from local business directories." },
-            { name: "Business Directories", domain: "clutch.co", desc: "Extract company details, phone numbers, and ratings." },
-            { name: "Yellow Pages", domain: "yellowpages.com", desc: "Collect structured data from search results for outreach." },
+            { name: "Yelp", domain: "yelp.com", iconPath: "/icons/yelp.jpeg", desc: "Extract business reviews, ratings, and contact info." },
+            { name: "Business Directories", domain: "clutch.co", iconPath: "/icons/busines_directory.jpeg", desc: "Extract company details, phone numbers, and ratings." },
+            { name: "Yellow Pages", domain: "yellowpages.com", iconPath: "/icons/yellowpages.jpeg", desc: "Collect structured data from search results for outreach." },
         ]
     },
     {
@@ -49,9 +50,9 @@ const categories = [
         title: "🏠 Real Estate Data",
         description: "Extract property listings, pricing, and location data.",
         items: [
-            { name: "Zillow", domain: "zillow.com", desc: "Monitor property values and market trends in real-time." },
-            { name: "Redfin", domain: "redfin.com", desc: "Extract listing details, history, and property features." },
-            { name: "Realtor", domain: "realtor.com", desc: "Gather comprehensive housing data across any zip code." },
+            { name: "Zillow", domain: "zillow.com", iconPath: "/icons/Zillow.jpeg", desc: "Monitor property values and market trends in real-time." },
+            { name: "Redfin", domain: "redfin.com", iconPath: "/icons/_ (1).jpeg", desc: "Extract listing details, history, and property features." },
+            { name: "Realtor", domain: "realtor.com", iconPath: "/icons/Realtor.jpeg", desc: "Gather comprehensive housing data across any zip code." },
         ]
     },
     {
@@ -63,7 +64,7 @@ const categories = [
         items: [
             { name: "Instagram", domain: "instagram.com", iconPath: "/icons/instagram.jpeg", desc: "Collect posts, comments, and profile details." },
             { name: "LinkedIn", domain: "linkedin.com", iconPath: "/icons/linkedin.jpeg", desc: "Extract professional profiles and company data." },
-            { name: "Twitter", domain: "twitter.com", iconPath: "/icons/twitter.jpeg", desc: "Monitor real-time conversations and trends." },
+            { name: "Twitter", domain: "twitter.com", iconPath: "/icons/twitter.jpeg", desc: "Extract leads, tweets, user profiles data, and search lists." },
         ]
     }
 ];
@@ -119,11 +120,15 @@ export function UseCases() {
                                 {categories.find(c => c.id === activeTab)?.items.map((item, i) => (
                                     <div key={i} className="glass-card p-8 rounded-[2rem] hover:border-primary/40 transition-all group">
                                         <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 overflow-hidden">
-                                            <img
-                                                src={(item as any).iconPath || `https://logo.clearbit.com/${item.domain}`}
-                                                alt={item.name}
-                                                className="w-8 h-8 object-contain"
-                                            />
+                                            {(item as any).iconPath ? (
+                                                <img
+                                                    src={(item as any).iconPath}
+                                                    alt={item.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <Globe className="w-6 h-6 text-primary/40" />
+                                            )}
                                         </div>
                                         <h4 className="text-xl font-heading font-black mb-2 uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
                                         <p className="text-sm text-muted-foreground font-medium leading-relaxed">{item.desc}</p>
