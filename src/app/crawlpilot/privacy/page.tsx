@@ -31,6 +31,7 @@ export default function PrivacyPage() {
                                 <li><strong>Configuration Data:</strong> Extraction schemas, selectors, and user settings are stored in `chrome.storage.local`.</li>
                                 <li><strong>Temporary Logs:</strong> Operational logs used for debugging are stored temporarily in memory or local storage.</li>
                             </ul>
+
                         </div>
                     </section>
 
