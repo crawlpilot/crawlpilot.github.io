@@ -9,49 +9,70 @@ import { getCheckoutUrl } from "@/app/actions/checkout";
 
 const plans = [
     {
-        id: "BASIC",
-        name: "Developer",
-        price: "$9",
-        description: "Perfect for secondary projects and side-hustles.",
+        id: "STARTER",
+        name: "Starter",
+        price: "$0",
+        description: "Essential tools for individual researchers and small data projects.",
         features: [
-            "10,000 Extraction Credits",
-            "CSV/JSON Export",
-            "Community Support",
-            "Local Run Execution",
+            "Unlimited Listing Extractions",
+            "1 Browser Usage Limit",
+            "Free Image Downloader",
+            "Chrome, Edge, Brave Support",
         ],
-        cta: "Fast Track",
+        cta: "Start Free",
+        icon: Zap,
+        popular: false,
+    },
+    {
+        id: "BASIC",
+        name: "Basic",
+        price: "$5",
+        description: "A step up for enthusiasts needing simple, on-demand automation.",
+        features: [
+            "Page Image Listing Extractions",
+            "On-Demand Job Triggers",
+            "2 Concurrent Browsers",
+            "CSV/JSON Data Exports",
+            "Chrome, Edge, Brave Support",
+        ],
+        cta: "Go Basic",
         icon: Zap,
         popular: false,
     },
     {
         id: "PRO",
-        name: "Power User",
-        price: "$29",
-        description: "For professionals needing scaling intelligence.",
+        name: "Pro",
+        price: "$9",
+        description: "Advanced intelligence for professionals requiring deep data & scale.",
         features: [
-            "AI-Powered Selectors",
-            "Auto-Pagination Support",
-            "100,000 Extraction Credits",
+            "Includes all Basic features",
+            "Autonomous Auto-Selectors",
+            "Detailed Page Data",
+            "Smart Auto-Pagination",
+            "Up to 5 Concurrent Browsers",
             "Priority Support",
-            "Advanced AI Selectors",
+            "Advanced Job Scheduling",
+            "Chrome, Edge, Brave Support",
         ],
-        cta: "Fast Track",
+        cta: "Go Pro",
         icon: Crown,
         popular: true,
     },
     {
         id: "TEAM",
-        name: "Enterprise",
-        price: "$99",
-        description: "Scalable solutions for high-frequency teams.",
+        name: "Business",
+        price: "$49",
+        description: "Enterprise-ready infrastructure designed for high-frequency teams.",
         features: [
-            "Shared Team Workspace",
-            "Unlimited Extractions",
-            "Custom API Limits",
-            "Dedicated Engineer Support",
-            "SLA Reliability",
+            "Includes all Pro features",
+            "Webhook & API Sync",
+            "Google Sheets Integration",
+            "Unlimited Browser Usage",
+            "Team Shared Workspaces",
+            "Dedicated Support",
+            "Chrome, Edge, Brave Support",
         ],
-        cta: "Contact Sales",
+        cta: "Scale Now",
         icon: Shield,
         popular: false,
     },
@@ -64,6 +85,11 @@ export function Pricing() {
     const handleUpgrade = async (plan: typeof plans[0]) => {
         if (!user) {
             window.location.href = "/login";
+            return;
+        }
+
+        if (plan.price === "$0") {
+            window.location.href = "/dashboard";
             return;
         }
 
@@ -111,7 +137,7 @@ export function Pricing() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={plan.name}
@@ -145,7 +171,7 @@ export function Pricing() {
                                 {plan.features.map((feature) => (
                                     <li key={feature} className="flex items-start gap-3 text-sm font-medium text-zinc-400">
                                         <Check className="h-5 w-5 text-primary shrink-0" />
-                                        <span className="uppercase text-[10px] font-black tracking-widest">{feature}</span>
+                                        <span className="text-[10px] font-black tracking-widest uppercase">{feature}</span>
                                     </li>
                                 ))}
                             </ul>
