@@ -126,12 +126,7 @@ export default function ProfilePage() {
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-3">
-                        <Button variant="ghost" className="text-red-400 hover:text-red-400 hover:bg-red-400/10 justify-start gap-2 rounded-xl" onClick={() => logout()}>
-                            <LogOut className="h-4 w-4" />
-                            Sign Out
-                        </Button>
-                    </div>
+
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -141,7 +136,9 @@ export default function ProfilePage() {
                             <p className="text-xs text-muted-foreground leading-relaxed">
                                 Our support team is available 24/7 to help you with integration or billing questions.
                             </p>
-                            <Button variant="link" className="text-primary p-0 h-auto text-sm font-bold">Contact Support</Button>
+                            <a href="mailto:crawlpilot6365@gmail.com" className="text-primary p-0 h-auto text-sm font-bold hover:underline">
+                                <Button variant="link" className="text-primary p-0 h-auto text-sm font-bold">Contact Support</Button>
+                            </a>
                         </div>
                     </div>
                 </div>
