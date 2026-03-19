@@ -13,12 +13,6 @@ export function CommunityTools() {
             description: "Advanced geolocation spoofing and proxy management for developers.",
             link: "https://chromewebstore.google.com/detail/stealthgeo/cloimcjdoaokjledehpbdkedgpdlcloe?authuser=1&hl=en-GB",
         },
-        {
-            title: "StreamFlix",
-            icon: Tv,
-            description: "Professional IPTV Player for your browser. Local-first and privacy focused.",
-            link: "https://chromewebstore.google.com/detail/streamflix-iptv/pnclbjdfopkdcffapdcfeflffgmdmcno?authuser=1&hl=en-GB",
-        }
     ];
 
     return (

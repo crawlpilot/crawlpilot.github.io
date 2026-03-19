@@ -59,7 +59,7 @@ export function Navbar() {
                             </Button>
                         )}
                         <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight group">
-                            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-indigo-600 p-2 shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
+                            <div className="flex h-9 w-9 items-center justify-center transition-transform group-hover:scale-110">
                                 <img src="/icon.png" alt="Crawl Pilot" className="h-full w-full object-contain brightness-0 invert" />
                             </div>
                             <span className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent font-heading">Crawl Pilot</span>
