@@ -25,9 +25,9 @@ const categories = [
         title: "🛒 E-commerce Extraction",
         description: "Extract product titles, prices, images, and links from marketplaces.",
         items: [
-            { name: "Amazon", domain: "amazon.com", iconPath: "/icons/amazon.jpeg", desc: "Monitor competitor pricing and stock levels instantly." },
-            { name: "Walmart", domain: "walmart.com", iconPath: "/icons/walmart.jpeg", desc: "Extract full product catalogs with all attributes." },
-            { name: "Flipkart", domain: "flipkart.com", iconPath: "/icons/flipkart.jpeg", desc: "Track rankings and review sentiment across categories." },
+            { name: "Amazon", domain: "amazon.com", iconPath: "/icons/amazon.jpeg", desc: "Extract product titles, prices, and reviews directly from Amazon listings." },
+            { name: "Walmart", domain: "walmart.com", iconPath: "/icons/walmart.jpeg", desc: "Instantly capture product details and specifications into structured CSV/JSON." },
+            { name: "Flipkart", domain: "flipkart.com", iconPath: "/icons/flipkart.jpeg", desc: "Convert product search results into clean, organized data tables." },
         ]
     },
     {
@@ -37,10 +37,10 @@ const categories = [
         title: "🗺 Lead Generation",
         description: "Extract business directories, contact information, and listings.",
         items: [
-            { name: "Google Maps", domain: "maps.google.com", iconPath: "/icons/Google_Maps.jpeg", desc: "Build prospect lists from local business directories." },
-            { name: "Yelp", domain: "yelp.com", iconPath: "/icons/yelp.jpeg", desc: "Extract business reviews, ratings, and contact info." },
-            { name: "Business Directories", domain: "clutch.co", iconPath: "/icons/busines_directory.jpeg", desc: "Extract company details, phone numbers, and ratings." },
-            { name: "Yellow Pages", domain: "yellowpages.com", iconPath: "/icons/yellowpages.jpeg", desc: "Collect structured data from search results for outreach." },
+            { name: "Google Maps", domain: "maps.google.com", iconPath: "/icons/Google_Maps.jpeg", desc: "Extract business names, addresses, and ratings from Maps search results." },
+            { name: "Yelp", domain: "yelp.com", iconPath: "/icons/yelp.jpeg", desc: "Collect restaurant and service details including reviews and contact info." },
+            { name: "Business Directories", domain: "clutch.co", iconPath: "/icons/busines_directory.jpeg", desc: "Extract company listings and contact details from any industry directory." },
+            { name: "Yellow Pages", domain: "yellowpages.com", iconPath: "/icons/yellowpages.jpeg", desc: "Capture directory listings and contact information in bulk." },
         ]
     },
     {
@@ -50,9 +50,9 @@ const categories = [
         title: "🏠 Real Estate Data",
         description: "Extract property listings, pricing, and location data.",
         items: [
-            { name: "Zillow", domain: "zillow.com", iconPath: "/icons/Zillow.jpeg", desc: "Monitor property values and market trends in real-time." },
-            { name: "Redfin", domain: "redfin.com", iconPath: "/icons/_ (1).jpeg", desc: "Extract listing details, history, and property features." },
-            { name: "Realtor", domain: "realtor.com", iconPath: "/icons/Realtor.jpeg", desc: "Gather comprehensive housing data across any zip code." },
+            { name: "Zillow", domain: "zillow.com", iconPath: "/icons/Zillow.jpeg", desc: "Export property listings, prices, and home features with a single click." },
+            { name: "Redfin", domain: "redfin.com", iconPath: "/icons/_ (1).jpeg", desc: "Extract housing data and community details from search result pages." },
+            { name: "Realtor", domain: "realtor.com", iconPath: "/icons/Realtor.jpeg", desc: "Convert real estate listings into structured data for market analysis." },
         ]
     },
     {
@@ -62,9 +62,9 @@ const categories = [
         title: "📱 Social Media Data",
         description: "Extract profiles, posts, and engagement metrics.",
         items: [
-            { name: "Instagram", domain: "instagram.com", iconPath: "/icons/instagram.jpeg", desc: "Collect posts, comments, and profile details." },
-            { name: "LinkedIn", domain: "linkedin.com", iconPath: "/icons/linkedin.jpeg", desc: "Extract professional profiles and company data." },
-            { name: "Twitter", domain: "twitter.com", iconPath: "/icons/twitter.jpeg", desc: "Extract leads, tweets, user profiles data, and search lists." },
+            { name: "Instagram", domain: "instagram.com", iconPath: "/icons/instagram.jpeg", desc: "Extract profiles, post captions, and engagement data from feeds." },
+            { name: "LinkedIn", domain: "linkedin.com", iconPath: "/icons/linkedin.jpeg", desc: "Capture professional profile data and company listings from search results." },
+            { name: "Twitter", domain: "twitter.com", iconPath: "/icons/twitter.jpeg", desc: "Extract leads, tweets, user profiles, and data from search result lists." },
         ]
     }
 ];
