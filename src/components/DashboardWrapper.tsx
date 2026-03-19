@@ -3,9 +3,17 @@
 import { useAuth } from "@/context/AuthContext";
 import { SidePanel } from "@/components/SidePanel";
 import { Navbar } from "@/components/Navbar";
+import { usePathname } from "next/navigation";
 
 export function DashboardWrapper({ children }: { children: React.ReactNode }) {
     const { user, loading, isSidePanelOpen, setSidePanelOpen } = useAuth();
+    const pathname = usePathname();
+
+    const isAuthPage = pathname === "/login" || pathname === "/signup";
+
+    if (isAuthPage) {
+        return <>{children}</>;
+    }
 
     return (
         <div className="min-h-screen bg-background flex flex-col">

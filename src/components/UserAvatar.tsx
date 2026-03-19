@@ -71,22 +71,6 @@ export function UserAvatar() {
                                 <User className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
                                 <span className="font-medium">My Profile</span>
                             </Link>
-                            {/* <Link
-                                href="/pricing"
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors"
-                            >
-                                <ChevronDown className="h-4 w-4 text-primary rotate-[270deg]" />
-                                Upgrade Plan
-                            </Link> */}
-                            <Link
-                                href="/settings"
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors"
-                            >
-                                <Settings className="h-4 w-4" />
-                                Settings
-                            </Link>
                         </div>
 
                         <div className="p-2 border-t border-border/50">

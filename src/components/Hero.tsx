@@ -26,6 +26,15 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
                     <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="mb-8"
+                    >
+                        <img src="/icon.png" alt="Crawl Pilot" className="h-12 w-12 object-contain brightness-0 invert" />
+                    </motion.div>
+
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}

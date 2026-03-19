@@ -11,8 +11,6 @@ const resourceGroups = [
     {
         title: "Getting Started",
         items: [
-            { title: "Documentation", icon: BookOpen, desc: "Technical guides and API references.", link: "https://github.com/crawlpilot" },
-            { title: "Quickstart Guide", icon: Zap, desc: "Extract your first dataset in < 60 seconds.", link: "/blog/getting-started-with-crawlpilot" },
             { title: "Video Tutorials", icon: PlayCircle, desc: "Watch how to build complex pipelines.", link: "#" },
         ]
     },

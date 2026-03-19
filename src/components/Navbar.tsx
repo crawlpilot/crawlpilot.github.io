@@ -13,7 +13,11 @@ export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { user, loading, isSidePanelOpen, setSidePanelOpen } = useAuth();
 
-    const navLinks = [
+    const navLinks: {
+        name: string;
+        href?: string;
+        dropdown?: { name: string; href: string; icon?: React.ReactNode }[];
+    }[] = [
         {
             name: "Product",
             dropdown: [
@@ -33,9 +37,7 @@ export function Navbar() {
         {
             name: "Resources",
             dropdown: [
-                { name: "Guides", href: "/resources", icon: <BookOpen className="h-4 w-4" /> },
                 { name: "Blog", href: "/blog" },
-                { name: "Docs", href: "https://github.com/crawlpilot" },
             ]
         },
         { name: "Pricing", href: "/#pricing" },

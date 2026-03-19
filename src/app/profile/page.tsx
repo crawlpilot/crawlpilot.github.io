@@ -127,12 +127,6 @@ export default function ProfilePage() {
                     </div>
 
                     <div className="flex flex-col gap-3">
-                        <Link href="/settings">
-                            <Button variant="outline" className="w-full justify-start gap-2 rounded-xl">
-                                <SettingsIcon className="h-4 w-4" />
-                                Account Settings
-                            </Button>
-                        </Link>
                         <Button variant="ghost" className="text-red-400 hover:text-red-400 hover:bg-red-400/10 justify-start gap-2 rounded-xl" onClick={() => logout()}>
                             <LogOut className="h-4 w-4" />
                             Sign Out
@@ -141,60 +135,6 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Account Details */}
-                    <div className="space-y-8">
-                        <section className="space-y-4">
-                            <h2 className="text-xl font-bold flex items-center gap-2">
-                                <ShieldCheck className="h-5 w-5 text-primary" />
-                                Account Verification
-                            </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="p-4 rounded-2xl bg-white/5 border border-border/50 flex items-center gap-4">
-                                    <div className="h-10 w-10 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center font-bold">✓</div>
-                                    <div>
-                                        <p className="text-sm font-medium">Email Verified</p>
-                                        <p className="text-xs text-muted-foreground">{user.emailVerified ? "Verified" : "Pending"}</p>
-                                    </div>
-                                </div>
-                                <div className="p-4 rounded-2xl bg-white/5 border border-border/50 flex items-center gap-4">
-                                    <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">2FA</div>
-                                    <div>
-                                        <p className="text-sm font-medium">Two-Factor Auth</p>
-                                        <p className="text-xs text-muted-foreground">Disabled</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Usage / Stats mockup */}
-                        <section className="space-y-4">
-                            <div className="flex items-center justify-between">
-                                <h2 className="text-xl font-bold">Current Usage</h2>
-                                <Link href="/jobs" className="text-sm text-primary hover:underline">View All Jobs</Link>
-                            </div>
-                            <div className="p-6 rounded-3xl bg-white/5 border border-border/50 space-y-6">
-                                <div className="space-y-2">
-                                    <div className="flex justify-between text-sm font-medium">
-                                        <span>Extraction Credits</span>
-                                        <span>{subscription?.status === "active" ? "Included" : "24 / 100"}</span>
-                                    </div>
-                                    <div className="h-2 w-full bg-border/50 rounded-full overflow-hidden">
-                                        <div className={cn("h-full", subscription?.status === "active" ? "bg-primary w-full" : "bg-primary w-[24%]")} />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <div className="flex justify-between text-sm font-medium">
-                                        <span>API Calls</span>
-                                        <span>{subscription?.status === "active" ? "Unlimited" : "4,102 / 10,000"}</span>
-                                    </div>
-                                    <div className="h-2 w-full bg-border/50 rounded-full overflow-hidden">
-                                        <div className={cn("h-full", subscription?.status === "active" ? "bg-purple-500 w-full" : "bg-purple-500 w-[41%]")} />
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-
                     <div className="space-y-6">
                         <div className="p-6 rounded-3xl bg-card border border-border/50 space-y-4">
                             <h4 className="font-bold">Need help?</h4>
